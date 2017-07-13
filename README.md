@@ -1,8 +1,11 @@
 # Ribose
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ribose`. To experiment with that code, run `bin/console` for an interactive prompt.
+[![Build
+Status](https://travis-ci.org/riboseinc/ribose-ruby.svg?branch=master)](https://travis-ci.org/riboseinc/ribose-ruby)
+[![Code
+Climate](https://codeclimate.com/github/riboseinc/ribose-ruby/badges/gpa.svg)](https://codeclimate.com/github/riboseinc/ribose-ruby)
 
-TODO: Delete this and the text above, and describe your gem
+The Ruby Interface to the Ribose API.
 
 ## Installation
 
@@ -22,6 +25,33 @@ Or install it yourself as:
 
 ```sh
 $ gem install ribose
+```
+
+## Configure
+
+We need to setup Ribose API configuration before we can perform any request
+throughout this client, and to request an API Key please contact Ribose Inc.
+Once you have your API key then you can configure it by adding an initializer
+with the following code
+
+```ruby
+Ribose.configure do |config|
+  config.api_key = "SECRET_API_KEY"
+
+  # There are also some default configurations, normally you do not need to
+  # change those unless you have some very specific use case scenario. The
+  # default response type is `object`, but it also supports other formats
+  #
+  # config.debug_mode = false
+  # config.response_type = :object
+  # config.api_host = "https://www.ribose.com"
+end
+```
+
+Or
+
+```ruby
+Ribose.configuration.api_key = "SECRET_API_KEY"
 ```
 
 ## Usage
