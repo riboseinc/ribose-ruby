@@ -1,12 +1,9 @@
 module Ribose
   class Configuration
-    attr_accessor :api_host, :api_key, :response_type, :debug_mode
+    attr_accessor :api_host, :api_token, :user_email
 
     def initialize
-      @api_host = "https://www.ribose.com"
-
-      @debug_mode = false
-      @response_type = :object
+      @api_host ||= "www.ribose.com"
     end
   end
 end

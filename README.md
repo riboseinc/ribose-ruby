@@ -36,22 +36,21 @@ with the following code
 
 ```ruby
 Ribose.configure do |config|
-  config.api_key = "SECRET_API_KEY"
+  config.api_token = "SECRET_API_TOKEN"
+  config.user_email = "your-email@example.com"
 
   # There are also some default configurations, normally you do not need to
-  # change those unless you have some very specific use case scenario. The
-  # default response type is `object`, but it also supports other formats
+  # change those unless you have some very specific use case scenario.
   #
-  # config.debug_mode = false
-  # config.response_type = :object
-  # config.api_host = "https://www.ribose.com"
+  # config.api_host = "www.ribose.com"
 end
 ```
 
 Or
 
 ```ruby
-Ribose.configuration.api_key = "SECRET_API_KEY"
+Ribose.configuration.api_token = "SECRET_API_TOKEN"
+Ribose.contribution.user_email = "your-email@example.com"
 ```
 
 ## Usage
