@@ -1,3 +1,4 @@
+require "webmock/rspec"
 require "bundler/setup"
 require "ribose"
 
