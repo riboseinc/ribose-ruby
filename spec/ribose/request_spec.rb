@@ -8,13 +8,11 @@ RSpec.describe Ribose::Request do
       stub_ribose_ping_api_request
       response = Ribose::Request.get(endpoint)
 
-      expect(response.data["data"]).to eq("Pong!")
+      expect(response.data.data).to eq("Pong!")
     end
   end
 
   def stub_ribose_ping_api_request
-    stub_request(:get, "https://www.ribose.com/ping").
-      with(headers: { "Accept" => "application/json" }).
-      to_return(status: 200, body: "{ \"data\": \"Pong!\" }")
+    stub_api_response(:get, "ping", filename: "ping", status: 200)
   end
 end

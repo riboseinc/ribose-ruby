@@ -1,0 +1,18 @@
+{
+  "settings": [
+    {
+      "id": 1234,
+      "type": "Setting::Personal",
+      "user_id": "12345678",
+      "time_zone": "Asia/Bangkok",
+      "help_getting_started": false,
+      "time_format": "%H:%M",
+      "date_format": "%Y-%m-%d",
+      "theme_id": "6",
+      "time_zone_offset": 7,
+      "time_zone_detected": "Asia/Bangkok",
+      "time_zone_offset_detected": 25200,
+      "time_zone_autodetect_status": 0
+    }
+  ]
+}

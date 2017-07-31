@@ -55,7 +55,16 @@ Ribose.contribution.user_email = "your-email@example.com"
 
 ## Usage
 
-TODO: Write usage instructions here
+### Settings
+
+#### List user's settings
+
+To list user's settings we can use the `Setting.all` interface, and it will
+return all of the user's settings.
+
+```ruby
+Ribose::Setting.all
+```
 
 ## Development
 

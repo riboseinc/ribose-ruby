@@ -1,6 +1,7 @@
 require "spec_helper"
 
 RSpec.describe Ribose::Config do
+  before { restore_to_default_config }
   after { restore_to_default_config }
 
   describe ".configure" do
