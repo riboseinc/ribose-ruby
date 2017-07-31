@@ -66,6 +66,17 @@ return all of the user's settings.
 Ribose::Setting.all
 ```
 
+### Spaces
+
+#### List user's spaces
+
+To list user's spaces we can use the `Space.all` interface, and it will retrieve
+all of the spaces for the currently configured user.
+
+```ruby
+Ribose::Space.all
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the

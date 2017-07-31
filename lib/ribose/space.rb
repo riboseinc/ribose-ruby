@@ -1,13 +1,13 @@
 require "ribose/actions"
 
 module Ribose
-  class Setting
+  class Space
     include Ribose::Actions::All
 
     private
 
     def resource_path
-      "settings"
+      "spaces"
     end
   end
 end
