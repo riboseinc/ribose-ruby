@@ -1,0 +1,84 @@
+{
+  "feeds": [
+    {
+      "id": 6320867,
+      "level": "user",
+      "type_name": "user",
+      "type": "Feed::Basic",
+      "owner_type": "User",
+      "type_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "instance_name": "John Doe"
+    },
+    {
+      "id": 6320868,
+      "level": "user",
+      "type_name": "connected_users",
+      "type": "Feed::Basic",
+      "owner_type": "User",
+      "type_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "instance_name": null
+    },
+    {
+      "id": 6320882,
+      "level": "app",
+      "type_name": "discussion",
+      "type": "Feed::Email",
+      "owner_type": "User",
+      "type_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "instance_name": "Work"
+    },
+    {
+      "id": 6320883,
+      "level": "app",
+      "type_name": "file",
+      "type": "Feed::Email",
+      "owner_type": "User",
+      "type_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "instance_name": "Work"
+    },
+    {
+      "id": 6320884,
+      "level": "app",
+      "type_name": "people",
+      "type": "Feed::Email",
+      "owner_type": "User",
+      "type_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "instance_name": "Work"
+    },
+    {
+      "id": 6320885,
+      "level": "app",
+      "type_name": "calendar",
+      "type": "Feed::Email",
+      "owner_type": "User",
+      "type_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "instance_name": "Work"
+    },
+    {
+      "id": 6320886,
+      "level": "app",
+      "type_name": "wiki",
+      "type": "Feed::Email",
+      "owner_type": "User",
+      "type_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "instance_name": "Work"
+    },
+    {
+      "id": 6320887,
+      "level": "app",
+      "type_name": "poll",
+      "type": "Feed::Email",
+      "owner_type": "User",
+      "type_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "instance_name": "Work"
+    }
+  ]
+}

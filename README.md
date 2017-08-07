@@ -94,6 +94,16 @@ all of the spaces for the currently configured user.
 Ribose::Space.all
 ```
 
+### Feeds
+
+### List user feeds
+
+To retrieve the list of user feeds, we can use the `Feed.all` interface
+
+```ruby
+Ribose::Feed.all
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the
