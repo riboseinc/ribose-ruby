@@ -1,0 +1,176 @@
+{
+  "total": 3,
+  "notifications": [
+    {
+      "data": [
+        {
+          "info": {
+            "action": "create",
+            "action_at": "2017-07-27T07:19:17.000+00:00",
+            "action_by": "Team Ribose",
+            "action_by_jid": "riboseteam@messaging.ribose.internal",
+            "action_by_id": "e674a27a-4bfe-5cb3-96a1-09a891db8422",
+            "app_name": "People",
+            "last_id": 1302172,
+            "exists": true,
+            "object": "John Doe",
+            "object_klass": "UserConnection",
+            "object_id": 10888,
+            "object_link": "",
+            "personal": true,
+            "space": null,
+            "space_id": null,
+            "space_object": null,
+            "space_exists": false,
+            "affected_user_is_member": null,
+            "affected_user_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+            "affected_user": "John Doe",
+            "owner_type": null,
+            "owner_name": null,
+            "parent": null,
+            "target_type": "User",
+            "target_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+            "trigger": "user_connection"
+          },
+          "link": {
+            "affected_user": "John Doe",
+            "affected_user_link": "/people/users/63116bd1-c08d-4a4d-8332-fcdaecb13e34"
+          }
+        }
+      ],
+      "id": 1302172
+    },
+    {
+      "data": [
+        {
+          "info": {
+            "action": "create",
+            "action_at": "2017-07-27T07:19:09.000+00:00",
+            "action_by": "John Doe",
+            "action_by_jid": "c6fe2f942a69abad4bd7bdc90e58263e@messaging.ribose.internal",
+            "action_by_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+            "app_name": "Calendar",
+            "last_id": 1302166,
+            "exists": true,
+            "object": "Work",
+            "object_klass": "IndigoAppCalendar::Calendar",
+            "object_id": 19707,
+            "object_link": "/#spaces/0e8d5c16-1a31-4df9-83d9-eeaa374d5adc/calendar/calendar/19707",
+            "personal": false,
+            "space": "Work",
+            "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+            "space_object": {
+              "id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+              "name": "Work",
+              "created_at": "2017-07-27T07:19:09.000+00:00",
+              "invite_access": "admins",
+              "space_category_id": null,
+              "visibility": "invisible",
+              "group_email": "work57",
+              "default_role_id": 41592,
+              "join_requests_access": "disabled",
+              "active": true,
+              "description": "Client work related discussion",
+              "members_count": 1,
+              "admin": true,
+              "invitable_roles": [
+                {
+                  "id": 41592,
+                  "name": "Member",
+                  "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+                },
+                {
+                  "id": 41593,
+                  "name": "Administrator",
+                  "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+                },
+                {
+                  "id": 41594,
+                  "name": "Read only",
+                  "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+                }
+              ],
+              "owner": true,
+              "read_only": false,
+              "role_name": "Administrator",
+              "allow_invite": true,
+              "joined_at": "2017-07-27T07:19:09.000+00:00",
+              "access": "private",
+              "publishable?": false,
+              "user": {
+                "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+                "name": "John Doe"
+              },
+              "owned_roles": [
+                {
+                  "id": 41592,
+                  "name": "Member"
+                },
+                {
+                  "id": 41593,
+                  "name": "Administrator"
+                },
+                {
+                  "id": 41594,
+                  "name": "Read only"
+                }
+              ]
+            },
+            "space_exists": true,
+            "affected_user_is_member": true,
+            "affected_user_id": null,
+            "affected_user": null,
+            "owner_type": null,
+            "owner_name": null,
+            "parent": null,
+            "target_type": "Space",
+            "target_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+            "trigger": "calendar"
+          },
+          "link": ""
+        }
+      ],
+      "id": 1302166
+    },
+    {
+      "data": [
+        {
+          "info": {
+            "action": "create",
+            "action_at": "2017-07-27T07:18:17.000+00:00",
+            "action_by": "Team Ribose",
+            "action_by_jid": "riboseteam@messaging.ribose.internal",
+            "action_by_id": "e674a27a-4bfe-5cb3-96a1-09a891db8422",
+            "app_name": "",
+            "last_id": 1302146,
+            "exists": true,
+            "object": "To Connection",
+            "object_klass": "Invitation::ToConnection",
+            "object_id": 27688,
+            "object_link": "/#invitations/to_connection/27688",
+            "personal": true,
+            "space": null,
+            "space_id": null,
+            "space_object": null,
+            "space_exists": false,
+            "affected_user_is_member": null,
+            "affected_user_id": null,
+            "affected_user": null,
+            "owner_type": null,
+            "owner_name": null,
+            "parent": null,
+            "target_type": "User",
+            "target_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+            "trigger": "invitation/to_connection"
+          },
+          "link": {
+            "locale_key": "notification.message.invitation/to_connection.accept.you",
+            "inviter_link": "/people/users/e674a27a-4bfe-5cb3-96a1-09a891db8422",
+            "inviter": "Team Ribose"
+          }
+        }
+      ],
+      "id": 1302146
+    }
+  ]
+}

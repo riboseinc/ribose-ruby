@@ -114,6 +114,16 @@ To retrieve the list of widgets we can use the `Widget.all` interface
 Ribose::Widget.all
 ```
 
+### Stream
+
+#### List of stream notifications
+
+To retrieve the list of notifications we can use the `Stream.all` interface
+
+```ruby
+Ribose::Stream.all
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the
