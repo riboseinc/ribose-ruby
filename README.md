@@ -64,6 +64,14 @@ retrieve the list of app data we can use the `AppData.all` interface.
 Ribose::AppData.all
 ```
 
+### App Relation
+
+To retrieve the list of app relations we can use the `AppRelation.all` interface
+
+```ruby
+Ribose::AppRelation.all
+```
+
 ### Settings
 
 #### List user's settings

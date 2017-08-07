@@ -4,6 +4,7 @@ require "ribose/request"
 require "ribose/setting"
 require "ribose/space"
 require "ribose/app_data"
+require "ribose/app_relation"
 
 module Ribose
   # Your code goes here...
