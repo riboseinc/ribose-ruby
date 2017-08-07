@@ -1,0 +1,188 @@
+{
+  "misc": {
+    "jabber": {
+      "login": "c6fe2f942a69abad4bd7bdc90e58263e",
+      "status": "available",
+      "status_message": null
+    },
+    "locale": "en",
+    "notification": {
+      "notifications_last_received": 1302172,
+      "notifications_last_shown": 1302172
+    },
+    "capps": [
+      {
+        "id": 107953,
+        "app_name": "app/dashboard",
+        "enabled": true,
+        "name": null,
+        "order_id": 0,
+        "used_storage": 0,
+        "owner_type": "Space",
+        "owner_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "system": true,
+        "app_type": "home",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "namespace": "dashboard",
+        "show_in_menu?": true,
+        "uses_email_notifications?": false,
+        "searchable?": true
+      },
+      {
+        "id": 107954,
+        "app_name": "app/discussion",
+        "enabled": true,
+        "name": null,
+        "order_id": 1,
+        "used_storage": 0,
+        "owner_type": "Space",
+        "owner_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "system": false,
+        "app_type": "discussion",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "namespace": "discussion",
+        "show_in_menu?": true,
+        "uses_email_notifications?": true,
+        "searchable?": true
+      },
+      {
+        "id": 107955,
+        "app_name": "app/file",
+        "enabled": true,
+        "name": null,
+        "order_id": 2,
+        "used_storage": 0,
+        "owner_type": "Space",
+        "owner_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "system": false,
+        "app_type": "file",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "namespace": "file",
+        "show_in_menu?": true,
+        "uses_email_notifications?": true,
+        "searchable?": true
+      },
+      {
+        "id": 107956,
+        "app_name": "app/member",
+        "enabled": true,
+        "name": null,
+        "order_id": 3,
+        "used_storage": 0,
+        "owner_type": "Space",
+        "owner_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "system": true,
+        "app_type": "people",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "namespace": "people",
+        "show_in_menu?": true,
+        "uses_email_notifications?": true,
+        "searchable?": false
+      },
+      {
+        "id": 107957,
+        "app_name": "app/calendar",
+        "enabled": true,
+        "name": null,
+        "order_id": 4,
+        "used_storage": 0,
+        "owner_type": "Space",
+        "owner_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "system": true,
+        "app_type": "calendar",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "namespace": "calendar",
+        "show_in_menu?": true,
+        "uses_email_notifications?": true,
+        "searchable?": true
+      },
+      {
+        "id": 107958,
+        "app_name": "app/wiki",
+        "enabled": true,
+        "name": null,
+        "order_id": 5,
+        "used_storage": 0,
+        "owner_type": "Space",
+        "owner_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "system": false,
+        "app_type": "wiki",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "namespace": "wiki",
+        "show_in_menu?": true,
+        "uses_email_notifications?": true,
+        "searchable?": true
+      },
+      {
+        "id": 107959,
+        "app_name": "app/poll",
+        "enabled": true,
+        "name": null,
+        "order_id": 6,
+        "used_storage": 0,
+        "owner_type": "Space",
+        "owner_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "system": false,
+        "app_type": "poll",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "namespace": "poll",
+        "show_in_menu?": true,
+        "uses_email_notifications?": true,
+        "searchable?": true
+      }
+    ],
+    "status_message": null,
+    "number_of_connection": 1
+  },
+  "user": {
+    "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+    "login": "john.doe",
+    "email": "john.doe@gmail.com",
+    "created_at": "2017-07-27T07:18:16.000+00:00",
+    "activity_points": {
+      "level": 0,
+      "total": 0,
+      "last7days": 0,
+      "last30days": 0,
+      "points_till_next_level": 35,
+      "points_for_current_level": 34
+    },
+    "mutual_users": [
+      "e674a27a-4bfe-5cb3-96a1-09a891db8422"
+    ],
+    "visible_spaces": [
+      {
+        "id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+        "name": "Work",
+        "visibility": "invisible",
+        "members_count": 1
+      }
+    ],
+    "connection_id": null,
+    "from_ribose?": false,
+    "name": "John Doe",
+    "connected_users": [
+      {
+        "id": "e674a27a-4bfe-5cb3-96a1-09a891db8422",
+        "name": "Team Ribose",
+        "mutual_spaces": []
+      }
+    ],
+    "badge_states": [
+      {
+        "badge_id": 2,
+        "state": "unlocked",
+        "rank": null,
+        "unlocked_at": "2017-07-27T07:18:17.000+00:00"
+      }
+    ],
+    "profile": {
+      "id": 9632,
+      "first_name": "John",
+      "last_name": "Doe",
+      "user_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "fields": {},
+      "name": "John Doe"
+    }
+  }
+}

@@ -6,11 +6,18 @@ module Ribose
       extend Ribose::Actions::Base
 
       def all
-        Ribose::Request.get(resource_path).data[resource_key.to_s]
+        response = Ribose::Request.get(resource_path)
+        extract_root(response.data) || response.data
       end
 
       def resource_key
         resource_path
+      end
+
+      def extract_root(response)
+        unless resource_key.nil?
+          response[resource_key.to_s]
+        end
       end
 
       module ClassMethods

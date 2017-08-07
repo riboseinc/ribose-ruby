@@ -55,6 +55,15 @@ Ribose.contribution.user_email = "your-email@example.com"
 
 ## Usage
 
+### App Data
+
+Ribose API provides an easier way to retrieve the list of App data, and to
+retrieve the list of app data we can use the `AppData.all` interface.
+
+```ruby
+Ribose::AppData.all
+```
+
 ### Settings
 
 #### List user's settings
