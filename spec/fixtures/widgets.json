@@ -1,0 +1,50 @@
+{
+  "widgets": [
+    {
+      "id": 72148,
+      "owner_type": "User",
+      "type": "Widget::RssFeed",
+      "pane": 0,
+      "position": 0,
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "status": "loaded",
+      "settings": null
+    },
+    {
+      "id": 72149,
+      "owner_type": "User",
+      "type": "Widget::Weather",
+      "pane": 0,
+      "position": 1,
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "status": "loaded",
+      "settings": {
+        "widget_id": 72149,
+        "type": "Setting::Widget::Weather"
+      }
+    },
+    {
+      "id": 72146,
+      "owner_type": "User",
+      "type": "Widget::Calendar",
+      "pane": 2,
+      "position": 0,
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "status": "loaded",
+      "settings": null
+    },
+    {
+      "id": 72147,
+      "owner_type": "User",
+      "type": "Widget::Notification",
+      "pane": 2,
+      "position": 1,
+      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "status": "loaded",
+      "settings": {
+        "widget_id": 72147,
+        "type": "Setting::Widget::Notification"
+      }
+    }
+  ]
+}

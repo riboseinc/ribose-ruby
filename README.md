@@ -96,12 +96,22 @@ Ribose::Space.all
 
 ### Feeds
 
-### List user feeds
+#### List user feeds
 
 To retrieve the list of user feeds, we can use the `Feed.all` interface
 
 ```ruby
 Ribose::Feed.all
+```
+
+### Widgets
+
+#### List widgets
+
+To retrieve the list of widgets we can use the `Widget.all` interface
+
+```ruby
+Ribose::Widget.all
 ```
 
 ## Development
