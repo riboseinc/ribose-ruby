@@ -135,6 +135,17 @@ interface and it will return the details.
 Ribose::Leaderboard.all
 ```
 
+### Connections
+
+### List of connections
+
+To retrieve the list of connections, we can use the `Connection.all` interface
+and it will return the connection as `Sawyer::Resource`.
+
+```ruby
+Ribose::Connection.all
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the

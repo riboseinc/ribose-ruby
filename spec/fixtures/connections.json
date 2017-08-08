@@ -1,0 +1,28 @@
+{
+  "requested_at": 5882845244,
+  "rejected_ids": [],
+  "total": 1,
+  "indices": {
+    "0": 10887
+  },
+  "objects": [
+    {
+      "id": 10887,
+      "user_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "connection_id": "e674a27a-4bfe-5cb3-96a1-09a891db8422",
+      "data_for_jabber": {
+        "id": "e674a27a-4bfe-5cb3-96a1-09a891db8422",
+        "login": "riboseteam",
+        "jid": "riboseteam@messaging.ribose.internal",
+        "name": "Team Ribose",
+        "mutual_spaces": []
+      },
+      "connected_user": {
+        "id": "e674a27a-4bfe-5cb3-96a1-09a891db8422",
+        "name": "Team Ribose",
+        "connected": true,
+        "mutual_spaces": []
+      }
+    }
+  ]
+}

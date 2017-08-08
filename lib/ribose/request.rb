@@ -17,7 +17,7 @@ module Ribose
 
     # Make a HTTP Request
     #
-    # @options [Hash] - Additonal options hash
+    # @param options [Hash] Additonal options hash
     # @return [Sawyer::Resource]
     #
     def request(options = {})

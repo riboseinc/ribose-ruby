@@ -9,6 +9,7 @@ require "ribose/feed"
 require "ribose/widget"
 require "ribose/stream"
 require "ribose/leaderboard"
+require "ribose/connection"
 
 module Ribose
   # Your code goes here...
