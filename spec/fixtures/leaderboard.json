@@ -1,0 +1,21 @@
+{
+  "leaderboard": [
+    {
+      "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "login": "john.doe",
+      "name": "John Doe",
+      "avatar_path": "data:image/png;base64,",
+      "activity_points": {
+        "level": 0,
+        "total": 0,
+        "last7days": 0,
+        "last30days": 0,
+        "points_till_next_level": 35,
+        "points_for_current_level": 34,
+        "rank": 1
+      }
+    }
+  ],
+  "self_rank": 1,
+  "overall_rank": 40
+}

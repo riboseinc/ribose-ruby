@@ -124,6 +124,17 @@ To retrieve the list of notifications we can use the `Stream.all` interface
 Ribose::Stream.all
 ```
 
+### Leaderboard
+
+#### Retrieve the current leadership board
+
+To retrieve the current leadership board, we can use the `Leaderboard.all`
+interface and it will return the details.
+
+```ruby
+Ribose::Leaderboard.all
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the

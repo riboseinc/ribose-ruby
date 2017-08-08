@@ -1,11 +1,11 @@
 module Ribose
-  class AppData
+  class Leaderboard
     include Ribose::Actions::All
 
     private
 
     def resource_path
-      "app_data"
+      "activity_point/leaderboard"
     end
   end
 end

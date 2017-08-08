@@ -8,6 +8,7 @@ require "ribose/app_relation"
 require "ribose/feed"
 require "ribose/widget"
 require "ribose/stream"
+require "ribose/leaderboard"
 
 module Ribose
   # Your code goes here...

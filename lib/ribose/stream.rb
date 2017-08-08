@@ -4,10 +4,6 @@ module Ribose
 
     private
 
-    def resource_key
-      nil
-    end
-
     def resource_path
       "stream"
     end
