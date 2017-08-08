@@ -4,12 +4,10 @@ RSpec.describe Ribose::Leaderboard do
   describe ".all" do
     it "retrieves the current leader board" do
       stub_ribose_leaderboard_api
-      activity = Ribose::Leaderboard.all
+      leaderboard = Ribose::Leaderboard.all
 
-      expect(activity.self_rank).to eq(1)
-      expect(activity.overall_rank).to eq(40)
-      expect(activity.leaderboard.first.name).to eq("John Doe")
-      expect(activity.leaderboard.first.login).to eq("john.doe")
+      expect(leaderboard.first.name).to eq("John Doe")
+      expect(leaderboard.first.login).to eq("john.doe")
     end
   end
 

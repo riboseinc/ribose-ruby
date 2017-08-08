@@ -7,7 +7,7 @@ module Ribose
 
       def all
         response = Ribose::Request.get(resource_path)
-        extract_root(response.data) || response.data
+        extract_root(response) || response
       end
 
       def resource_key

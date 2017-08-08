@@ -8,7 +8,7 @@ RSpec.describe Ribose::Request do
       stub_ribose_ping_api_request
       response = Ribose::Request.get(endpoint)
 
-      expect(response.data.data).to eq("Pong!")
+      expect(response.data).to eq("Pong!")
     end
   end
 

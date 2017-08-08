@@ -1,13 +1,12 @@
-require "ribose/actions"
-
 module Ribose
   class Setting
-    include Ribose::Actions::All
-
-    private
-
-    def resource_path
-      "settings"
+    # List user setttings
+    #
+    # @param options [Hash] Query params as a Hash
+    # @return [Array <Sawyer::Resource>]
+    #
+    def self.all(options = {})
+      Request.get("settings", query: options).settings
     end
   end
 end

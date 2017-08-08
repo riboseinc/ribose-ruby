@@ -31,7 +31,11 @@ module Ribose
     end
 
     def response_with(filename:, status:)
-      { body: ribose_fixture(filename), status: status }
+      {
+        status: status,
+        body: ribose_fixture(filename),
+        headers: { content_type: "application/json" },
+      }
     end
 
     def ribose_fixture(filename)

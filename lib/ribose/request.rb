@@ -1,66 +1,70 @@
-require "uri"
-require "net/http"
-require "ribose/response"
+require "sawyer"
 
 module Ribose
   class Request
-    def initialize(http_method, endpoint, **attributes)
-      @http_method = http_method
+    # Initialize a Request
+    #
+    # @param http_method [Symbol] HTTP verb as sysmbol
+    # @param endpoint [String] The relative API endpoint
+    # @param data [Hash] Attributes / Options as a Hash
+    # @return [Ribose::Request]
+    #
+    def initialize(http_method, endpoint, **data)
+      @data = data
       @endpoint = endpoint
-      @attributes = attributes
+      @http_method = http_method
     end
 
-    def run
-      Ribose::Response.new(send_http_request)
+    # Make a HTTP Request
+    #
+    # @options [Hash] - Additonal options hash
+    # @return [Sawyer::Resource]
+    #
+    def request(options = {})
+      options[:query] = extract_query_options
+      agent.call(http_method, api_endpoint, data, options).data
     end
 
-    def self.get(endpoint)
-      new(:get, endpoint).run
+    # Make a HTTP GET Request
+    #
+    # @param endpoint [String] The relative API endpoint
+    # @param options [Hash] The additional query params
+    # @return [Sawyer::Resource]
+    #
+    def self.get(endpoint, options = {})
+      new(:get, endpoint, options).request
     end
 
     private
 
-    attr_reader :endpoint, :http_method, :attributes
+    attr_reader :data, :http_method
 
-    def send_http_request
-      Net::HTTP.start(*net_http_options) do |http|
-        http.request(http_request)
+    def extract_query_options
+      if data.is_a?(Hash)
+        data.delete(:query) || {}
       end
     end
 
-    def net_http_options
-      [uri.host, uri.port, use_ssl: true]
+    def ribose_host
+      Ribose.configuration.api_host
     end
 
-    def uri
+    def api_endpoint
       URI::HTTPS.build(
-        host: Ribose.configuration.api_host,
-        path: ["", endpoint].join("/").squeeze("/"),
+        host: ribose_host,
+        path: ["", @endpoint].join("/").squeeze("/"),
       )
     end
 
-    def http_request
-      @http_request ||= constanize_http_class.new(uri).tap do |request|
-        set_request_body!(request)
-        set_request_headers!(request)
-      end
+    def sawyer_options
+      { links_parser: Sawyer::LinkParsers::Simple.new }
     end
 
-    def constanize_http_class
-      Object.const_get("Net::HTTP::#{http_method.capitalize}")
-    end
-
-    def set_request_headers!(request)
-      request.initialize_http_header(
-        "Accept" => "application/json",
-        "X-Indigo-Token" => Ribose.configuration.api_token,
-        "X-Indigo-Email" => Ribose.configuration.user_email,
-      )
-    end
-
-    def set_request_body!(request)
-      unless attributes.empty?
-        request.body = attributes.to_json
+    def agent
+      @agent ||= Sawyer::Agent.new(ribose_host, sawyer_options) do |http|
+        http.headers[:accept] = "application/json"
+        http.headers["X-Indigo-Token"] = Ribose.configuration.api_token
+        http.headers["X-Indigo-Email"] = Ribose.configuration.user_email
       end
     end
   end
