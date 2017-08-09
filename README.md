@@ -94,6 +94,15 @@ return all of the user's settings.
 Ribose::Setting.all
 ```
 
+#### Fetch a setting
+
+To fetch the details for any specific settings we can use the `Setting.fetch`
+interface and it will return the details for that setting.
+
+```ruby
+Ribose::Setting.fetch(setting_id)
+```
+
 ### Spaces
 
 #### List user's spaces
