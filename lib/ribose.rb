@@ -10,6 +10,7 @@ require "ribose/widget"
 require "ribose/stream"
 require "ribose/leaderboard"
 require "ribose/connection"
+require "ribose/calendar"
 
 module Ribose
   # Your code goes here...

@@ -146,6 +146,17 @@ and it will return the connection as `Sawyer::Resource`.
 Ribose::Connection.all
 ```
 
+### Calendar
+
+#### List user calendars
+
+To retrieve the list of user calendar, we can use the `Calendar.all` and it will
+fetch the calendar details for the currently configured user.
+
+```ruby
+Ribose::Calendar.all
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the
