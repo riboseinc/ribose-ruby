@@ -6,7 +6,7 @@ module Ribose
     # @return [Sawyer::Resource]
     #
     def self.all(options = {})
-      Request.get("calendar/calendar", options)
+      Request.get("calendar/calendar", query: options)
     end
   end
 end

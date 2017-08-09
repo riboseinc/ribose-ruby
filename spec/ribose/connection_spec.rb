@@ -14,7 +14,21 @@ RSpec.describe Ribose::Connection do
     end
   end
 
+  describe ".suggestions" do
+    it "retrieves the list of connection suggestions" do
+      stub_ribose_suggestion_list_api
+      suggestions = Ribose::Connection.suggestions
+
+      expect(suggestions.first.id).not_to be_nil
+      expect(suggestions.first.name).to eq("Jennie Doe")
+    end
+  end
+
   def stub_ribose_connection_list_api
     stub_api_response(:get, "people/connections?s=", filename: "connections")
+  end
+
+  def stub_ribose_suggestion_list_api
+    stub_api_response(:get, "people_finding", filename: "connection_suggestion")
   end
 end

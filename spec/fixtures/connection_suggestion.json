@@ -1,0 +1,22 @@
+{
+  "suggested_connection": [
+    {
+      "id": "7275d94c-f308-57f3-9de0-a0e96e42e9b8",
+      "name": "Jennie Doe",
+      "connected": false,
+      "mutual_spaces": []
+    },
+    {
+      "id": "a41fa707-67e7-54e7-b50d-5f0edfd9ee17",
+      "name": "John Smith",
+      "connected": false,
+      "mutual_spaces": []
+    },
+    {
+      "id": "db0a2f2d-6241-4cdb-934a-1ac9e3deedd5",
+      "name": "Jonna Smith",
+      "connected": false,
+      "mutual_spaces": []
+    }
+  ]
+}

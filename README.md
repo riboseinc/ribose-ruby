@@ -146,6 +146,15 @@ and it will return the connection as `Sawyer::Resource`.
 Ribose::Connection.all
 ```
 
+#### Connection suggestions
+
+To retrieve the list of connection suggestions we can use the following
+interface and it will retrieve the suggested users.
+
+```ruby
+Ribose::Connection.suggestions
+```
+
 ### Calendar
 
 #### List user calendars

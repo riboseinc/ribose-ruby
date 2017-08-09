@@ -11,7 +11,17 @@ module Ribose
     # @return [Sawyer::Resource]
     #
     def self.all(options = {})
-      Request.get("people/connections", query: { s: "" }.merge(options))
+      options = { s: "" }.merge(options)
+      Request.get("people/connections", query: options)
+    end
+
+    # List connection suggestions
+    #
+    # @param options [Hash] Query parameters as a Hash
+    # @return [Array <Sawyer::Resource>]
+    #
+    def self.suggestions(options = {})
+      Request.get("people_finding", query: options).suggested_connection
     end
   end
 end
