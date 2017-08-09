@@ -66,10 +66,21 @@ Ribose::AppData.all
 
 ### App Relation
 
+#### List app relations
+
 To retrieve the list of app relations we can use the `AppRelation.all` interface
 
 ```ruby
 Ribose::AppRelation.all
+```
+
+#### Fetch an app relation
+
+To retrieve the details for a specific app relation, we can use the following
+interface
+
+```ruby
+Ribose::AppRelation.fetch(app_relation_id)
 ```
 
 ### Settings

@@ -1,0 +1,19 @@
+{
+  "app_relation": {
+    "id": 123456789,
+    "app_name": "app/home",
+    "enabled": true,
+    "name": null,
+    "order_id": 0,
+    "used_storage": 0,
+    "owner_type": "User",
+    "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+    "system": true,
+    "app_type": "home",
+    "space_id": null,
+    "namespace": "home",
+    "show_in_menu?": true,
+    "uses_email_notifications?": false,
+    "searchable?": true
+  }
+}
