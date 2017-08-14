@@ -122,6 +122,19 @@ To retrieve the details for a space we can use the `Space.fetch(space_id)`.
 Ribose::Space.fetch(space_id)
 ```
 
+### Members
+
+The members endpoint are space specific, to retrieve the member details under
+any specific space we can use this interface.
+
+### List of Members
+
+To retrieve the list of members, we can use the following interface.
+
+```ruby
+Ribose::Member.all(space_id, options)
+```
+
 ### Feeds
 
 #### List user feeds

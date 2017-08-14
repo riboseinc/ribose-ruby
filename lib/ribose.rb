@@ -12,6 +12,7 @@ require "ribose/stream"
 require "ribose/leaderboard"
 require "ribose/connection"
 require "ribose/calendar"
+require "ribose/member"
 
 module Ribose
   # Your code goes here...

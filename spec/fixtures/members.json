@@ -1,0 +1,20 @@
+{
+  "spaces_users": [
+    {
+      "id": 19625,
+      "user_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+      "role_name_in_space": "Administrator",
+      "user": {
+        "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+        "owner": true,
+        "admin": true,
+        "connected": true,
+        "mutual_spaces": [
+          "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+        ],
+        "name": "John Doe"
+      }
+    }
+  ]
+}
