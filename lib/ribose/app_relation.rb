@@ -1,19 +1,11 @@
 module Ribose
-  class AppRelation
+  class AppRelation < Ribose::Base
     include Ribose::Actions::All
-
-    # Fetch An App Relation
-    #
-    # @param app_relation_id [String] The App Relation Id.
-    # @return [Sawyer::Resource]
-    #
-    def self.fetch(app_relation_id)
-      Request.get("app_relations/#{app_relation_id}").app_relation
-    end
+    include Ribose::Actions::Fetch
 
     private
 
-    def resource_path
+    def resources
       "app_relations"
     end
   end

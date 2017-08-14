@@ -1,10 +1,10 @@
 module Ribose
-  class Leaderboard
+  class Leaderboard < Ribose::Base
     include Ribose::Actions::All
 
     private
 
-    def resource_path
+    def resources
       "activity_point/leaderboard"
     end
   end

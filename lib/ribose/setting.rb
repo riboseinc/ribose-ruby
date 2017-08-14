@@ -1,21 +1,13 @@
 require "ribose/actions"
 
 module Ribose
-  class Setting
+  class Setting < Ribose::Base
     include Ribose::Actions::All
-
-    # Fetch A Specific Setting
-    #
-    # @param setting_id [String] The setting Id
-    # @return [Sawyer::Resource]
-    #
-    def self.fetch(setting_id)
-      Request.get("settings/#{setting_id}").setting
-    end
+    include Ribose::Actions::Fetch
 
     private
 
-    def resource_path
+    def resources
       "settings"
     end
   end

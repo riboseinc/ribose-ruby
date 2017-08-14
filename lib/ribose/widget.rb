@@ -1,10 +1,10 @@
 module Ribose
-  class Widget
+  class Widget < Ribose::Base
     include Ribose::Actions::All
 
     private
 
-    def resource_path
+    def resources
       "widgets"
     end
   end

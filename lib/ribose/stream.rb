@@ -1,10 +1,10 @@
 module Ribose
-  class Stream
+  class Stream < Ribose::Base
     include Ribose::Actions::All
 
     private
 
-    def resource_path
+    def resources
       "stream"
     end
   end

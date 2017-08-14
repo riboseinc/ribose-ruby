@@ -1,10 +1,10 @@
 module Ribose
-  class Feed
+  class Feed < Ribose::Base
     include Ribose::Actions::All
 
     private
 
-    def resource_path
+    def resources
       "feeds"
     end
   end

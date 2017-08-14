@@ -41,11 +41,6 @@ module Ribose
         end
       end
 
-      # Temporary - Not to break everything right away
-      def resources
-        resource_path
-      end
-
       module ClassMethods
         # List Resources
         #

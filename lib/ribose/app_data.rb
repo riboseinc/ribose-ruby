@@ -1,10 +1,10 @@
 module Ribose
-  class AppData
+  class AppData < Ribose::Base
     include Ribose::Actions::All
 
     private
 
-    def resource_path
+    def resources
       "app_data"
     end
   end
