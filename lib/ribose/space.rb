@@ -1,12 +1,13 @@
 require "ribose/actions"
 
 module Ribose
-  class Space
+  class Space < Ribose::Base
     include Ribose::Actions::All
+    include Ribose::Actions::Fetch
 
     private
 
-    def resource_path
+    def resources
       "spaces"
     end
   end

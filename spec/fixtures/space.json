@@ -1,0 +1,59 @@
+{
+  "space": {
+    "id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+    "name": "Work",
+    "created_at": "2017-07-27T07:19:09.000+00:00",
+    "invite_access": "admins",
+    "space_category_id": null,
+    "visibility": "invisible",
+    "group_email": "work57",
+    "default_role_id": 41592,
+    "join_requests_access": "disabled",
+    "active": true,
+    "description": "Client work related discussion",
+    "members_count": 1,
+    "admin": true,
+    "invitable_roles": [
+      {
+        "id": 41592,
+        "name": "Member",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+      },
+      {
+        "id": 41593,
+        "name": "Administrator",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+      },
+      {
+        "id": 41594,
+        "name": "Read only",
+        "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+      }
+    ],
+    "owner": true,
+    "read_only": false,
+    "role_name": "Administrator",
+    "allow_invite": true,
+    "joined_at": "2017-07-27T07:19:09.000+00:00",
+    "access": "private",
+    "publishable?": false,
+    "user": {
+      "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "name": "John Doe"
+    },
+    "owned_roles": [
+      {
+        "id": 41592,
+        "name": "Member"
+      },
+      {
+        "id": 41593,
+        "name": "Administrator"
+      },
+      {
+        "id": 41594,
+        "name": "Read only"
+      }
+    ]
+  }
+}

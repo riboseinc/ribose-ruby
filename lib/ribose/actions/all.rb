@@ -13,20 +13,37 @@ module Ribose
       # @return [Array <Sawyer::Resource>]
       #
       def all(options = {})
-        response = Ribose::Request.get(resource_path, query: options)
+        response = Ribose::Request.get(resources, options)
         extract_root(response) || response
       end
 
       private
 
-      def resource_key
-        resource_path
+      # Resources Key
+      #
+      # This value represents the root element in the API response.
+      # Currently, Ribose is using the plural resource name as the
+      # the key.
+      #
+      # By default we will use that to extract the details, but if
+      # some resource are different then we can override this and
+      # that will be used instead.
+      #
+      # @return [String]
+      #
+      def resources_key
+        resources.to_s
       end
 
       def extract_root(response)
-        unless resource_key.nil?
-          response[resource_key.to_s]
+        unless resources_key.nil?
+          response[resources_key]
         end
+      end
+
+      # Temporary - Not to break everything right away
+      def resources
+        resource_path
       end
 
       module ClassMethods
@@ -40,7 +57,7 @@ module Ribose
         # @return [Array <Sawyer::Resource>]
         #
         def all(options = {})
-          new.all(options)
+          new.all(query: options)
         end
       end
     end

@@ -114,6 +114,14 @@ all of the spaces for the currently configured user.
 Ribose::Space.all
 ```
 
+#### Fetch a user space
+
+To retrieve the details for a space we can use the `Space.fetch(space_id)`.
+
+```ruby
+Ribose::Space.fetch(space_id)
+```
+
 ### Feeds
 
 #### List user feeds

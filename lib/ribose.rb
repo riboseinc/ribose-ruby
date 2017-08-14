@@ -1,4 +1,5 @@
 require "ribose/version"
+require "ribose/base"
 require "ribose/config"
 require "ribose/request"
 require "ribose/setting"
