@@ -13,6 +13,7 @@ require "ribose/leaderboard"
 require "ribose/connection"
 require "ribose/calendar"
 require "ribose/member"
+require "ribose/space_file"
 
 module Ribose
   # Your code goes here...

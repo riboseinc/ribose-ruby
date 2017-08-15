@@ -135,6 +135,16 @@ To retrieve the list of members, we can use the following interface.
 Ribose::Member.all(space_id, options)
 ```
 
+### Files
+
+#### List of Files
+
+To retrieves the files for any specific space we can use the following interface
+
+```ruby
+Ribose::SpaceFile.all(space_id, options)
+```
+
 ### Feeds
 
 #### List user feeds
