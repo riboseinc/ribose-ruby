@@ -24,14 +24,4 @@ RSpec.describe Ribose::AppRelation do
       expect(app_relation.app_name).to eq("app/home")
     end
   end
-
-  def stub_ribose_app_relation_list_api
-    stub_api_response(:get, "app_relations", filename: "app_relations")
-  end
-
-  def stub_ribose_app_relation_find_api(relation_id)
-    stub_api_response(
-      :get, "app_relations/#{relation_id}", filename: "app_relation"
-    )
-  end
 end

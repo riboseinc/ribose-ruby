@@ -13,10 +13,4 @@ RSpec.describe Ribose::SpaceFile do
       expect(files.first.versions.first.version).to eq(1)
     end
   end
-
-  def stub_ribose_space_file_list(space_id)
-    stub_api_response(
-      :get, "spaces/#{space_id}/file/files", filename: "space_file"
-    )
-  end
 end

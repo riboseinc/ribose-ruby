@@ -13,8 +13,4 @@ RSpec.describe Ribose::Member do
       expect(members.first.role_name_in_space).to eq("Administrator")
     end
   end
-
-  def stub_ribose_space_member_list(space_id)
-    stub_api_response(:get, "spaces/#{space_id}/members", filename: "members")
-  end
 end

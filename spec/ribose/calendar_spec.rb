@@ -11,8 +11,4 @@ RSpec.describe Ribose::Calendar do
       expect(calendar.cal_info.first.can_manage).to be_truthy
     end
   end
-
-  def stub_ribose_calendar_list_api
-    stub_api_response(:get, "calendar/calendar", filename: "calendar")
-  end
 end

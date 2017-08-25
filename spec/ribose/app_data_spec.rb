@@ -12,8 +12,4 @@ RSpec.describe Ribose::AppData do
       expect(app_data.misc.capps.first.app_name).to eq("app/dashboard")
     end
   end
-
-  def stub_ribose_app_data_api
-    stub_api_response(:get, "app_data", filename: "app_data", status: 200)
-  end
 end

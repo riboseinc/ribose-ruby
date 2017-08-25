@@ -24,12 +24,4 @@ RSpec.describe Ribose::Space do
       expect(space.role_name).to eq("Administrator")
     end
   end
-
-  def stub_ribose_space_list_api
-    stub_api_response(:get, "spaces", filename: "spaces", status: 200)
-  end
-
-  def stub_ribose_space_fetch_api(space_id)
-    stub_api_response(:get, "spaces/#{space_id}", filename: "space")
-  end
 end

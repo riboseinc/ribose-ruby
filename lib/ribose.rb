@@ -16,5 +16,7 @@ require "ribose/member"
 require "ribose/space_file"
 
 module Ribose
-  # Your code goes here...
+  def self.root
+    File.dirname(__dir__)
+  end
 end

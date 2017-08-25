@@ -23,12 +23,4 @@ RSpec.describe Ribose::Connection do
       expect(suggestions.first.name).to eq("Jennie Doe")
     end
   end
-
-  def stub_ribose_connection_list_api
-    stub_api_response(:get, "people/connections?s=", filename: "connections")
-  end
-
-  def stub_ribose_suggestion_list_api
-    stub_api_response(:get, "people_finding", filename: "connection_suggestion")
-  end
 end

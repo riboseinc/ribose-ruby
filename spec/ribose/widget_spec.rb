@@ -11,8 +11,4 @@ RSpec.describe Ribose::Widget do
       expect(widgets.first.type).to eq("Widget::RssFeed")
     end
   end
-
-  def stub_ribose_widget_list_api
-    stub_api_response(:get, "widgets", filename: "widgets", status: 200)
-  end
 end

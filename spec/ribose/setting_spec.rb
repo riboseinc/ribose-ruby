@@ -23,8 +23,4 @@ RSpec.describe Ribose::Setting do
       expect(setting.time_zone_detected).to eq("Asia/Bangkok")
     end
   end
-
-  def stub_ribose_setting_find_api(id)
-    stub_api_response(:get, "settings/#{id}", filename: "setting")
-  end
 end

@@ -11,10 +11,4 @@ RSpec.describe Ribose::Feed do
       expect(feeds.first.instance_name).to eq("John Doe")
     end
   end
-
-  private
-
-  def stub_ribose_feed_api
-    stub_api_response(:get, "feeds", filename: "feeds", status: 200)
-  end
 end

@@ -1,8 +1,73 @@
 module Ribose
   module FakeRiboseApi
+    def stub_ribose_space_list_api
+      stub_api_response(:get, "spaces", filename: "spaces")
+    end
+
+    def stub_ribose_space_fetch_api(space_id)
+      stub_api_response(:get, "spaces/#{space_id}", filename: "space")
+    end
+
+    def stub_ribose_feed_api
+      stub_api_response(:get, "feeds", filename: "feeds")
+    end
+
+    def stub_ribose_space_member_list(space_id)
+      stub_api_response(:get, "spaces/#{space_id}/members", filename: "members")
+    end
+
     def stub_ribose_setting_list_api
+      stub_api_response(:get, "settings", filename: "settings")
+    end
+
+    def stub_ribose_setting_find_api(id)
+      stub_api_response(:get, "settings/#{id}", filename: "setting")
+    end
+
+    def stub_ribose_stream_list_api
+      stub_api_response(:get, "stream", filename: "stream")
+    end
+
+    def stub_ribose_widget_list_api
+      stub_api_response(:get, "widgets", filename: "widgets")
+    end
+
+    def stub_ribose_calendar_list_api
+      stub_api_response(:get, "calendar/calendar", filename: "calendar")
+    end
+
+    def stub_ribose_app_data_api
+      stub_api_response(:get, "app_data", filename: "app_data")
+    end
+
+    def stub_ribose_space_file_list(space_id)
+      file_endppoint = ["spaces", space_id, "file", "files"].join("/")
+      stub_api_response(:get, file_endppoint, filename: "space_file")
+    end
+
+    def stub_ribose_leaderboard_api
       stub_api_response(
-        :get, "settings", filename: "settings", status: 200
+        :get, "activity_point/leaderboard", filename: "leaderboard"
+      )
+    end
+
+    def stub_ribose_app_relation_list_api
+      stub_api_response(:get, "app_relations", filename: "app_relations")
+    end
+
+    def stub_ribose_app_relation_find_api(relation_id)
+      stub_api_response(
+        :get, "app_relations/#{relation_id}", filename: "app_relation"
+      )
+    end
+
+    def stub_ribose_connection_list_api
+      stub_api_response(:get, "people/connections?s=", filename: "connections")
+    end
+
+    def stub_ribose_suggestion_list_api
+      stub_api_response(
+        :get, "people_finding", filename: "connection_suggestion"
       )
     end
 
@@ -39,8 +104,8 @@ module Ribose
     end
 
     def ribose_fixture(filename)
-      file_name = [filename, "json"].join(".")
-      file_path = File.join("../../", "fixtures", file_name)
+      filename = [filename, "json"].join(".")
+      file_path = File.join(Ribose.root, "spec", "fixtures", filename)
 
       File.read(File.expand_path(file_path, __FILE__))
     end
