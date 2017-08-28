@@ -12,7 +12,16 @@ RSpec.describe Ribose::Request do
     end
   end
 
-  def stub_ribose_ping_api_request
-    stub_api_response(:get, "ping", filename: "ping", status: 200)
+  describe ".post" do
+    it "submits provided data via :post" do
+      stub_ribose_ping_api_request(:post)
+      response = Ribose::Request.post("ping", data: "hello")
+
+      expect(response.data).to eq("Pong!")
+    end
+  end
+
+  def stub_ribose_ping_api_request(method = :get)
+    stub_api_response(method, "ping", filename: "ping", status: 200)
   end
 end

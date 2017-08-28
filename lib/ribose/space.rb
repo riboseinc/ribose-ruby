@@ -5,10 +5,28 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
 
+    def create
+      create_space[:space]
+    end
+
+    def self.create(name:, **attributes)
+      new(space: attributes.merge(name: name)).create
+    end
+
     private
+
+    attr_reader :space
 
     def resources
       "spaces"
+    end
+
+    def create_space
+      Ribose::Request.post(resources, space: space)
+    end
+
+    def extract_local_attributes
+      @space = attributes.delete(:space)
     end
   end
 end

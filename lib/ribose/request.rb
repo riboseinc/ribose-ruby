@@ -36,6 +36,16 @@ module Ribose
       new(:get, endpoint, options).request
     end
 
+    # Make a HTTP POST Request
+    #
+    # @param endpoint [String] The relative API endpoint
+    # @param data [Hash] The request data as a Hash
+    # @return [Sawyer::Resource]
+    #
+    def self.post(endpoint, data)
+      new(:post, endpoint, data).request
+    end
+
     private
 
     attr_reader :data, :http_method
@@ -76,6 +86,7 @@ module Ribose
     def agent
       @agent ||= Sawyer::Agent.new(ribose_host, sawyer_options) do |http|
         http.headers[:accept] = "application/json"
+        http.headers[:content_type] = "application/json"
         http.headers["X-Indigo-Token"] = Ribose.configuration.api_token
         http.headers["X-Indigo-Email"] = Ribose.configuration.user_email
       end

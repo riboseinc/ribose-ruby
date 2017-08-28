@@ -1,0 +1,59 @@
+{
+  "space": {
+    "id": "6b2741ad-4cde-4b4d-af3b-a162a4f6bc25",
+    "name": "Trip to the Mars",
+    "created_at": "2017-08-28T09:04:34.625+00:00",
+    "invite_access": "admins",
+    "space_category_id": 23,
+    "visibility": "invisible",
+    "group_email": "triptothemars",
+    "default_role_id": 41688,
+    "join_requests_access": "disabled",
+    "active": true,
+    "description": "The long awaited dream!",
+    "members_count": 1,
+    "admin": true,
+    "invitable_roles": [
+      {
+        "id": 41688,
+        "name": "Member",
+        "space_id": "6b2741ad-4cde-4b4d-af3b-a162a4f6bc25"
+      },
+      {
+        "id": 41689,
+        "name": "Administrator",
+        "space_id": "6b2741ad-4cde-4b4d-af3b-a162a4f6bc25"
+      },
+      {
+        "id": 41690,
+        "name": "Read only",
+        "space_id": "6b2741ad-4cde-4b4d-af3b-a162a4f6bc25"
+      }
+    ],
+    "owner": true,
+    "read_only": false,
+    "role_name": "Administrator",
+    "allow_invite": true,
+    "joined_at": "2017-08-28T09:04:34.000+00:00",
+    "access": "private",
+    "publishable?": false,
+    "user": {
+      "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "name": "John Doe"
+    },
+    "owned_roles": [
+      {
+        "id": 41688,
+        "name": "Member"
+      },
+      {
+        "id": 41689,
+        "name": "Administrator"
+      },
+      {
+        "id": 41690,
+        "name": "Read only"
+      }
+    ]
+  }
+}

@@ -4,6 +4,12 @@ module Ribose
       stub_api_response(:get, "spaces", filename: "spaces")
     end
 
+    def stub_ribose_space_create_api(attributes)
+      stub_api_response(
+        :post, "spaces", data: { space: attributes }, filename: "space_created"
+      )
+    end
+
     def stub_ribose_space_fetch_api(space_id)
       stub_api_response(:get, "spaces/#{space_id}", filename: "space")
     end

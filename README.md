@@ -51,7 +51,7 @@ Or
 
 ```ruby
 Ribose.configuration.api_token = "SECRET_API_TOKEN"
-Ribose.contribution.user_email = "your-email@example.com"
+Ribose.configuration.user_email = "your-email@example.com"
 ```
 
 ## Usage
@@ -121,6 +121,19 @@ To retrieve the details for a space we can use the `Space.fetch(space_id)`.
 
 ```ruby
 Ribose::Space.fetch(space_id)
+```
+
+#### Create a user space
+
+To create a new user space we can use
+
+```ruby
+Ribose::Space.create(
+  access: "private",
+  space_category_id: 12,
+  name: "The amazing Ribose Space",
+  description: "Description about your space"
+)
 ```
 
 ### Members
