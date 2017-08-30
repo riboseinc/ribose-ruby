@@ -17,6 +17,7 @@ RSpec.describe Ribose::Config do
       end
 
       expect(Ribose.configuration.api_host).to eq(api_host)
+      expect(Ribose.configuration.debug_mode?).to be_falsey
       expect(Ribose.configuration.api_token).to eq(api_token)
       expect(Ribose.configuration.user_email).to eq(user_email)
     end

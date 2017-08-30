@@ -1,3 +1,4 @@
+require "faraday"
 require "sawyer"
 
 module Ribose
@@ -57,7 +58,19 @@ module Ribose
     end
 
     def sawyer_options
-      { links_parser: Sawyer::LinkParsers::Simple.new }
+      {
+        links_parser: Sawyer::LinkParsers::Simple.new,
+        faraday: Faraday.new(builder: custom_builder),
+      }
+    end
+
+    def custom_builder
+      if Ribose.configuration.debug_mode?
+        Faraday::RackBuilder.new do |builder|
+          builder.response :logger, nil, bodies: true
+          builder.adapter Faraday.default_adapter
+        end
+      end
     end
 
     def agent

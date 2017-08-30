@@ -42,6 +42,7 @@ Ribose.configure do |config|
   # There are also some default configurations, normally you do not need to
   # change those unless you have some very specific use case scenario.
   #
+  # config.debug_mode = false
   # config.api_host = "www.ribose.com"
 end
 ```
