@@ -36,6 +36,17 @@ RSpec.describe Ribose::Space do
     end
   end
 
+  describe ".remove" do
+    it "removes an existing space" do
+      space_uuid = "8c63c209-8b98-41aa-a320-336462476ea1"
+      stub_ribose_space_remove_api(space_uuid, confirmation: true)
+
+      expect do
+        Ribose::Space.remove(space_uuid, confirmation: true)
+      end.not_to raise_error
+    end
+  end
+
   def space_attributes
     {
       access: "private",

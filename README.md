@@ -136,6 +136,14 @@ Ribose::Space.create(
 )
 ```
 
+#### Remove a user space
+
+To remove an existing space and we can use the following interface
+
+```ruby
+Ribose::Space.remove(space_uuid, confirmation: true)
+```
+
 ### Members
 
 The members endpoint are space specific, to retrieve the member details under

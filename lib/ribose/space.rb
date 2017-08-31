@@ -13,6 +13,10 @@ module Ribose
       new(space: attributes.merge(name: name)).create
     end
 
+    def self.remove(space_uuid, options = {})
+      Ribose::Request.post("spaces/#{space_uuid}/freeze", options)
+    end
+
     private
 
     attr_reader :space

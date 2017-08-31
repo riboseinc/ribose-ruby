@@ -14,6 +14,12 @@ module Ribose
       stub_api_response(:get, "spaces/#{space_id}", filename: "space")
     end
 
+    def stub_ribose_space_remove_api(space_uuid, options = {})
+      stub_api_response(
+        :post, "spaces/#{space_uuid}/freeze", data: options, filename: "empty"
+      )
+    end
+
     def stub_ribose_feed_api
       stub_api_response(:get, "feeds", filename: "feeds")
     end
