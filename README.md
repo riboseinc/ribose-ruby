@@ -167,6 +167,14 @@ To retrieves the files for any specific space we can use the following interface
 Ribose::SpaceFile.all(space_id, options)
 ```
 
+### Conversations
+
+#### Listing Space Conversations
+
+```ruby
+Ribose::Conversation.all(space_id, options = {})
+```
+
 ### Feeds
 
 #### List user feeds

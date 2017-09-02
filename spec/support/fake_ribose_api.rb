@@ -57,6 +57,11 @@ module Ribose
       stub_api_response(:get, file_endppoint, filename: "space_file")
     end
 
+    def stub_ribose_space_conversation_list(space_id)
+      conversation_path = "spaces/#{space_id}/conversation/conversations"
+      stub_api_response(:get, conversation_path, filename: "conversations")
+    end
+
     def stub_ribose_leaderboard_api
       stub_api_response(
         :get, "activity_point/leaderboard", filename: "leaderboard"
