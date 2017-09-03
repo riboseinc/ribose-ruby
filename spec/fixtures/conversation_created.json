@@ -1,0 +1,31 @@
+{
+  "conversation": {
+    "id": "ee50bb3c-ed79-4efc-821a-64926f645bfb",
+    "space_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
+    "created_at": "2017-09-03T07:16:51.053+00:00",
+    "updated_at": "2017-09-03T07:16:51.053+00:00",
+    "name": "Sample Conversation",
+    "tag_list": [
+      "sample",
+      "conversation"
+    ],
+    "published": false,
+    "is_favorite": false,
+    "is_read": true,
+    "allow_publish": false,
+    "number_of_messages": 0,
+    "allow_edit": true,
+    "allow_delete": true,
+    "allow_comment": true,
+    "contents": "",
+    "attachments_listed": [],
+    "user": {
+      "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "name": "John Doe",
+      "connected": true,
+      "mutual_spaces": [
+        "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+      ]
+    }
+  }
+}

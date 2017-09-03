@@ -175,6 +175,14 @@ Ribose::SpaceFile.all(space_id, options)
 Ribose::Conversation.all(space_id, options = {})
 ```
 
+#### Create A New Conversation
+
+```ruby
+Ribose::Conversation.create(
+  space_id, name: "Sample conversation", tag_list: "sample, conversation"
+)
+```
+
 ### Feeds
 
 #### List user feeds

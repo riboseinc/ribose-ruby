@@ -62,6 +62,17 @@ module Ribose
       stub_api_response(:get, conversation_path, filename: "conversations")
     end
 
+    def stub_ribose_space_conversation_create(space_id, attributes)
+      conversation_path = "spaces/#{space_id}/conversation/conversations"
+
+      stub_api_response(
+        :post,
+        conversation_path,
+        filename: "conversation_created",
+        data: { conversation: attributes },
+      )
+    end
+
     def stub_ribose_leaderboard_api
       stub_api_response(
         :get, "activity_point/leaderboard", filename: "leaderboard"
