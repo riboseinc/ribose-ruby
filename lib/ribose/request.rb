@@ -46,6 +46,15 @@ module Ribose
       new(:post, endpoint, data).request
     end
 
+    # Make a HTTP DELETE Request
+    #
+    # @param endpoint [String] The relative API endpoint
+    # @return [Sawyer::Resource]
+    #
+    def self.delete(endpoint, options = {})
+      new(:delete, endpoint, options).request
+    end
+
     private
 
     attr_reader :data, :http_method

@@ -21,6 +21,15 @@ RSpec.describe Ribose::Request do
     end
   end
 
+  describe ".delete" do
+    it "creates a http request via :delete" do
+      stub_ribose_ping_api_request(:delete)
+      response = Ribose::Request.delete("ping")
+
+      expect(response.data).to eq("Pong!")
+    end
+  end
+
   def stub_ribose_ping_api_request(method = :get)
     stub_api_response(method, "ping", filename: "ping", status: 200)
   end

@@ -27,6 +27,20 @@ RSpec.describe Ribose::Conversation do
     end
   end
 
+  describe ".remove" do
+    it "remvoes a conversation from a space" do
+      space_id = 123456789
+      conversation_id = 987_654_321
+
+      stub_ribose_space_conversation_remove(space_id, conversation_id)
+
+      expect do
+        Ribose::Conversation.
+          remove(space_id: space_id, conversation_id: conversation_id)
+      end.not_to raise_error
+    end
+  end
+
   def conversation_attrs
     {
       name: "Sample Conversation",

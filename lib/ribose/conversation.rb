@@ -6,6 +6,10 @@ module Ribose
       create_conversation[:conversation]
     end
 
+    def remove
+      Ribose::Request.delete([resources, conversation_id].join("/"))
+    end
+
     # Listing Space Conversations
     #
     # @param space_id [String] The Space UUID
@@ -26,12 +30,17 @@ module Ribose
       new(attributes.merge(space_id: space_id)).create
     end
 
+    def self.remove(space_id:, conversation_id:)
+      new(space_id: space_id, conversation_id: conversation_id).remove
+    end
+
     private
 
-    attr_reader :space_id
+    attr_reader :space_id, :conversation_id
 
     def extract_local_attributes
       @space_id = attributes.delete(:space_id)
+      @conversation_id = attributes.delete(:conversation_id)
     end
 
     def resources

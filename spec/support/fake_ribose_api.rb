@@ -73,6 +73,11 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_conversation_remove(space_id, conversation_id)
+      path = "spaces/#{space_id}/conversation/conversations/#{conversation_id}"
+      stub_api_response(:delete, path, filename: "empty", status: 200)
+    end
+
     def stub_ribose_leaderboard_api
       stub_api_response(
         :get, "activity_point/leaderboard", filename: "leaderboard"
