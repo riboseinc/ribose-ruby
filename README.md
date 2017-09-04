@@ -197,6 +197,16 @@ Ribose::Conversation.remove(space_id: "space_id", conversation_id: "12345")
 Ribose::Message.all(space_id: space_uuid, conversation_id: conversation_uuid)
 ```
 
+#### Create a new message
+
+```ruby
+Ribose::Message.create(
+  space_id: space_uuid,
+  conversation_id: conversation_uuid,
+  contents: "Provide your message body here",
+)
+```
+
 ### Feeds
 
 #### List user feeds
