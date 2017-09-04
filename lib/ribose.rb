@@ -15,6 +15,7 @@ require "ribose/calendar"
 require "ribose/member"
 require "ribose/space_file"
 require "ribose/conversation"
+require "ribose/message"
 
 module Ribose
   def self.root

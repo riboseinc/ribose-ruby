@@ -1,0 +1,24 @@
+{
+  "messages": [
+    {
+      "id": "eec38935-3070-4949-b217-878aa07db699",
+      "conversation_id": "0c88ffab-bc5e-4243-86cc-584df87f192b",
+      "created_at": "2017-09-04T07:30:48.000+00:00",
+      "updated_at": "2017-09-04T07:30:48.000+00:00",
+      "contents": "Welcome to Ribose Space",
+      "attachments_listed": [],
+      "attachments_inline": [],
+      "allow_edit": true,
+      "allow_delete": true,
+      "user": {
+        "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+        "name": "John Doe",
+        "connected": true,
+        "mutual_spaces": [
+          "268b0407-c3a3-4aad-8693-fdba789f7f0d",
+          "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+        ]
+      }
+    }
+  ]
+}

@@ -78,6 +78,11 @@ module Ribose
       stub_api_response(:delete, path, filename: "empty", status: 200)
     end
 
+    def stub_ribose_message_list(sid, cid)
+      message_path = "spaces/#{sid}/conversation/conversations/#{cid}/messages"
+      stub_api_response(:get, message_path, filename: "messages", status: 200)
+    end
+
     def stub_ribose_leaderboard_api
       stub_api_response(
         :get, "activity_point/leaderboard", filename: "leaderboard"
