@@ -45,6 +45,24 @@ RSpec.describe Ribose::Message do
     end
   end
 
+  describe ".remove" do
+    it "remvoes a message from the conversation" do
+      space_id = 123_456
+      message_id = 789_012_345
+      conversation_id = 9282737373
+
+      stub_ribose_message_remove(space_id, message_id, conversation_id)
+
+      expect do
+        Ribose::Message.remove(
+          space_id: space_id,
+          message_id: message_id,
+          conversation_id: conversation_id,
+        )
+      end.not_to raise_error
+    end
+  end
+
   def message_attrs
     { contents: "Welcome to Ribose", conversation_id: "456789" }
   end

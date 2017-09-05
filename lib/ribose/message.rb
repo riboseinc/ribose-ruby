@@ -10,6 +10,10 @@ module Ribose
       update_message[:message]
     end
 
+    def remove
+      Ribose::Request.delete([resources, message_id].join("/"))
+    end
+
     # Listing Conversation Messages
     #
     # @param space_id [String] The Space UUID
@@ -36,7 +40,7 @@ module Ribose
       new(message_attributes).create
     end
 
-    # Update an existing messsage
+    # Update A Messsage
     #
     # @param space_id [String] The Space UUID
     # @param message_id [String] The Message UUID
@@ -52,6 +56,21 @@ module Ribose
       )
 
       new(message_attributes).update
+    end
+
+    # Remove A Message
+    #
+    # @param space_id [String] The Space UUID
+    # @param message_id [String] The Message UUID
+    # @param conversation_id [String] The Conversation UUID
+    # @return [Sawyer::Resource]
+    #
+    def self.remove(space_id:, message_id:, conversation_id:)
+      new(
+        space_id: space_id,
+        message_id: message_id,
+        conversation_id: conversation_id,
+      ).remove
     end
 
     private

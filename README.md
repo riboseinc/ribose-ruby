@@ -218,6 +218,16 @@ Ribose::Message.update(
 )
 ```
 
+#### Remove a message
+
+```ruby
+Ribose::Message.remove(
+  space_id: space_uuid,
+  message_id: message_uuid,
+  conversation_id: conversation_uuid,
+)
+```
+
 ### Feeds
 
 #### List user feeds

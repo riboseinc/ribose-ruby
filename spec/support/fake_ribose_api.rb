@@ -95,6 +95,11 @@ module Ribose
       stub_api_response(:put, path, data: attributes, filename: "message")
     end
 
+    def stub_ribose_message_remove(space_id, message_id, conversation_id)
+      path = [messages_path(space_id, conversation_id), message_id].join("/")
+      stub_api_response(:delete, path, filename: "empty", status: 200)
+    end
+
     def stub_ribose_leaderboard_api
       stub_api_response(
         :get, "activity_point/leaderboard", filename: "leaderboard"
