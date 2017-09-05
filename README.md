@@ -207,6 +207,17 @@ Ribose::Message.create(
 )
 ```
 
+#### Update an existing message
+
+```ruby
+Ribose::Message.update(
+  space_id: space_uuid,
+  message_id: message_uuid,
+  conversation_id: conversation_uuid,
+  contents: "The new content for message",
+)
+```
+
 ### Feeds
 
 #### List user feeds

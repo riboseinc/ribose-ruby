@@ -46,6 +46,16 @@ module Ribose
       new(:post, endpoint, data).request
     end
 
+    # Make a HTTP PUT Request
+    #
+    # @param endpoint [String] The relative API endpoint
+    # @param data [Hash] The request data as a Hash
+    # @return [Sawyer::Resource]
+    #
+    def self.put(endpoint, data)
+      new(:put, endpoint, data).request
+    end
+
     # Make a HTTP DELETE Request
     #
     # @param endpoint [String] The relative API endpoint

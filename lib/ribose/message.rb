@@ -6,6 +6,10 @@ module Ribose
       create_message[:message]
     end
 
+    def update
+      update_message[:message]
+    end
+
     # Listing Conversation Messages
     #
     # @param space_id [String] The Space UUID
@@ -21,7 +25,7 @@ module Ribose
     #
     # @param space_id [String] The Space UUID
     # @param conversation_id [String] The Conversation UUID
-    # @param attributes [Hash] The conversation attributes
+    # @param attributes [Hash] The message attributes
     # @return [Sawyer::Resource]
     #
     def self.create(space_id:, conversation_id:, **attributes)
@@ -32,12 +36,31 @@ module Ribose
       new(message_attributes).create
     end
 
+    # Update an existing messsage
+    #
+    # @param space_id [String] The Space UUID
+    # @param message_id [String] The Message UUID
+    # @param conversation_id [String] The Conversation UUID
+    # @param attributes [Hash] The message attributes
+    # @return [Sawyer::Resource]
+    #
+    def self.update(space_id:, message_id:, conversation_id:, **attributes)
+      message_attributes = attributes.merge(
+        space_id: space_id,
+        message_id: message_id,
+        conversation_id: conversation_id,
+      )
+
+      new(message_attributes).update
+    end
+
     private
 
-    attr_reader :space_id, :conversation_id
+    attr_reader :space_id, :conversation_id, :message_id
 
     def extract_local_attributes
       @space_id = attributes.delete(:space_id)
+      @message_id = attributes.delete(:message_id)
       @conversation_id = attributes.delete(:conversation_id)
     end
 
@@ -52,6 +75,12 @@ module Ribose
     def create_message
       Ribose::Request.post(
         resources, message: attributes.merge(conversation_id: conversation_id)
+      )
+    end
+
+    def update_message
+      Ribose::Request.put(
+        [resources, message_id].join("/"), message: attributes
       )
     end
   end

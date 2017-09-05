@@ -30,16 +30,22 @@ RSpec.describe Ribose::Message do
     end
   end
 
-  def message_attrs
-    { contents: "Welcome to Ribose", conversation_id: "456789" }
+  describe ".update" do
+    it "updates an existing conversation message" do
+      space_id = 123_456
+      message_id = 789_012_345
+
+      stub_ribose_message_update(space_id, message_id, message: message_attrs)
+      message = Ribose::Message.update(
+        message_attrs.merge(space_id: space_id, message_id: message_id),
+      )
+
+      expect(message.user.name).to eq("John Doe")
+      expect(message.contents).to eq("Welcome to Ribose")
+    end
   end
 
-  def stub_ribose_message_create(sid, attributes)
-    cid = attributes[:message][:conversation_id]
-    message_path = "spaces/#{sid}/conversation/conversations/#{cid}/messages"
-
-    stub_api_response(
-      :post, message_path, data: attributes, filename: "message_created"
-    )
+  def message_attrs
+    { contents: "Welcome to Ribose", conversation_id: "456789" }
   end
 end

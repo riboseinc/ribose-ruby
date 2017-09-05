@@ -58,29 +58,41 @@ module Ribose
     end
 
     def stub_ribose_space_conversation_list(space_id)
-      conversation_path = "spaces/#{space_id}/conversation/conversations"
-      stub_api_response(:get, conversation_path, filename: "conversations")
+      stub_api_response(
+        :get, conversations_path(space_id), filename: "conversations"
+      )
     end
 
     def stub_ribose_space_conversation_create(space_id, attributes)
-      conversation_path = "spaces/#{space_id}/conversation/conversations"
-
       stub_api_response(
         :post,
-        conversation_path,
+        conversations_path(space_id),
         filename: "conversation_created",
         data: { conversation: attributes },
       )
     end
 
     def stub_ribose_space_conversation_remove(space_id, conversation_id)
-      path = "spaces/#{space_id}/conversation/conversations/#{conversation_id}"
+      path = [conversations_path(space_id), conversation_id].join("/")
       stub_api_response(:delete, path, filename: "empty", status: 200)
     end
 
-    def stub_ribose_message_list(sid, cid)
-      message_path = "spaces/#{sid}/conversation/conversations/#{cid}/messages"
-      stub_api_response(:get, message_path, filename: "messages", status: 200)
+    def stub_ribose_message_list(space_id, conversation_id)
+      stub_api_response(
+        :get, messages_path(space_id, conversation_id), filename: "messages"
+      )
+    end
+
+    def stub_ribose_message_create(space_id, attributes)
+      path = messages_path(space_id, attributes[:message][:conversation_id])
+      stub_api_response(:post, path, data: attributes, filename: "message")
+    end
+
+    def stub_ribose_message_update(space_id, message_id, attributes)
+      conversation_id = attributes[:message].delete(:conversation_id)
+      path = [messages_path(space_id, conversation_id), message_id].join("/")
+
+      stub_api_response(:put, path, data: attributes, filename: "message")
     end
 
     def stub_ribose_leaderboard_api
@@ -113,6 +125,14 @@ module Ribose
 
     def ribose_endpoint(endpoint)
       ["https://www.ribose.com", endpoint].join("/")
+    end
+
+    def conversations_path(space_id)
+      ["spaces", space_id, "conversation", "conversations"].join("/")
+    end
+
+    def messages_path(space_id, conversation_id)
+      [conversations_path(space_id), conversation_id, "messages"].join("/")
     end
 
     def ribose_headers(data: nil)

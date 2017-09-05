@@ -21,6 +21,15 @@ RSpec.describe Ribose::Request do
     end
   end
 
+  describe ".put" do
+    it "creates a new http request via :put" do
+      stub_ribose_ping_api_request(:put)
+      response = Ribose::Request.put("ping", data: "hello")
+
+      expect(response.data).to eq("Pong!")
+    end
+  end
+
   describe ".delete" do
     it "creates a http request via :delete" do
       stub_ribose_ping_api_request(:delete)
