@@ -90,25 +90,38 @@ module Ribose
       {
         links_parser: Sawyer::LinkParsers::Simple.new,
         faraday: Faraday.new(builder: custom_builder),
+        serializer: Ribose::FileUploadSerializer,
       }
     end
 
     def custom_builder
-      if Ribose.configuration.debug_mode?
+      # if Ribose.configuration.debug_mode?
         Faraday::RackBuilder.new do |builder|
+          builder.request :multipart
           builder.response :logger, nil, bodies: true
           builder.adapter Faraday.default_adapter
         end
-      end
+      # end
     end
 
     def agent
       @agent ||= Sawyer::Agent.new(ribose_host, sawyer_options) do |http|
         http.headers[:accept] = "application/json"
-        http.headers[:content_type] = "application/json"
+        http.headers[:content_type] = "multipart/form-data"
         http.headers["X-Indigo-Token"] = Ribose.configuration.api_token
         http.headers["X-Indigo-Email"] = Ribose.configuration.user_email
       end
     end
+  end
+
+  class FileUploadSerializer
+    def self.encode(data)
+      puts data.inspect
+      data
+    end
+
+    # def self.load(data)
+    #   data
+    # end
   end
 end
