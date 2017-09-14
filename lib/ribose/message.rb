@@ -1,9 +1,20 @@
 module Ribose
-  class Message < Ribose::Base
+  class Message
     include Ribose::Actions::All
+    include Ribose::Actions::Create
 
-    def create
-      create_message[:message]
+    # Message initilaiztion
+    #
+    # @param space_id [String] The Space UUID
+    # @param conversation_id [String] The Conversation UUID
+    # @param attributes [Hash] The Message related attributes
+    # @return [Ribose::Message] The `Ribose::Message` Instance
+    #
+    def initialize(space_id, conversation_id, attributes = {})
+      @space_id = space_id
+      @attributes = attributes
+      @conversation_id = conversation_id
+      @message_id = attributes.delete(:message_id)
     end
 
     def update
@@ -22,7 +33,7 @@ module Ribose
     # @return [Array<Sawyer::Resource>]
     #
     def self.all(space_id:, conversation_id:, **options)
-      new(space_id: space_id, conversation_id: conversation_id, **options).all
+      new(space_id, conversation_id, **options).all
     end
 
     # Create A New Message
@@ -33,11 +44,7 @@ module Ribose
     # @return [Sawyer::Resource]
     #
     def self.create(space_id:, conversation_id:, **attributes)
-      message_attributes = attributes.merge(
-        space_id: space_id, conversation_id: conversation_id,
-      )
-
-      new(message_attributes).create
+      new(space_id, conversation_id, attributes).create
     end
 
     # Update A Messsage
@@ -48,14 +55,8 @@ module Ribose
     # @param attributes [Hash] The message attributes
     # @return [Sawyer::Resource]
     #
-    def self.update(space_id:, message_id:, conversation_id:, **attributes)
-      message_attributes = attributes.merge(
-        space_id: space_id,
-        message_id: message_id,
-        conversation_id: conversation_id,
-      )
-
-      new(message_attributes).update
+    def self.update(space_id:, message_id:, conversation_id:, **attrs)
+      new(space_id, conversation_id, attrs.merge(message_id: message_id)).update
     end
 
     # Remove A Message
@@ -66,35 +67,27 @@ module Ribose
     # @return [Sawyer::Resource]
     #
     def self.remove(space_id:, message_id:, conversation_id:)
-      new(
-        space_id: space_id,
-        message_id: message_id,
-        conversation_id: conversation_id,
-      ).remove
+      new(space_id, conversation_id, message_id: message_id).remove
     end
 
     private
 
-    attr_reader :space_id, :conversation_id, :message_id
+    attr_reader :space_id, :message_id, :conversation_id, :attributes
 
-    def extract_local_attributes
-      @space_id = attributes.delete(:space_id)
-      @message_id = attributes.delete(:message_id)
-      @conversation_id = attributes.delete(:conversation_id)
+    def resource
+      "message"
     end
 
     def resources
       [conversations, conversation_id, "messages"].join("/")
     end
 
-    def conversations
-      ["spaces", space_id, "conversation/conversations"].join("/")
+    def validate(attributes)
+      attributes.merge(conversation_id: conversation_id)
     end
 
-    def create_message
-      Ribose::Request.post(
-        resources, message: attributes.merge(conversation_id: conversation_id)
-      )
+    def conversations
+      ["spaces", space_id, "conversation/conversations"].join("/")
     end
 
     def update_message

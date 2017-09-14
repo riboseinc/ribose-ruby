@@ -4,13 +4,10 @@ module Ribose
   class Space < Ribose::Base
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
-
-    def create
-      create_space[:space]
-    end
+    include Ribose::Actions::Create
 
     def self.create(name:, **attributes)
-      new(space: attributes.merge(name: name)).create
+      new(attributes.merge(name: name)).create
     end
 
     def self.remove(space_uuid, options = {})
@@ -21,12 +18,12 @@ module Ribose
 
     attr_reader :space
 
-    def resources
-      "spaces"
+    def resource
+      "space"
     end
 
-    def create_space
-      Ribose::Request.post(resources, space: space)
+    def resources
+      "spaces"
     end
 
     def extract_local_attributes

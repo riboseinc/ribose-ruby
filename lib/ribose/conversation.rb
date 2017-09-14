@@ -1,10 +1,7 @@
 module Ribose
   class Conversation < Ribose::Base
     include Ribose::Actions::All
-
-    def create
-      create_conversation[:conversation]
-    end
+    include Ribose::Actions::Create
 
     def remove
       Ribose::Request.delete([resources, conversation_id].join("/"))
@@ -43,14 +40,16 @@ module Ribose
       @conversation_id = attributes.delete(:conversation_id)
     end
 
+    def resource
+      "conversation"
+    end
+
     def resources
       ["spaces", space_id, "conversation", "conversations"].join("/")
     end
 
-    def create_conversation
-      Ribose::Request.post(
-        resources, conversation: attributes.merge(space_id: space_id)
-      )
+    def validate(attributes)
+      attributes.merge(space_id: space_id)
     end
   end
 end
