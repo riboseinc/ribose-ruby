@@ -1,0 +1,17 @@
+{
+  "url": "https://www.ribose.com/uploads",
+  "fields": {
+    "key": "uploads/123456789/${filename}",
+    "acl": "public-read",
+    "x-amz-server-side-encryption": "AES256",
+    "success_action_status": "200",
+    "x-amz-meta-original-filename": "${filename}",
+    "x-amz-meta-filesize": "81421",
+    "x-amz-meta-filetype": "image/png",
+    "policy": "eyJleHBpcmF0aW9uI",
+    "x-amz-credential": "AKIAIEM",
+    "x-amz-algorithm": "AWS4-HMAC-SHA256",
+    "x-amz-date": "20171002T100539Z",
+    "x-amz-signature": "0ace805ed5ae29f547dbdcb1288419e90"
+  }
+}

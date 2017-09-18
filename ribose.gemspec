@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new(">= 2.1.9")
 
   spec.add_dependency "sawyer", "~> 0.8.1"
+  spec.add_dependency "mime-types", "~> 3.1"
 
   spec.add_development_dependency "bundler", "~> 1.14"
   spec.add_development_dependency "rake", "~> 10.0"

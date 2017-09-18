@@ -1,0 +1,38 @@
+{
+  "attachment": {
+    "id": 11565,
+    "created_at": "2017-10-05T09:33:27.678+00:00",
+    "updated_at": "2017-10-05T09:33:27.000+00:00",
+    "name": "sample.png",
+    "description": "This is a sample file",
+    "version": 1,
+    "tag_list": [
+      "sample, file, samplefile"
+    ],
+    "content_size": 81421,
+    "content_type": "image/png",
+    "author": "John Doe",
+    "allow_update": true,
+    "allow_create": true,
+    "allow_edit": true,
+    "allow_delete": true,
+    "allow_download": true,
+    "current_version_id": 13231,
+    "versions": [
+      {
+        "version": 1,
+        "name": "sample.png",
+        "description": "hello",
+        "created_at": "2017-10-05T09:33:27.000+00:00",
+        "updated_at": "2017-10-05T09:33:27.000+00:00",
+        "position": 1,
+        "current_version_id": 13231,
+        "icon_path": "https://assets.ribose.com/assets/files/3edcd576b657e.png",
+        "content_size": 81421,
+        "author": "John Doe",
+        "content_type": "image/png",
+        "file_info_id": 11565
+      }
+    ]
+  }
+}

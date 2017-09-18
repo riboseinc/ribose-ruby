@@ -1,5 +1,9 @@
+require File.join(Ribose.root, "spec/support/file_upload_stub")
+
 module Ribose
   module FakeRiboseApi
+    include Ribose::FileUploadStub
+
     def stub_ribose_space_list_api
       stub_api_response(:get, "spaces", filename: "spaces")
     end

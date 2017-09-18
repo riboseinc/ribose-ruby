@@ -1,3 +1,5 @@
+require "ribose/file_uploader"
+
 module Ribose
   class SpaceFile < Ribose::Base
     include Ribose::Actions::All
@@ -14,6 +16,18 @@ module Ribose
     #
     def self.all(space_id, options = {})
       new(space_id: space_id, **options).all
+    end
+
+    # Create a new file upload
+    #
+    # @param space_id [String] The Space UUID
+    # @param file [String] The complete path for the file
+    # @param attributes [Hash] The file attributes as Hash
+    # @return [Sawyer::Resource] The file upload response.
+    #
+    def self.create(space_id, file:, **attributes)
+      upload = FileUploader.upload(space_id, attributes.merge(file: file))
+      upload[:attachment]
     end
 
     private

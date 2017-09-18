@@ -167,6 +167,12 @@ To retrieves the files for any specific space we can use the following interface
 Ribose::SpaceFile.all(space_id, options)
 ```
 
+### Create a file upload
+
+```ruby
+Ribose::SpaceFile.create(space_id, file: "The complete file path", **attributes)
+```
+
 ### Conversations
 
 #### Listing Space Conversations
