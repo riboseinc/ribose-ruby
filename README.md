@@ -297,6 +297,12 @@ Ribose::Connection.suggestions
 Ribose::ConnectionInvitation.all
 ```
 
+#### List space invitations
+
+```ruby
+Ribose::SpaceInvitation.all
+```
+
 ### Calendar
 
 #### List user calendars

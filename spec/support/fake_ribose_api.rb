@@ -132,6 +132,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_invitation_lis_api
+      stub_api_response(
+        :get, "invitations/to_space", filename: "space_invitations"
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)
