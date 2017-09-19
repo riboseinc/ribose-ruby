@@ -289,6 +289,14 @@ interface and it will retrieve the suggested users.
 Ribose::Connection.suggestions
 ```
 
+### Invitations
+
+#### List connection invitations
+
+```ruby
+Ribose::ConnectionInvitation.all
+```
+
 ### Calendar
 
 #### List user calendars

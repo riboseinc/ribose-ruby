@@ -126,6 +126,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_connection_invitation_lis_api
+      stub_api_response(
+        :get, "invitations/to_connection", filename: "connection_invitations"
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)
