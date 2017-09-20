@@ -138,6 +138,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_invitation_create_api(attributes)
+      stub_api_response(
+        :post,
+        "invitations/to_space",
+        data: { invitation: attributes },
+        filename: "space_invitation",
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)

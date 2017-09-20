@@ -303,6 +303,18 @@ Ribose::ConnectionInvitation.all
 Ribose::SpaceInvitation.all
 ```
 
+#### Invite user to a space
+
+```ruby
+Ribose::SpaceInvitation.create(
+  state: "0",
+  space_id: "123_456_789",
+  invitee_id: "456_789_012",
+  type: "Invitation::ToSpace",
+  body: "Please join to this amazing space",
+)
+```
+
 ### Calendar
 
 #### List user calendars

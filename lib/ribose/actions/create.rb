@@ -6,13 +6,28 @@ module Ribose
       extend Ribose::Actions::Base
 
       def create
-        create_resource[resource]
+        create_resource[resource_key]
       end
 
       private
 
-      # Resource key
+      # Resource
+      #
+      # This method should return the resource name that should
+      # be used to orgnize the request body for create operation
+      #
       def resource; end
+
+      # Response key
+      #
+      # This method should return the key that is used as a root
+      # elemenet in the response for create operation, ideally it
+      # is same as the `resource` method but some endpoit might
+      # need some variation.
+      #
+      def resource_key
+        resource
+      end
 
       # Attribute validations
       #
