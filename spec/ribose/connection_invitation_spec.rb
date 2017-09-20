@@ -24,4 +24,15 @@ RSpec.describe Ribose::ConnectionInvitation do
       expect(invitation.type).to eq("Invitation::ToConnection")
     end
   end
+
+  describe ".cancel" do
+    it "cancels a pending connection inviation" do
+      invitation_id = 123_456_789
+      stub_ribose_connection_invitation_cancel_api(invitation_id)
+
+      expect do
+        Ribose::ConnectionInvitation.cancel(invitation_id)
+      end.not_to raise_error
+    end
+  end
 end

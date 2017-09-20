@@ -309,6 +309,12 @@ Ribose::SpaceInvitation.all
 Ribose::ConnectionInvitation.fetch(invitation_id)
 ```
 
+#### Cancel a connection invitation
+
+```ruby
+Ribose::ConnectionInvitation.cancel(invitation_id)
+```
+
 #### Invite user to a space
 
 ```ruby

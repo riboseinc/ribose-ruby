@@ -140,6 +140,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_connection_invitation_cancel_api(invitation_id)
+      stub_api_response(
+        :delete, "invitations/to_connection/#{invitation_id}", filename: "empty"
+      )
+    end
+
     def stub_ribose_space_invitation_lis_api
       stub_api_response(
         :get, "invitations/to_space", filename: "space_invitations"

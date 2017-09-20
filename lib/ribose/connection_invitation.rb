@@ -3,6 +3,10 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
 
+    def self.cancel(invitation_id)
+      Ribose::Request.delete("invitations/to_connection/#{invitation_id}")
+    end
+
     private
 
     def resource_key
