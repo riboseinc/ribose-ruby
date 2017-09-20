@@ -303,6 +303,12 @@ Ribose::ConnectionInvitation.all
 Ribose::SpaceInvitation.all
 ```
 
+#### Fetch a connection invitation
+
+```ruby
+Ribose::ConnectionInvitation.fetch(invitation_id)
+```
+
 #### Invite user to a space
 
 ```ruby

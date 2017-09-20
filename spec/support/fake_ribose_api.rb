@@ -132,6 +132,14 @@ module Ribose
       )
     end
 
+    def stub_ribose_connection_invitation_fetch_api(invitation_id)
+      stub_api_response(
+        :get,
+        "invitations/to_connection/#{invitation_id}",
+        filename: "connection_invitation",
+      )
+    end
+
     def stub_ribose_space_invitation_lis_api
       stub_api_response(
         :get, "invitations/to_space", filename: "space_invitations"
