@@ -25,6 +25,21 @@ RSpec.describe Ribose::ConnectionInvitation do
     end
   end
 
+  describe ".create" do
+    it "creates new connection invitations" do
+      emails = ["jennie.doe@example.com"]
+      message_body = "Hi, Let's get connected in Ribose"
+
+      stub_ribose_connection_invitation_create_api(emails, message_body)
+      invitations = Ribose::ConnectionInvitation.create(
+        emails: emails, body: message_body,
+      )
+
+      expect(invitations.success.emails.first[0].to_s).to eq(emails.first)
+      expect(invitations.success.emails[emails.first].body).to eq(message_body)
+    end
+  end
+
   describe ".accept" do
     it "accepts a connection invitation" do
       invitation_id = 123_456_789

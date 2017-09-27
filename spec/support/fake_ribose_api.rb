@@ -140,6 +140,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_connection_invitation_create_api(emails, body)
+      stub_api_response(
+        :post,
+        "invitations/to_connection/mass_create",
+        filename: "connection_invitations_created",
+        data: { invitation: { body: body, emails: emails } },
+      )
+    end
+
     def stub_ribose_connection_invitation_update_api(invitation_id, state)
       stub_api_response(
         :put,

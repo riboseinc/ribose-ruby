@@ -7,6 +7,14 @@ module Ribose
       update_invitation[resource_key]
     end
 
+    def create
+      create_invitations[:invitations]
+    end
+
+    def self.create(body:, emails:)
+      new(body: body, emails: emails).create
+    end
+
     def self.accept(invitation_id)
       new(invitation_id: invitation_id, state: 1).update
     end
@@ -23,6 +31,10 @@ module Ribose
 
     attr_reader :invitation_id
 
+    def resource
+      "invitation"
+    end
+
     def resource_key
       "to_connection"
     end
@@ -37,6 +49,13 @@ module Ribose
 
     def extract_local_attributes
       @invitation_id = attributes.delete(:invitation_id)
+    end
+
+    def create_invitations
+      Ribose::Request.post(
+        [resources, "mass_create"].join("/"),
+        invitation: { body: attributes[:body], emails: attributes[:emails] },
+      )
     end
 
     def update_invitation

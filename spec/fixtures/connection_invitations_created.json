@@ -1,0 +1,37 @@
+{
+  "invitations": {
+    "success": {
+      "emails": {
+        "jennie.doe@example.com": {
+          "id": 27756,
+          "email": "jennie.doe@example.com",
+          "body": "Hi, Let's get connected in Ribose",
+          "created_at": "2017-09-27T07:54:01.305+00:00",
+          "state": 0,
+          "type": "Invitation::ToConnection",
+          "updated_at": "2017-09-27T07:54:01.416Z",
+          "invitee": {
+            "id": "2970d105-5ccc-4a8c-b0c4-ec32d539a00a",
+            "connected": false,
+            "name": "Jennie Doe",
+            "mutual_spaces": []
+          },
+          "inviter": {
+            "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+            "connected": true,
+            "name": "John Doe",
+            "mutual_spaces": [
+              "268b0407-c3a3-4aad-8693-fdba789f7f0d",
+              "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+            ]
+          }
+        }
+      },
+      "user_ids": {}
+    },
+    "errors": {
+      "emails": {},
+      "user_ids": {}
+    }
+  }
+}

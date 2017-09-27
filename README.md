@@ -309,6 +309,15 @@ Ribose::SpaceInvitation.all
 Ribose::ConnectionInvitation.fetch(invitation_id)
 ```
 
+#### Create mass connection invitations
+
+```ruby
+Ribose::ConnectionInvitation.create(
+  emails: ["email-one@example.com", "email-two@example.com"],
+  body: "This contains the details message about the invitation",
+)
+```
+
 #### Accept a connection invitation
 
 ```ruby
