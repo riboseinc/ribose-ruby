@@ -24,6 +24,17 @@ RSpec.describe Ribose::SpaceInvitation do
     end
   end
 
+  describe ".cancel" do
+    it "cancels a space invitation" do
+      invitation_id = 123_456_789
+      stub_ribose_space_invitation_cancel_api(invitation_id)
+
+      expect do
+        Ribose::SpaceInvitation.cancel(invitation_id)
+      end.not_to raise_error
+    end
+  end
+
   def invitation_attributes
     @invitation ||= {
       state: "0",

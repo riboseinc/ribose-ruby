@@ -3,6 +3,10 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Create
 
+    def self.cancel(invitation_id)
+      Ribose::Request.delete(["invitations/to_space", invitation_id].join("/"))
+    end
+
     private
 
     def resource

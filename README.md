@@ -348,6 +348,12 @@ Ribose::SpaceInvitation.create(
 )
 ```
 
+#### Cancel a space invitation
+
+```ruby
+Ribose::SpaceInvitation.cancel(invitation_id)
+```
+
 ### Calendar
 
 #### List user calendars

@@ -179,6 +179,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_invitation_cancel_api(invitation_id)
+      stub_api_response(
+        :delete, "invitations/to_space/#{invitation_id}", filename: "empty"
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)
