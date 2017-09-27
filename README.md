@@ -315,6 +315,12 @@ Ribose::ConnectionInvitation.fetch(invitation_id)
 Ribose::ConnectionInvitation.accept(invitation_id)
 ```
 
+#### Reject a connection invitation
+
+```ruby
+Ribose::ConnectionInvitation.reject(invitation_id)
+```
+
 #### Cancel a connection invitation
 
 ```ruby

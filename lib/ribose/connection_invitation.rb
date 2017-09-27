@@ -3,12 +3,16 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
 
-    def accept
-      accept_inviation[resource_key]
+    def update
+      update_invitation[resource_key]
     end
 
     def self.accept(invitation_id)
-      new(invitation_id: invitation_id).accept
+      new(invitation_id: invitation_id, state: 1).update
+    end
+
+    def self.reject(invitation_id)
+      new(invitation_id: invitation_id, state: 2).update
     end
 
     def self.cancel(invitation_id)
@@ -35,9 +39,10 @@ module Ribose
       @invitation_id = attributes.delete(:invitation_id)
     end
 
-    def accept_inviation
+    def update_invitation
       Ribose::Request.put(
-        [resources, invitation_id].join("/"), invitation: { state: 1 }
+        [resources, invitation_id].join("/"),
+        invitation: { state: attributes[:state] },
       )
     end
   end

@@ -26,15 +26,28 @@ RSpec.describe Ribose::ConnectionInvitation do
   end
 
   describe ".accept" do
-    it "accepts a connection inviation" do
+    it "accepts a connection invitation" do
       invitation_id = 123_456_789
 
-      stub_ribose_connection_invitation_accept_api(invitation_id)
-      inviation = Ribose::ConnectionInvitation.accept(invitation_id)
+      stub_ribose_connection_invitation_update_api(invitation_id, 1)
+      invitation = Ribose::ConnectionInvitation.accept(invitation_id)
 
-      expect(inviation.state).to eq(1)
-      expect(inviation.id).not_to be_nil
-      expect(inviation.inviter.name).to eq("Jennie Doe")
+      expect(invitation.state).to eq(1)
+      expect(invitation.id).not_to be_nil
+      expect(invitation.inviter.name).to eq("Jennie Doe")
+    end
+  end
+
+  describe ".reject" do
+    it "rejects a connection invitation" do
+      invitation_id = 123_456_789
+
+      stub_ribose_connection_invitation_update_api(invitation_id, 2)
+      invitation = Ribose::ConnectionInvitation.reject(invitation_id)
+
+      expect(invitation.id).not_to be_nil
+      expect(invitation.state).not_to be_nil
+      expect(invitation.inviter.name).to eq("Jennie Doe")
     end
   end
 

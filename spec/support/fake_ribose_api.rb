@@ -140,11 +140,11 @@ module Ribose
       )
     end
 
-    def stub_ribose_connection_invitation_accept_api(invitation_id)
+    def stub_ribose_connection_invitation_update_api(invitation_id, state)
       stub_api_response(
         :put,
         "invitations/to_connection/#{invitation_id}",
-        data: { invitation: { state: 1 } },
+        data: { invitation: { state: state } },
         filename: "connection_invitation_accepted",
       )
     end
