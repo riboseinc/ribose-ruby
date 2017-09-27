@@ -25,6 +25,19 @@ RSpec.describe Ribose::ConnectionInvitation do
     end
   end
 
+  describe ".accept" do
+    it "accepts a connection inviation" do
+      invitation_id = 123_456_789
+
+      stub_ribose_connection_invitation_accept_api(invitation_id)
+      inviation = Ribose::ConnectionInvitation.accept(invitation_id)
+
+      expect(inviation.state).to eq(1)
+      expect(inviation.id).not_to be_nil
+      expect(inviation.inviter.name).to eq("Jennie Doe")
+    end
+  end
+
   describe ".cancel" do
     it "cancels a pending connection inviation" do
       invitation_id = 123_456_789

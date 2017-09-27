@@ -309,6 +309,12 @@ Ribose::SpaceInvitation.all
 Ribose::ConnectionInvitation.fetch(invitation_id)
 ```
 
+#### Accept a connection invitation
+
+```ruby
+Ribose::ConnectionInvitation.accept(invitation_id)
+```
+
 #### Cancel a connection invitation
 
 ```ruby

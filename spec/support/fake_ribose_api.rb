@@ -140,6 +140,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_connection_invitation_accept_api(invitation_id)
+      stub_api_response(
+        :put,
+        "invitations/to_connection/#{invitation_id}",
+        data: { invitation: { state: 1 } },
+        filename: "connection_invitation_accepted",
+      )
+    end
+
     def stub_ribose_connection_invitation_cancel_api(invitation_id)
       stub_api_response(
         :delete, "invitations/to_connection/#{invitation_id}", filename: "empty"

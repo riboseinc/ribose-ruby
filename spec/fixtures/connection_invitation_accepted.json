@@ -1,0 +1,26 @@
+{
+  "to_connection": {
+    "id": 27751,
+    "email": "john.doe@example.com",
+    "body": "Hello,\n\nI'd like to invite you to collaborate with me on Ribose, a cloud collaboration platform that makes working together easy and fun.\n\nSimply accept this invitation to continue. Thanks!\n",
+    "created_at": "2017-09-27T04:42:34.000+00:00",
+    "state": 1,
+    "type": "Invitation::ToConnection",
+    "updated_at": "2017-09-27T04:44:28.000+00:00",
+    "invitee": {
+      "id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+      "connected": true,
+      "name": "John Doe",
+      "mutual_spaces": [
+        "268b0407-c3a3-4aad-8693-fdba789f7f0d",
+        "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc"
+      ]
+    },
+    "inviter": {
+      "id": "2970d105-5ccc-4a8c-b0c4-ec32d539a00a",
+      "connected": true,
+      "name": "Jennie Doe",
+      "mutual_spaces": []
+    }
+  }
+}
