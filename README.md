@@ -348,6 +348,12 @@ Ribose::SpaceInvitation.create(
 )
 ```
 
+#### Update a space invitation
+
+```ruby
+Ribose::SpaceInvitation.update(invitation_id, new_attributes_hash)
+```
+
 #### Accept a space invitation
 
 ```ruby

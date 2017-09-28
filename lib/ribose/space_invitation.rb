@@ -7,6 +7,10 @@ module Ribose
       update_invitation[resource_key]
     end
 
+    def self.update(invitation_id, attributes)
+      new(attributes.merge(invitation_id: invitation_id)).update
+    end
+
     def self.accept(invitation_id)
       new(invitation_id: invitation_id, state: 1).update
     end
@@ -55,8 +59,7 @@ module Ribose
 
     def update_invitation
       Ribose::Request.put(
-        [resources, invitation_id].join("/"),
-        invitation: { state: attributes[:state] },
+        [resources, invitation_id].join("/"), invitation: attributes
       )
     end
   end

@@ -24,11 +24,25 @@ RSpec.describe Ribose::SpaceInvitation do
     end
   end
 
+  describe ".update" do
+    it "updates a space invitation" do
+      invitation_id = 123_456_789
+      attributes = { role_id: 123 }
+
+      stub_ribose_space_invitation_update_api(invitation_id, attributes)
+      invitation = Ribose::SpaceInvitation.update(invitation_id, attributes)
+
+      expect(invitation.id).not_to be_nil
+      expect(invitation.role_id).not_to be_nil
+      expect(invitation.type).to eq("Invitation::ToSpace")
+    end
+  end
+
   describe ".accept" do
     it "accepts a space invitation" do
       invitation_id = 123_456_789
+      stub_ribose_space_invitation_update_api(invitation_id, state: 1)
 
-      stub_ribose_space_invitation_update_api(invitation_id, 1)
       invitation = Ribose::SpaceInvitation.accept(invitation_id)
 
       expect(invitation.state).to eq(1)
@@ -52,8 +66,8 @@ RSpec.describe Ribose::SpaceInvitation do
   describe ".reject" do
     it "rejects a space invitation" do
       invitation_id = 123_456_789
+      stub_ribose_space_invitation_update_api(invitation_id, state: 2)
 
-      stub_ribose_space_invitation_update_api(invitation_id, 2)
       invitation = Ribose::SpaceInvitation.reject(invitation_id)
 
       expect(invitation.id).not_to be_nil

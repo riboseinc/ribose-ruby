@@ -187,11 +187,11 @@ module Ribose
       )
     end
 
-    def stub_ribose_space_invitation_update_api(invitation_id, state)
+    def stub_ribose_space_invitation_update_api(invitation_id, attributes)
       stub_api_response(
         :put,
         "invitations/to_space/#{invitation_id}",
-        data: { invitation: { state: state } },
+        data: { invitation: attributes },
         filename: "space_invitation_updated",
       )
     end
