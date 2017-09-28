@@ -11,6 +11,12 @@ module Ribose
       new(invitation_id: invitation_id, state: 1).update
     end
 
+    def self.resend(invitation_id)
+      Ribose::Request.post(
+        "/invitations/to_new_member/#{invitation_id}/resend", {}
+      )
+    end
+
     def self.reject(invitation_id)
       new(invitation_id: invitation_id, state: 2).update
     end

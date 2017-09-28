@@ -179,6 +179,14 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_invitation_resend_api(invitation_id)
+      stub_api_response(
+        :post,
+        "invitations/to_new_member/#{invitation_id}/resend",
+        filename: "space_invitation_updated",
+      )
+    end
+
     def stub_ribose_space_invitation_update_api(invitation_id, state)
       stub_api_response(
         :put,

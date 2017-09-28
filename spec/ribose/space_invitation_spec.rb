@@ -37,6 +37,18 @@ RSpec.describe Ribose::SpaceInvitation do
     end
   end
 
+  describe ".resend" do
+    it "resends a space invitation to non-member email" do
+      invitation_id = 123_456_789
+
+      stub_ribose_space_invitation_resend_api(invitation_id)
+      invitation = Ribose::SpaceInvitation.resend(invitation_id)
+
+      expect(invitation.to_space).not_to be_nil
+      expect(invitation.to_space.id).not_to be_nil
+    end
+  end
+
   describe ".reject" do
     it "rejects a space invitation" do
       invitation_id = 123_456_789
