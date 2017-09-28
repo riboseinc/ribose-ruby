@@ -11,6 +11,10 @@ module Ribose
       new(invitation_id: invitation_id, state: 1).update
     end
 
+    def self.reject(invitation_id)
+      new(invitation_id: invitation_id, state: 2).update
+    end
+
     def self.cancel(invitation_id)
       Ribose::Request.delete(["invitations/to_space", invitation_id].join("/"))
     end

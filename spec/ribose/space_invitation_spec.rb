@@ -37,6 +37,19 @@ RSpec.describe Ribose::SpaceInvitation do
     end
   end
 
+  describe ".reject" do
+    it "rejects a space invitation" do
+      invitation_id = 123_456_789
+
+      stub_ribose_space_invitation_update_api(invitation_id, 2)
+      invitation = Ribose::SpaceInvitation.reject(invitation_id)
+
+      expect(invitation.id).not_to be_nil
+      expect(invitation.state).not_to be_nil
+      expect(invitation.type).to eq("Invitation::ToSpace")
+    end
+  end
+
   describe ".cancel" do
     it "cancels a space invitation" do
       invitation_id = 123_456_789

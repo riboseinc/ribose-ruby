@@ -354,6 +354,12 @@ Ribose::SpaceInvitation.create(
 Ribose::SpaceInvitation.accept(invitation_id)
 ```
 
+#### Reject a space invitation
+
+```ruby
+Ribose::SpaceInvitation.reject(invitation_id)
+```
+
 #### Cancel a space invitation
 
 ```ruby
