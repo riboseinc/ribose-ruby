@@ -179,6 +179,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_invitation_update_api(invitation_id, state)
+      stub_api_response(
+        :put,
+        "invitations/to_space/#{invitation_id}",
+        data: { invitation: { state: state } },
+        filename: "space_invitation_updated",
+      )
+    end
+
     def stub_ribose_space_invitation_cancel_api(invitation_id)
       stub_api_response(
         :delete, "invitations/to_space/#{invitation_id}", filename: "empty"
