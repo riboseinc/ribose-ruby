@@ -397,6 +397,17 @@ Ribose::SpaceInvitation.cancel(invitation_id)
 Ribose::JoinSpaceRequest.all
 ```
 
+#### Create a join space request
+
+```ruby
+Ribose::JoinSpaceRequest.create(
+  state: 0,
+  space_id: 123_456_789,
+  type: "Invitation::JoinSpaceRequest",
+  body: "Hi, I would like to join to your space",
+)
+```
+
 ### Calendar
 
 #### List user calendars
