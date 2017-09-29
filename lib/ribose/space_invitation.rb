@@ -7,6 +7,14 @@ module Ribose
       update_invitation[resource_key]
     end
 
+    def mass_create
+      create_invitations[:invitations]
+    end
+
+    def self.mass_create(space_id, attributes)
+      new(attributes.merge(space_id: space_id)).mass_create
+    end
+
     def self.update(invitation_id, attributes)
       new(attributes.merge(invitation_id: invitation_id)).update
     end
@@ -57,10 +65,18 @@ module Ribose
       attributes.merge(space_id: space_id, invitee_id: invitee_id)
     end
 
+    def create_invitations
+      Ribose::Request.post(mass_create_path, invitation: attributes)
+    end
+
     def update_invitation
       Ribose::Request.put(
         [resources, invitation_id].join("/"), invitation: attributes
       )
+    end
+
+    def mass_create_path
+      "/spaces/#{attributes[:space_id]}/invitations/to_space/mass_create"
     end
   end
 end

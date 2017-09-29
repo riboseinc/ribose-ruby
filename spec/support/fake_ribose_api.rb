@@ -179,6 +179,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_invitation_mass_create(space_id, attributes)
+      stub_api_response(
+        :post,
+        "spaces/#{space_id}/invitations/to_space/mass_create",
+        data: { invitation: attributes.merge(space_id: space_id) },
+        filename: "space_mass_invitations",
+      )
+    end
+
     def stub_ribose_space_invitation_resend_api(invitation_id)
       stub_api_response(
         :post,

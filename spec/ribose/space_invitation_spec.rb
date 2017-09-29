@@ -24,6 +24,25 @@ RSpec.describe Ribose::SpaceInvitation do
     end
   end
 
+  describe ".mass_create" do
+    it "creates multiple inviations to a space" do
+      space_id = 123_456_789
+
+      attributes = {
+        role_ids: [123_456_789],
+        emails: ["jennie.doe@example.com"],
+        body: "Hi, I would like to join you to this space",
+      }
+
+      stub_ribose_space_invitation_mass_create(space_id, attributes)
+      invitation = Ribose::SpaceInvitation.mass_create(space_id, attributes)
+
+      expect(
+        invitation.success.emails.first[0].to_s,
+      ).to eq(attributes[:emails].first.to_s)
+    end
+  end
+
   describe ".update" do
     it "updates a space invitation" do
       invitation_id = 123_456_789

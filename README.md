@@ -348,6 +348,17 @@ Ribose::SpaceInvitation.create(
 )
 ```
 
+#### Create space invitation - Mass
+
+```ruby
+Ribose::SpaceInvitation.mass_create(
+  space_id,
+  emails: ["email-one@example.com"],
+  role_ids: ["role-for-email-address-in-sequance"],
+  body: "The complete message body for the invitation",
+)
+```
+
 #### Update a space invitation
 
 ```ruby
