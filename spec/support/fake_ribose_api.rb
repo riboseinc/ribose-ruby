@@ -211,6 +211,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_join_space_request_list_api
+      stub_api_response(
+        :get, "invitations/join_space_request", filename: "join_space_requests"
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)

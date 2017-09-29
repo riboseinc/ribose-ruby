@@ -389,6 +389,14 @@ Ribose::SpaceInvitation.reject(invitation_id)
 Ribose::SpaceInvitation.cancel(invitation_id)
 ```
 
+### Join Space Request
+
+#### List join space requests
+
+```ruby
+Ribose::JoinSpaceRequest.all
+```
+
 ### Calendar
 
 #### List user calendars

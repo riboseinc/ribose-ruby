@@ -17,6 +17,7 @@ require "ribose/space_file"
 require "ribose/conversation"
 require "ribose/message"
 require "ribose/space_invitation"
+require "ribose/join_space_request"
 require "ribose/connection_invitation"
 
 module Ribose
