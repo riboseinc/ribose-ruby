@@ -226,6 +226,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_join_space_request_update(invitation_id, attributes)
+      stub_api_response(
+        :put,
+        "invitations/join_space_request/#{invitation_id}",
+        data: { invitation: attributes },
+        filename: "join_space_request_updated",
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)

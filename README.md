@@ -408,6 +408,12 @@ Ribose::JoinSpaceRequest.create(
 )
 ```
 
+#### Accept a join space request
+
+```ruby
+Ribose::JoinSpaceRequest.accept(invitation_id)
+```
+
 ### Calendar
 
 #### List user calendars
