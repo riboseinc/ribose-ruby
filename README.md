@@ -420,6 +420,12 @@ Ribose::JoinSpaceRequest.accept(invitation_id)
 Ribose::JoinSpaceRequest.reject(invitation_id)
 ```
 
+#### Update an join space requests
+
+```ruby
+Ribose::JoinSpaceRequest.update(invitation_id, new_attributes_hash)
+```
+
 ### Calendar
 
 #### List user calendars

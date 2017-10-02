@@ -15,6 +15,10 @@ module Ribose
       new(invitation_id: invitation_id, state: 2).update
     end
 
+    def self.update(invitation_id, attributes)
+      new(attributes.merge(invitation_id: invitation_id)).update
+    end
+
     private
 
     attr_reader :invitation_id

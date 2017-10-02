@@ -28,6 +28,20 @@ RSpec.describe Ribose::JoinSpaceRequest do
     end
   end
 
+  describe ".update" do
+    it "updates the details for a join request" do
+      invitation_id = 123_456_789
+      attributes = { state: 1, role_id: 101 }
+
+      stub_ribose_join_space_request_update(invitation_id, attributes)
+      invitation = Ribose::JoinSpaceRequest.update(invitation_id, attributes)
+
+      expect(invitation.id).not_to be_nil
+      expect(invitation.state).not_to be_nil
+      expect(invitation.type).to eq("Invitation::JoinSpaceRequest")
+    end
+  end
+
   describe ".accept" do
     it "accepts a join request to a space" do
       invitation_id = 123_456_789
