@@ -414,6 +414,12 @@ Ribose::JoinSpaceRequest.create(
 Ribose::JoinSpaceRequest.accept(invitation_id)
 ```
 
+#### Reject a join space requests
+
+```ruby
+Ribose::JoinSpaceRequest.reject(invitation_id)
+```
+
 ### Calendar
 
 #### List user calendars

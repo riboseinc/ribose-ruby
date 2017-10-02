@@ -40,4 +40,17 @@ RSpec.describe Ribose::JoinSpaceRequest do
       expect(invitation.type).to eq("Invitation::JoinSpaceRequest")
     end
   end
+
+  describe ".reject" do
+    it "rejects a join request to a space" do
+      invitation_id = 123_456_789
+
+      stub_ribose_join_space_request_update(invitation_id, state: 2)
+      invitation = Ribose::JoinSpaceRequest.reject(invitation_id)
+
+      expect(invitation.id).not_to be_nil
+      expect(invitation.state).not_to be_nil
+      expect(invitation.type).to eq("Invitation::JoinSpaceRequest")
+    end
+  end
 end
