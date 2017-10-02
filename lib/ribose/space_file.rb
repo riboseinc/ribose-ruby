@@ -1,3 +1,5 @@
+require "ribose/file_uploader"
+
 module Ribose
   class SpaceFile < Ribose::Base
     include Ribose::Actions::All
@@ -14,6 +16,10 @@ module Ribose
     #
     def self.all(space_id, options = {})
       new(space_id: space_id, **options).all
+    end
+
+    def self.create(space_id, attributes)
+      Ribose::FileUploader.new(space_id, attributes).upload
     end
 
     private

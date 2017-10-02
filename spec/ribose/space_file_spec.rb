@@ -13,4 +13,15 @@ RSpec.describe Ribose::SpaceFile do
       expect(files.first.versions.first.version).to eq(1)
     end
   end
+
+  describe ".create" do
+    it "uploads a new file to a user space" do
+      space_id = 123_456_789
+      file = Ribose::SpaceFile.create(space_id, { file: sample_file })
+    end
+  end
+
+  def sample_file
+    @sample_file ||= File.join(Ribose.root, "spec/fixtures/sample.png")
+  end
 end
