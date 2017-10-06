@@ -2,6 +2,7 @@ module Ribose
   class Message
     include Ribose::Actions::All
     include Ribose::Actions::Create
+    include Ribose::Actions::Update
 
     # Message initilaiztion
     #
@@ -15,10 +16,6 @@ module Ribose
       @attributes = attributes
       @conversation_id = conversation_id
       @message_id = attributes.delete(:message_id)
-    end
-
-    def update
-      update_message[:message]
     end
 
     def remove
@@ -72,7 +69,8 @@ module Ribose
 
     private
 
-    attr_reader :space_id, :message_id, :conversation_id, :attributes
+    attr_reader :space_id, :conversation_id, :message_id, :attributes
+    alias_method :resource_id, :message_id
 
     def resource
       "message"
@@ -88,12 +86,6 @@ module Ribose
 
     def conversations
       ["spaces", space_id, "conversation/conversations"].join("/")
-    end
-
-    def update_message
-      Ribose::Request.put(
-        [resources, message_id].join("/"), message: attributes
-      )
     end
   end
 end

@@ -2,10 +2,7 @@ module Ribose
   class SpaceInvitation < Ribose::Base
     include Ribose::Actions::All
     include Ribose::Actions::Create
-
-    def update
-      update_invitation[resource_key]
-    end
+    include Ribose::Actions::Update
 
     def mass_create
       create_invitations[:invitations]
@@ -16,11 +13,11 @@ module Ribose
     end
 
     def self.update(invitation_id, attributes)
-      new(attributes.merge(invitation_id: invitation_id)).update
+      new(attributes.merge(resource_id: invitation_id)).update
     end
 
     def self.accept(invitation_id)
-      new(invitation_id: invitation_id, state: 1).update
+      new(resource_id: invitation_id, state: 1).update
     end
 
     def self.resend(invitation_id)
@@ -30,7 +27,7 @@ module Ribose
     end
 
     def self.reject(invitation_id)
-      new(invitation_id: invitation_id, state: 2).update
+      new(resource_id: invitation_id, state: 2).update
     end
 
     def self.cancel(invitation_id)
@@ -38,8 +35,6 @@ module Ribose
     end
 
     private
-
-    attr_reader :invitation_id
 
     def resource
       "invitation"
@@ -67,12 +62,6 @@ module Ribose
 
     def create_invitations
       Ribose::Request.post(mass_create_path, invitation: attributes)
-    end
-
-    def update_invitation
-      Ribose::Request.put(
-        [resources, invitation_id].join("/"), invitation: attributes
-      )
     end
 
     def mass_create_path
