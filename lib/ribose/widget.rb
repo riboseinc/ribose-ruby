@@ -4,8 +4,8 @@ module Ribose
 
     private
 
-    def resources
-      "widgets"
+    def resource
+      "widget"
     end
   end
 end

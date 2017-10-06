@@ -1,5 +1,9 @@
+require "ribose/resource_helper"
+
 module Ribose
   class Base
+    include Ribose::ResourceHelper
+
     def initialize(attributes = {})
       @attributes = attributes
       extract_base_attributes

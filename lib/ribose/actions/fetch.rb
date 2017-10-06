@@ -13,27 +13,15 @@ module Ribose
       # @return [Sawyer::Resource]
       #
       def fetch
-        response = Request.get([resources, resource_id].join("/"))
+        response = Request.get(resource_path)
         extract_resource(response) || response
       end
 
       private
 
-      # Single Resource
-      #
-      # Returns the singular version of the resoruces, and if some
-      # resource usages different pattern then we can override this
-      # method and that return value will be used.
-      #
-      # @return [String]
-      #
-      def resource_key
-        resources[0...-1]
-      end
-
       def extract_resource(response)
-        unless resource_key.nil?
-          response[resource_key.to_s]
+        unless resource.nil?
+          response[resource.to_s]
         end
       end
 

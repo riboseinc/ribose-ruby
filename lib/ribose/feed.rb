@@ -4,8 +4,8 @@ module Ribose
 
     private
 
-    def resources
-      "feeds"
+    def resource
+      "feed"
     end
   end
 end

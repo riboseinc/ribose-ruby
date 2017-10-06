@@ -19,12 +19,12 @@ module Ribose
 
     attr_reader :space_id
 
-    def resources
-      ["spaces", space_id, "members"].join("/")
+    def resource
+      "spaces_user"
     end
 
-    def resources_key
-      "spaces_users"
+    def resources_path
+      ["spaces", space_id, "members"].join("/")
     end
 
     def extract_local_attributes

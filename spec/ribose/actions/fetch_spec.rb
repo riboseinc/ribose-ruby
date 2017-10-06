@@ -24,8 +24,8 @@ RSpec.describe "TestFetchAction" do
 
       private
 
-      def resources
-        "spaces"
+      def resource
+        "space"
       end
     end
   end

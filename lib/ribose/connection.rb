@@ -27,7 +27,11 @@ module Ribose
 
     private
 
-    def resources
+    def resource
+      "connection"
+    end
+
+    def resources_path
       "people/connections"
     end
   end

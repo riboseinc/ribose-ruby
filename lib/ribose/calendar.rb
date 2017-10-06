@@ -4,7 +4,11 @@ module Ribose
 
     private
 
-    def resources
+    def resource
+      "calendar"
+    end
+
+    def resources_path
       "calendar/calendar"
     end
   end

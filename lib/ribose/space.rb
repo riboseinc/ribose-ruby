@@ -22,10 +22,6 @@ module Ribose
       "space"
     end
 
-    def resources
-      "spaces"
-    end
-
     def extract_local_attributes
       @space = attributes.delete(:space)
     end

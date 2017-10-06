@@ -7,8 +7,8 @@ module Ribose
 
     private
 
-    def resources
-      "settings"
+    def resource
+      "setting"
     end
   end
 end

@@ -4,8 +4,12 @@ module Ribose
 
     private
 
-    def resources
+    def resource
       "app_data"
+    end
+
+    def resources
+      resource
     end
   end
 end

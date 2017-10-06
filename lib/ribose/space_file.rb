@@ -20,11 +20,11 @@ module Ribose
 
     attr_reader :space_id
 
-    def resources_key
-      "files"
+    def resource
+      "file"
     end
 
-    def resources
+    def resources_path
       ["spaces", space_id, "file", "files"].join("/")
     end
 

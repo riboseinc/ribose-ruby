@@ -1,5 +1,7 @@
 module Ribose
   class Message
+    include Ribose::ResourceHelper
+
     include Ribose::Actions::All
     include Ribose::Actions::Create
     include Ribose::Actions::Update
@@ -19,7 +21,7 @@ module Ribose
     end
 
     def remove
-      Ribose::Request.delete([resources, message_id].join("/"))
+      Ribose::Request.delete(resource_path)
     end
 
     # Listing Conversation Messages
@@ -76,15 +78,15 @@ module Ribose
       "message"
     end
 
-    def resources
-      [conversations, conversation_id, "messages"].join("/")
-    end
-
     def validate(attributes)
       attributes.merge(conversation_id: conversation_id)
     end
 
-    def conversations
+    def resources_path
+      [conversations_path, conversation_id, "messages"].join("/")
+    end
+
+    def conversations_path
       ["spaces", space_id, "conversation/conversations"].join("/")
     end
   end

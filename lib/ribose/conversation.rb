@@ -4,7 +4,7 @@ module Ribose
     include Ribose::Actions::Create
 
     def remove
-      Ribose::Request.delete([resources, conversation_id].join("/"))
+      Ribose::Request.delete(resource_path)
     end
 
     # Listing Space Conversations
@@ -34,6 +34,7 @@ module Ribose
     private
 
     attr_reader :space_id, :conversation_id
+    alias_method :resource_id, :conversation_id
 
     def extract_local_attributes
       @space_id = attributes.delete(:space_id)
@@ -44,7 +45,7 @@ module Ribose
       "conversation"
     end
 
-    def resources
+    def resources_path
       ["spaces", space_id, "conversation", "conversations"].join("/")
     end
 

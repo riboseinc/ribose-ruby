@@ -4,7 +4,15 @@ module Ribose
 
     private
 
+    def resource
+      "leaderboard"
+    end
+
     def resources
+      resource
+    end
+
+    def resources_path
       "activity_point/leaderboard"
     end
   end

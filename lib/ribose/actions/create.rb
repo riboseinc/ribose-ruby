@@ -6,28 +6,10 @@ module Ribose
       extend Ribose::Actions::Base
 
       def create
-        create_resource[resource_key]
+        create_resource[resource]
       end
 
       private
-
-      # Resource
-      #
-      # This method should return the resource name that should
-      # be used to orgnize the request body for create operation
-      #
-      def resource; end
-
-      # Response key
-      #
-      # This method should return the key that is used as a root
-      # elemenet in the response for create operation, ideally it
-      # is same as the `resource` method but some endpoit might
-      # need some variation.
-      #
-      def resource_key
-        resource
-      end
 
       # Attribute validations
       #
@@ -40,11 +22,11 @@ module Ribose
       end
 
       def request_body(attributes)
-        { resource.to_sym => validate(attributes) }
+        { resource_key.to_sym => validate(attributes) }
       end
 
       def create_resource
-        Ribose::Request.post(resources, request_body(attributes))
+        Ribose::Request.post(resources_path, request_body(attributes))
       end
 
       module ClassMethods

@@ -26,21 +26,15 @@ module Ribose
 
     private
 
-    attr_reader :invitation_id
-
     def resource
-      "invitation"
-    end
-
-    def resource_key
       "to_connection"
     end
 
-    def resources_key
-      [resource_key, "s"].join
+    def resource_key
+      "invitation"
     end
 
-    def resources
+    def resources_path
       "invitations/to_connection"
     end
 
@@ -50,7 +44,7 @@ module Ribose
 
     def create_invitations
       Ribose::Request.post(
-        [resources, "mass_create"].join("/"),
+        [resources_path, "mass_create"].join("/"),
         invitation: { body: attributes[:body], emails: attributes[:emails] },
       )
     end

@@ -4,8 +4,12 @@ module Ribose
 
     private
 
-    def resources
+    def resource
       "stream"
+    end
+
+    def resources
+      resource
     end
   end
 end

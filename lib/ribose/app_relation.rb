@@ -5,8 +5,8 @@ module Ribose
 
     private
 
-    def resources
-      "app_relations"
+    def resource
+      "app_relation"
     end
   end
 end

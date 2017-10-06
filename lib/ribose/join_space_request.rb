@@ -19,18 +19,14 @@ module Ribose
     private
 
     def resource
-      "invitation"
-    end
-
-    def resource_key
       "join_space_request"
     end
 
-    def resources_key
-      "join_space_requests"
+    def resource_key
+      "invitation"
     end
 
-    def resources
+    def resources_path
       "invitations/join_space_request"
     end
 

@@ -37,18 +37,14 @@ module Ribose
     private
 
     def resource
-      "invitation"
-    end
-
-    def resource_key
       "to_space"
     end
 
-    def resources_key
-      [resource_key, "s"].join
+    def resource_key
+      "invitation"
     end
 
-    def resources
+    def resources_path
       "invitations/to_space"
     end
 
