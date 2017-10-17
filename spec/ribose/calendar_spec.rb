@@ -24,4 +24,16 @@ RSpec.describe Ribose::Calendar do
       expect(calendar.name).to eq("Sample 101")
     end
   end
+
+  describe ".create" do
+    it "creates a new calendar with provided details" do
+      calendar_attributes = { owner_type: "User", name: "Sample" }
+
+      stub_ribose_calendar_create_api(calendar_attributes)
+      calendar = Ribose::Calendar.create(calendar_attributes)
+
+      expect(calendar.id).not_to be_nil
+      expect(calendar.owner_type).to eq("User")
+    end
+  end
 end

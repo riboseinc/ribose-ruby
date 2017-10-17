@@ -443,10 +443,20 @@ fetch the calendar details for the currently configured user.
 Ribose::Calendar.all
 ```
 
-#### Fetch c calendar
+#### Fetch a calendar
 
 ```ruby
 Ribose::Calendar.fetch(calendar_id)
+```
+
+#### Create a calendar
+
+```ruby
+Ribose::Calendar.create(
+  owner_type: "User",
+  owner_id: "The Owner UUID",
+  name: "The name for the calendar",
+)
 ```
 
 ## Development
