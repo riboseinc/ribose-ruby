@@ -467,6 +467,16 @@ Ribose::Calendar.create(
 Ribose::User.create(email: "user@example.com", **other_attributes)
 ```
 
+#### Activate a signup request
+
+```ruby
+Ribose::User.activate(
+  email: "user@example.com",
+  password: "ASecureUserPassword",
+  otp: "OTP Recived via the Email",
+)
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the

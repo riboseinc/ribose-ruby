@@ -78,6 +78,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_app_user_activate_api(attributes)
+      stub_api_response(
+        :post,
+        "signup.user",
+        data: { user: attributes },
+        filename: "user_activated",
+      )
+    end
+
     def stub_ribose_app_data_api
       stub_api_response(:get, "app_data", filename: "app_data")
     end
@@ -290,11 +299,14 @@ module Ribose
     end
 
     def ribose_auth_headers
-      {
-        "Accept" => "application/json",
-        "X-Indigo-Token" => Ribose.configuration.api_token,
-        "X-Indigo-Email" => Ribose.configuration.user_email,
-      }
+      Hash.new.tap do |headers|
+        headers["Accept"] = "application/json"
+
+        if Ribose.configuration.api_token
+          headers["X-Indigo-Token"] = Ribose.configuration.api_token
+          headers["X-Indigo-Email"] = Ribose.configuration.user_email
+        end
+      end
     end
 
     def response_with(filename:, status:)

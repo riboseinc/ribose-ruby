@@ -22,7 +22,7 @@ module Ribose
     # @return [Sawyer::Resource]
     #
     def request(options = {})
-      options[:query] = extract_query_options
+      options[:query] = extract_config_option(:query) || {}
       agent.call(http_method, api_endpoint, data, options).data
     end
 
@@ -69,14 +69,19 @@ module Ribose
 
     attr_reader :data, :http_method
 
-    def extract_query_options
+    def ribose_host
+      Ribose.configuration.api_host
+    end
+
+    def extract_config_option(key)
       if data.is_a?(Hash)
-        data.delete(:query) || {}
+        data.delete(key.to_sym)
       end
     end
 
-    def ribose_host
-      Ribose.configuration.api_host
+    def require_auth_headers?
+      auth_header = extract_config_option(:auth_header)
+      auth_header == false ? false : true
     end
 
     def api_endpoint
@@ -106,8 +111,11 @@ module Ribose
       @agent ||= Sawyer::Agent.new(ribose_host, sawyer_options) do |http|
         http.headers[:accept] = "application/json"
         http.headers[:content_type] = "application/json"
-        http.headers["X-Indigo-Token"] = Ribose.configuration.api_token
-        http.headers["X-Indigo-Email"] = Ribose.configuration.user_email
+
+        if require_auth_headers?
+          http.headers["X-Indigo-Token"] = Ribose.configuration.api_token
+          http.headers["X-Indigo-Email"] = Ribose.configuration.user_email
+        end
       end
     end
   end
