@@ -19,6 +19,7 @@ require "ribose/message"
 require "ribose/space_invitation"
 require "ribose/join_space_request"
 require "ribose/connection_invitation"
+require "ribose/user"
 
 module Ribose
   def self.root

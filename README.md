@@ -459,6 +459,14 @@ Ribose::Calendar.create(
 )
 ```
 
+### User
+
+#### Create a signup request
+
+```ruby
+Ribose::User.create(email: "user@example.com", **other_attributes)
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the

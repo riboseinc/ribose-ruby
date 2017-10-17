@@ -69,6 +69,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_app_user_create_api(attributes)
+      stub_api_response(
+        :post,
+        "signup_requests",
+        data: { user: attributes },
+        filename: "empty",
+      )
+    end
+
     def stub_ribose_app_data_api
       stub_api_response(:get, "app_data", filename: "app_data")
     end
