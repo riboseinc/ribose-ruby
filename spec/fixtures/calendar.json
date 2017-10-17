@@ -1,34 +1,12 @@
 {
-  "filter": {
-    "enabled": [
-      19706,
-      19707
-    ],
-    "userSetting": []
-  },
-  "cal_info": [
-    {
-      "id": 19706,
-      "owner_type": "User",
-      "name": "john.doe",
-      "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
-      "owner_name": "Personal",
-      "display_name": "john.doe (Personal)",
-      "can_manage": true,
-      "can_create_event": true
-    },
-    {
-      "id": 19707,
-      "owner_type": "Space",
-      "name": "Work",
-      "owner_id": "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc",
-      "owner_name": "Work",
-      "display_name": "Work (Work)",
-      "can_manage": true,
-      "can_create_event": true
-    }
-  ],
-  "spaces_permission": {
-    "0e8d5c16-1a31-4df9-83d9-eeaa374d5adc": true
+  "calendar": {
+    "id": 19816,
+    "owner_type": "User",
+    "name": "Sample 101",
+    "owner_id": "63116bd1-c08d-4a4d-8332-fcdaecb13e34",
+    "owner_name": "Personal",
+    "display_name": "Sample 101 (Personal)",
+    "can_manage": true,
+    "can_create_event": true
   }
 }

@@ -1,6 +1,7 @@
 module Ribose
   class Calendar < Ribose::Base
     include Ribose::Actions::All
+    include Ribose::Actions::Fetch
 
     private
 

@@ -49,7 +49,15 @@ module Ribose
     end
 
     def stub_ribose_calendar_list_api
-      stub_api_response(:get, "calendar/calendar", filename: "calendar")
+      stub_api_response(:get, "calendar/calendar", filename: "calendars")
+    end
+
+    def stub_ribose_calendar_fetch_api(calender_id)
+      stub_api_response(
+        :get,
+        "calendar/calendar/#{calender_id}",
+        filename: "calendar",
+      )
     end
 
     def stub_ribose_app_data_api

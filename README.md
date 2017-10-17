@@ -443,6 +443,12 @@ fetch the calendar details for the currently configured user.
 Ribose::Calendar.all
 ```
 
+#### Fetch c calendar
+
+```ruby
+Ribose::Calendar.fetch(calendar_id)
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the
