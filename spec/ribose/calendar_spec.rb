@@ -36,4 +36,15 @@ RSpec.describe Ribose::Calendar do
       expect(calendar.owner_type).to eq("User")
     end
   end
+
+  describe ".delete" do
+    it "removes a valid user calendar" do
+      calendar_id = 123_456_789
+      stub_ribose_calendar_delete_api(calendar_id)
+
+      expect do
+        Ribose::Calendar.delete(calendar_id)
+      end.not_to raise_error
+    end
+  end
 end

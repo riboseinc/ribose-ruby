@@ -459,6 +459,12 @@ Ribose::Calendar.create(
 )
 ```
 
+#### Delete a calendar
+
+```ruby
+Ribose::Calendar.delete(calendar_id)
+```
+
 ### User
 
 #### Create a signup request
