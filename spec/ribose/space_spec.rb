@@ -36,6 +36,18 @@ RSpec.describe Ribose::Space do
     end
   end
 
+  describe ".update" do
+    it "updates a space with provided details" do
+      space_id = 123_456_789
+
+      stub_ribose_space_update_api(space_id, space_attributes)
+      space = Ribose::Space.update(space_id, space_attributes)
+
+      expect(space.id).not_to be_nil
+      expect(space.visibility).to eq("invisible")
+    end
+  end
+
   describe ".remove" do
     it "removes an existing space" do
       space_uuid = "8c63c209-8b98-41aa-a320-336462476ea1"

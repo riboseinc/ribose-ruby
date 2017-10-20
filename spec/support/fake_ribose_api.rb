@@ -14,6 +14,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_update_api(uuid, attributes)
+      stub_api_response(
+        :put, "spaces/#{uuid}", data: { space: attributes }, filename: "space"
+      )
+    end
+
     def stub_ribose_space_fetch_api(space_id)
       stub_api_response(:get, "spaces/#{space_id}", filename: "space")
     end

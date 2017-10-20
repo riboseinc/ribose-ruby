@@ -5,6 +5,7 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
     include Ribose::Actions::Create
+    include Ribose::Actions::Update
 
     def self.create(name:, **attributes)
       new(attributes.merge(name: name)).create

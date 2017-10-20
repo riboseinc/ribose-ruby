@@ -136,6 +136,12 @@ Ribose::Space.create(
 )
 ```
 
+#### Update a user space
+
+```ruby
+Ribose::Space.update("space_uuid", name: "New updated name", **other_attributes)
+```
+
 #### Remove a user space
 
 To remove an existing space and we can use the following interface
