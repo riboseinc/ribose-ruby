@@ -4,6 +4,7 @@ module Ribose
   class Setting < Ribose::Base
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
+    include Ribose::Actions::Update
 
     private
 

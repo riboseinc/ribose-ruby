@@ -104,6 +104,12 @@ interface and it will return the details for that setting.
 Ribose::Setting.fetch(setting_id)
 ```
 
+#### Update a setting
+
+```ruby
+Ribose::Setting.update(setting_id, **new_updated_attributes_hash)
+```
+
 ### Spaces
 
 #### List user's spaces

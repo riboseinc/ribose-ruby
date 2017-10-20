@@ -46,6 +46,15 @@ module Ribose
       stub_api_response(:get, "settings/#{id}", filename: "setting")
     end
 
+    def stub_ribose_setting_update_api(uuid, attributes)
+      stub_api_response(
+        :put,
+        "settings/#{uuid}",
+        data: { setting: attributes },
+        filename: "setting",
+      )
+    end
+
     def stub_ribose_stream_list_api
       stub_api_response(:get, "stream", filename: "stream")
     end
