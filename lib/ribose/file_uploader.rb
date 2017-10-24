@@ -86,12 +86,7 @@ module Ribose
       Faraday.new(upload_url) do |builder|
         builder.request :multipart
         builder.request :url_encoded
-
-        if Ribose.configuration.debug_mode?
-          builder.response :logger, nil, bodies: true
-        end
-
-        builder.adapter Faraday.default_adapter
+        Ribose.configuration.add_default_middleware(builder)
       end
     end
   end

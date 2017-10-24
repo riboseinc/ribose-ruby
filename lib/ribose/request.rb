@@ -1,6 +1,3 @@
-require "faraday"
-require "sawyer"
-
 module Ribose
   class Request
     # Initialize a Request
@@ -94,16 +91,13 @@ module Ribose
     def sawyer_options
       {
         links_parser: Sawyer::LinkParsers::Simple.new,
-        faraday: Faraday.new(builder: custom_builder),
+        faraday: Faraday.new(builder: custom_rack_builder),
       }
     end
 
-    def custom_builder
-      if Ribose.configuration.debug_mode?
-        Faraday::RackBuilder.new do |builder|
-          builder.response :logger, nil, bodies: true
-          builder.adapter Faraday.default_adapter
-        end
+    def custom_rack_builder
+      Faraday::RackBuilder.new do |builder|
+        Ribose.configuration.add_default_middleware(builder)
       end
     end
 

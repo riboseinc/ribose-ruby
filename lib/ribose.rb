@@ -1,3 +1,6 @@
+require "faraday"
+require "sawyer"
+
 require "ribose/version"
 require "ribose/base"
 require "ribose/config"
