@@ -1,0 +1,16 @@
+{
+  "created_at": "2017-02-13T22:12:10.000+07:00",
+  "authentication_token": "user-super-secret-token",
+  "last_activity": {
+    "id": 19108100182,
+    "remote_ip": "223.27.246.218",
+    "session_id": "AHOGOGOYO))&)LJOOUGOGG",
+    "created_at": "2017-10-27T16:55:45.000+07:00",
+    "updated_at": "2017-10-27T16:55:45.000+07:00",
+    "expired": false,
+    "browser": "Safari on Windows",
+    "user_id": "UserUUID01228038830338"
+  },
+  "question": null,
+  "concurrent": []
+}

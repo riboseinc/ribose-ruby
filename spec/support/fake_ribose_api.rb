@@ -338,8 +338,8 @@ module Ribose
       }
     end
 
-    def ribose_fixture(filename)
-      filename = [filename, "json"].join(".")
+    def ribose_fixture(filename, ext = "json")
+      filename = [filename, ext].join(".")
       file_path = File.join(Ribose.root, "spec", "fixtures", filename)
 
       File.read(File.expand_path(file_path, __FILE__))

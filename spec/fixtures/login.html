@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ribose | Welcome to Ribose</title>
+  </head>
+
+  <body>
+    <header class="body__header" role="banner">
+      <div class="inner">
+        <div class="nav--desktop">
+          <div class="nav--desktop__left">
+            <ul class="menu">
+              <li>
+                <a href="/features">
+                  <i class="nav-icon rb-star"></i>
+                  <strong class="nav-label">Features</strong>
+                </a>
+              </li>
+
+              <li>
+                <a href="/news">
+                  <i class="nav-icon rb-comments"></i>
+                  <strong class="nav-label">News</strong>
+                </a>
+
+              </li>
+
+            </ul>
+          </div>
+
+          <div class="nav--desktop__center">
+            <h6 class="logo"><a class="root" href="/home"><i class="rb-ribose"></i></a></h6>
+          </div>
+
+          <div class="nav--desktop__right">
+            <button type="button" class="btn-get-started btn btn-success btn-sm not-logged-in" data-toggle="modal" data-target="#signupModal">
+              Get Started
+            </button>
+            <a class="login-btn btn btn-success btn-sm not-logged-in" href="/login">Login</a>
+            <a class="login-btn btn btn-success btn-sm logged-in" href="/">Enter</a>
+            <ul class="menu">
+
+              <li>
+                <a href="/about">
+                  <i class="nav-icon rb-info"></i>
+                  <strong class="nav-label">About</strong>
+                </a>
+              </li>
+
+              <li>
+                <a href="http://support.ribose.com">
+                  <i class="nav-icon rb-phone"></i>
+                  <strong class="nav-label">Support</strong>
+                </a>
+
+              </li>
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="flash-notice">
+    </div>
+
+    <div class="nav--desktop fixed">
+      <div class="inner">
+
+
+
+        <div class="nav--desktop__left">
+          <ul class="menu">
+
+            <li>
+              <a href="/features">
+                <i class="nav-icon rb-star"></i>
+                <strong class="nav-label">Features</strong>
+              </a>
+
+            </li>
+
+            <li>
+              <a href="/news">
+                <i class="nav-icon rb-comments"></i>
+                <strong class="nav-label">News</strong>
+              </a>
+
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="nav--desktop__center">
+          <h6 class="logo"><a class="root" href="/home"><i class="rb-ribose"></i></a></h6>
+        </div>
+
+        <div class="nav--desktop__right">
+          <button type="button" class="btn-get-started btn btn-success btn-sm not-logged-in" data-toggle="modal" data-target="#signupModal">
+            Get Started
+          </button>
+          <a class="login-btn btn btn-success btn-sm not-logged-in" href="/login">Login</a>
+          <a class="login-btn btn btn-success btn-sm logged-in" href="/">Enter</a>
+          <ul class="menu">
+
+            <li>
+              <a href="/about">
+                <i class="nav-icon rb-info"></i>
+                <strong class="nav-label">About</strong>
+              </a>
+
+            </li>
+
+            <li>
+              <a href="http://support.ribose.com">
+                <i class="nav-icon rb-phone"></i>
+                <strong class="nav-label">Support</strong>
+              </a>
+
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+
+    <body class="page page-login">
+
+      <div class="login__table">
+        <div class="login__table__row">
+          <div class="login__table__row__cell">
+            <div class="login-form">
+              <h1>Welcome back to Ribose. <strong>Login</strong></h1>
+              <form accept-charset="UTF-8" action="/login" class="new_user" id="new_user" method="post">
+                <div style="display:none">
+                  <input name="utf8" type="hidden" value="&#x2713;" />
+                  <input name="authenticity_token" type="hidden" value="/FHVhQgtTP/ksLj9RvOcLR1rFSbJ387SQJBjyMsioo8u7zF8418CfmzewvPBJ5qFnvbTVOXoNbXM1u+npYGjng==" />
+                </div>
+
+                <div style="display:none">
+                  <input id="invitation_code" name="invitation_code" type="hidden" />
+                  <input id="return_to" name="return_to" type="hidden" />
+                </div>
+
+                <div class="form-group">
+                  <input class="form-control" id="loginEmail" maxlength="40" name="user[username]" placeholder="Email or Username" size="40" type="text" />
+                </div>
+
+                <div class="form-group">
+                  <input autocomplete="off" class="form-control" id="loginPassword" maxlength="40" name="user[password]" placeholder="Password" size="40" type="password" />
+                </div>
+
+
+                <div class="form-group">
+                  <div class="checkbox-wrapper">
+                    <label>
+                      <span class="small">Remember me</span>
+                      <input name="user[remember_me]" type="hidden" value="0" /><input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1" />
+                    </label>
+                  </div>
+                  <div class="login-btn-wrapper">
+                    <button class="btn btn-success" type="submit">Log in</button>
+                  </div>
+                </div>
+              </form>
+              <div class="link-wrapper small">
+                <a href="/password_reset/new">I forgot my password</a>
+              </div>
+
+              <div class="link-wrapper small">
+                Not a Ribose member? <a data-target="#signupModal" data-toggle="modal" href="/">Sign up now.</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </body>
+
+
+
+    <section class="bloc bloc--grey-dark bloc-getting-started desktop">
+      <div class="inner">
+        <p class="leadin getting-started">
+        Get Started
+        <button type="button" class="btn-get-started btn btn-success not-logged-in" data-toggle="modal" data-target="#signupModal">
+          Sign Up
+        </button>
+        <a class="login-btn btn btn-default logged-in" href="/">Enter</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="body__footer">
+      <div class="inner">
+        <div class="colophon">
+          <div class="logo">
+            <a href="/home"><i class="rb-ribose"></i></a>
+          </div>
+
+          <p class="copyright">Copyright © 2017 Ribose. All rights reserved.</p>
+          <div class="col">
+            <nav>
+              <span class="header">About</span>
+              <ul>
+                <li><a href="/features">Features</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/blog">Our Blog</a></li>
+                <li><a href="/commitments">Commitments</a></li>
+                <li><a href="/awards"><span class="translation_missing" title="translation missing: en.public.layout.common.awards">Awards</span></a></li>
+                <li><a href="/careers">Careers</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col">
+            <nav>
+              <span class="header">Support</span>
+              <ul>
+                <li><a href="http://support.ribose.com">Help Center</a></li>
+                <li><a href="/feedback/security">Security</a></li>
+                <li><a href="/feedback">Give Us Feedback</a></li>
+                <li><a href="/pgp">Signatures</a></li>
+                <li><a href="http://status.ribose.com">Status</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col">
+            <nav>
+              <span class="header">Press</span>
+              <ul>
+                <li><a href="/news">Press Releases</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="col">
+            <nav>
+              <span class="header">Legal</span>
+              <ul>
+                <li><a href="/tos">Terms of Use</a></li>
+                <li><a href="/privacy">Privacy Notice</a></li>
+                <li><a href="/cookies">Use of Cookies</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+    </footer>
+
+    <section class="bloc bloc--grey-dark bloc-getting-started mobile">
+      <div class="inner">
+        <p class="getting-started">
+        Getting Started
+        <button type="button" class="btn-get-started btn btn-success not-logged-in" data-toggle="modal" data-target="#signupModal">
+          Sign Up
+        </button>
+        <a class="login-btn btn btn-default not-logged-in" href="/login">Login</a>
+        <a class="login-btn btn btn-default logged-in" href="/">Enter</a>
+        </p>
+      </div>
+    </section>
+
+    <div class="modal fade" id="signupModal"></div>
+    <div class="modal fade" id="enterEmail">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="sign-up-form sign-up-form--modal">
+              <h2 class="cta">Get started today. <strong>Sign up</strong></h2>
+              <div class="signup">
+
+                <div class="error_message_area"></div>
+
+                <div class="notice"></div>
+
+                <div class="panel panel-default">
+                  <div class="panel-body">
+                    <form accept-charset="UTF-8" action="/signup_requests" class="signup_requests form-inline" method="post"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+                      <div class="form-group">
+                        <label class="sr-only" for="signupEmailAddress">Enter your email address…</label>
+                        <input
+                                               type="email"
+                                               name="user[email]"
+                                               class="form-control"
+                                               id="signupEmailAddress"
+                                               placeholder="Enter your email address…">
+                      </div>
+
+                      <button class="btn btn-success" type="submit">Sign Up</button>
+
+                    </form>      </div>
+                </div>
+                <p class="disclaimer">
+                By clicking on &#39;Sign Up&#39;, you agree to our <a href="/tos">Terms of Service</a> and <a href="/privacy">Privacy Notice</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="checkInstructions">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="sign-up-form sign-up-form--modal">
+              <h2 class="cta">Welcome to Ribose</h2><p>
+              An email has been sent to your registered email address. Follow the instructions in the email to sign up to Ribose!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
