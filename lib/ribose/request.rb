@@ -11,6 +11,7 @@ module Ribose
       @data = data
       @endpoint = endpoint
       @http_method = http_method
+      @client = find_suitable_client
     end
 
     # Make a HTTP Request
@@ -64,7 +65,7 @@ module Ribose
 
     private
 
-    attr_reader :data, :http_method
+    attr_reader :client, :data, :http_method
 
     def ribose_host
       Ribose.configuration.api_host
@@ -74,6 +75,11 @@ module Ribose
       if data.is_a?(Hash)
         data.delete(key.to_sym)
       end
+    end
+
+    def find_suitable_client
+      client = extract_config_option(:client) || Ribose::Client.new
+      client.is_a?(Ribose::Client) ? client: raise(Ribose::Unauthorized)
     end
 
     def require_auth_headers?
@@ -107,8 +113,8 @@ module Ribose
         http.headers[:content_type] = "application/json"
 
         if require_auth_headers?
-          http.headers["X-Indigo-Token"] = Ribose.configuration.api_token
-          http.headers["X-Indigo-Email"] = Ribose.configuration.user_email
+          http.headers["X-Indigo-Token"] = client.api_token
+          http.headers["X-Indigo-Email"] = client.user_email
         end
       end
     end

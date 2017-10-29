@@ -309,9 +309,11 @@ module Ribose
       [conversations_path(space_id), conversation_id, "messages"].join("/")
     end
 
-    def ribose_headers(data: nil)
+    def ribose_headers(data: nil, client: nil)
+      client ||= Ribose::Client.new
+
       Hash.new.tap do |request|
-        request[:headers] = ribose_auth_headers
+        request[:headers] = ribose_auth_headers(client)
 
         unless data.nil?
           request[:body] = data.to_json
@@ -319,13 +321,13 @@ module Ribose
       end
     end
 
-    def ribose_auth_headers
+    def ribose_auth_headers(client)
       Hash.new.tap do |headers|
         headers["Accept"] = "application/json"
 
         if Ribose.configuration.api_token
-          headers["X-Indigo-Token"] = Ribose.configuration.api_token
-          headers["X-Indigo-Email"] = Ribose.configuration.user_email
+          headers["X-Indigo-Token"] = client.api_token
+          headers["X-Indigo-Email"] = client.user_email
         end
       end
     end
@@ -345,9 +347,10 @@ module Ribose
       File.read(File.expand_path(file_path, __FILE__))
     end
 
-    def stub_api_response(method, endpoint, filename:, status: 200, data: nil)
+    def stub_api_response(method, endpoint, filename:,
+                          status: 200, data: nil, client: nil)
       stub_request(method, ribose_endpoint(endpoint)).
-        with(ribose_headers(data: data)).
+        with(ribose_headers(data: data, client: client)).
         to_return(response_with(filename: filename, status: status))
     end
   end
