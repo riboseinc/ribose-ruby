@@ -21,8 +21,9 @@ module Ribose
     # @param options [Hash] Query parameters as a Hash
     # @return [Array <Sawyer::Resource>]
     #
-    def self.suggestions(options = {})
-      Request.get("people_finding", query: options).suggested_connection
+    def self.suggestions(client: nil, **options)
+      Request.get("people_finding", client: client, query: options).
+        suggested_connection
     end
 
     private

@@ -8,30 +8,32 @@ module Ribose
       create_invitations[:invitations]
     end
 
-    def self.mass_create(space_id, attributes)
+    def self.mass_create(space_id, attributes = {})
       new(attributes.merge(space_id: space_id)).mass_create
     end
 
-    def self.update(invitation_id, attributes)
+    def self.update(invitation_id, attributes = {})
       new(attributes.merge(resource_id: invitation_id)).update
     end
 
-    def self.accept(invitation_id)
+    def self.accept(invitation_id, attributes = {})
       new(resource_id: invitation_id, state: 1).update
     end
 
-    def self.resend(invitation_id)
+    def self.resend(invitation_id, attributes = {})
       Ribose::Request.post(
-        "/invitations/to_new_member/#{invitation_id}/resend", {}
+        "/invitations/to_new_member/#{invitation_id}/resend", attributes
       )
     end
 
-    def self.reject(invitation_id)
-      new(resource_id: invitation_id, state: 2).update
+    def self.reject(invitation_id, attributes = {})
+      new(attributes.merge(resource_id: invitation_id, state: 2)).update
     end
 
-    def self.cancel(invitation_id)
-      Ribose::Request.delete(["invitations/to_space", invitation_id].join("/"))
+    def self.cancel(invitation_id, attributes = {})
+      Ribose::Request.delete(
+        ["invitations/to_space", invitation_id].join("/"), attributes
+      )
     end
 
     private
@@ -57,7 +59,9 @@ module Ribose
     end
 
     def create_invitations
-      Ribose::Request.post(mass_create_path, invitation: attributes)
+      Ribose::Request.post(
+        mass_create_path, custom_option.merge(invitation: attributes)
+      )
     end
 
     def mass_create_path

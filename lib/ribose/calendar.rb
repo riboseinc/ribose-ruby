@@ -5,11 +5,11 @@ module Ribose
     include Ribose::Actions::Create
 
     def delete
-      Ribose::Request.delete(resource_path)
+      Ribose::Request.delete(resource_path, custom_option)
     end
 
-    def self.delete(calendar_id)
-      new(resource_id: calendar_id).delete
+    def self.delete(calendar_id, attributes = {})
+      new(attributes.merge(resource_id: calendar_id)).delete
     end
 
     private

@@ -12,7 +12,18 @@ module Ribose
 
     private
 
-    attr_reader :resource_id, :attributes
+    attr_reader :resource_id, :attributes, :client
+
+    # User provided options
+    #
+    # Some of the API endpoints has support for custom options,
+    # for example sending a request as different client, pass
+    # some query parameters and etc, and that's where this will
+    # come in handy.
+    #
+    def custom_option
+      { client: client }
+    end
 
     # Extract Local Attributes
     #
@@ -29,6 +40,7 @@ module Ribose
     def extract_local_attributes; end
 
     def extract_base_attributes
+      @client = attributes.delete(:client)
       @resource_id = attributes.delete(:resource_id)
     end
   end

@@ -13,7 +13,7 @@ module Ribose
       # @return [Sawyer::Resource]
       #
       def fetch
-        response = Request.get(resource_path)
+        response = Request.get(resource_path, custom_option)
         extract_resource(response) || response
       end
 
@@ -35,8 +35,8 @@ module Ribose
         # @param resource_id [String] The specific resource Id
         # @return [Sawyer::Resource]
         #
-        def fetch(resource_id)
-          new(resource_id: resource_id).fetch
+        def fetch(resource_id, options = {})
+          new(options.merge(resource_id: resource_id)).fetch
         end
       end
     end

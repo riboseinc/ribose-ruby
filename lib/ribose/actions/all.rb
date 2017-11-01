@@ -35,8 +35,8 @@ module Ribose
         # @param options [Hash] Query parameters as Hash
         # @return [Array <Sawyer::Resource>]
         #
-        def all(options = {})
-          new.all(query: options)
+        def all(client: nil, **options)
+          new.all(client: client, query: options)
         end
       end
     end

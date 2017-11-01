@@ -4,7 +4,7 @@ module Ribose
     include Ribose::Actions::Create
 
     def remove
-      Ribose::Request.delete(resource_path)
+      Ribose::Request.delete(resource_path, custom_option)
     end
 
     # Listing Space Conversations
@@ -27,8 +27,8 @@ module Ribose
       new(attributes.merge(space_id: space_id)).create
     end
 
-    def self.remove(space_id:, conversation_id:)
-      new(space_id: space_id, conversation_id: conversation_id).remove
+    def self.remove(space_id:, conversation_id:, **option)
+      new(space_id: space_id, conversation_id: conversation_id, **option).remove
     end
 
     private

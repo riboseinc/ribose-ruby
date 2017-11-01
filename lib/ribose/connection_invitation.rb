@@ -8,20 +8,22 @@ module Ribose
       create_invitations[:invitations]
     end
 
-    def self.create(body:, emails:)
-      new(body: body, emails: emails).create
+    def self.create(body:, emails:, **attributes)
+      new(attributes.merge(body: body, emails: emails)).create
     end
 
-    def self.accept(invitation_id)
-      new(resource_id: invitation_id, state: 1).update
+    def self.accept(invitation_id, attributes = {})
+      new(attributes.merge(resource_id: invitation_id, state: 1)).update
     end
 
-    def self.reject(invitation_id)
-      new(resource_id: invitation_id, state: 2).update
+    def self.reject(invitation_id, attributes = {})
+      new(attributes.merge(resource_id: invitation_id, state: 2)).update
     end
 
-    def self.cancel(invitation_id)
-      Ribose::Request.delete("invitations/to_connection/#{invitation_id}")
+    def self.cancel(invitation_id, attributes = {})
+      Ribose::Request.delete(
+        "invitations/to_connection/#{invitation_id}", attributes
+      )
     end
 
     private
@@ -45,7 +47,9 @@ module Ribose
     def create_invitations
       Ribose::Request.post(
         [resources_path, "mass_create"].join("/"),
-        invitation: { body: attributes[:body], emails: attributes[:emails] },
+        custom_option.merge(
+          invitation: { body: attributes[:body], emails: attributes[:emails] }
+        )
       )
     end
   end

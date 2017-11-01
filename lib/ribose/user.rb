@@ -7,7 +7,10 @@ module Ribose
     end
 
     def activate
-      Ribose::Request.post("signup.user", user: attributes, auth_header: false)
+      Ribose::Request.post(
+        "signup.user",
+        custom_option.merge(user: attributes, auth_header: false),
+      )
     end
 
     # Activate a user

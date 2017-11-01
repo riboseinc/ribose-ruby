@@ -4,12 +4,12 @@ module Ribose
     include Ribose::Actions::Create
     include Ribose::Actions::Update
 
-    def self.accept(invitation_id)
-      new(resource_id: invitation_id, state: 1).update
+    def self.accept(invitation_id, options = {})
+      new(resource_id: invitation_id, state: 1, **options).update
     end
 
-    def self.reject(invitation_id)
-      new(resource_id: invitation_id, state: 2).update
+    def self.reject(invitation_id, options = {})
+      new(resource_id: invitation_id, state: 2, **options).update
     end
 
     def self.update(invitation_id, attributes)

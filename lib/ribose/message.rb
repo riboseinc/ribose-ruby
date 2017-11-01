@@ -21,7 +21,7 @@ module Ribose
     end
 
     def remove
-      Ribose::Request.delete(resource_path)
+      Ribose::Request.delete(resource_path, custom_option)
     end
 
     # Listing Conversation Messages
@@ -65,8 +65,8 @@ module Ribose
     # @param conversation_id [String] The Conversation UUID
     # @return [Sawyer::Resource]
     #
-    def self.remove(space_id:, message_id:, conversation_id:)
-      new(space_id, conversation_id, message_id: message_id).remove
+    def self.remove(space_id:, message_id:, conversation_id:, **options)
+      new(space_id, conversation_id, message_id: message_id, **options).remove
     end
 
     private
@@ -76,6 +76,10 @@ module Ribose
 
     def resource
       "message"
+    end
+
+    def custom_option
+      {}
     end
 
     def validate(attributes)
