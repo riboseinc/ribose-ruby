@@ -140,6 +140,17 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_conversation_update_api(sid, cid, attributes)
+      attributes.delete(:space_id)
+
+      stub_api_response(
+        :put,
+        [conversations_path(sid), cid].join("/"),
+        data: { conversation: attributes },
+        filename: "conversation",
+      )
+    end
+
     def stub_ribose_space_conversation_remove(space_id, conversation_id)
       path = [conversations_path(space_id), conversation_id].join("/")
       stub_api_response(:delete, path, filename: "empty", status: 200)

@@ -207,6 +207,12 @@ Ribose::Conversation.create(
 )
 ```
 
+#### Update a conversation
+
+```ruby
+Ribose::Conversation.update(space_id, conversation_id, new_attributes_hash)
+```
+
 #### Remove A Conversation
 
 ```ruby

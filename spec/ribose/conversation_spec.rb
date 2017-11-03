@@ -41,6 +41,24 @@ RSpec.describe Ribose::Conversation do
     end
   end
 
+  describe ".update" do
+    it "updates a conversation with provided details" do
+      space_id = 123_456_789
+      conversation_id = 456_789
+
+      stub_ribose_space_conversation_update_api(
+        space_id, conversation_id, conversation_attrs
+      )
+
+      conversation = Ribose::Conversation.update(
+        space_id, conversation_id, conversation_attrs
+      )
+
+      expect(conversation.id).not_to be_nil
+      expect(conversation.contents).to eq("Did you already book the tickets?")
+    end
+  end
+
   describe ".remove" do
     it "remvoes a conversation from a space" do
       space_id = 123456789

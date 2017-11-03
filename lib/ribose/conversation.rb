@@ -3,6 +3,7 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
     include Ribose::Actions::Create
+    include Ribose::Actions::Update
 
     def remove
       Ribose::Request.delete(resource_path, custom_option)
@@ -23,6 +24,7 @@ module Ribose
     # @param space_id [String] The Space UUID
     # @param conversation_id [String] Conversation UUID
     # @param options [Hash] Query parameters as a Hash
+    # @return [Sawyer::Resource] The conversation
     #
     def self.fetch(space_id, conversation_id, options = {})
       new(space_id: space_id, conversation_id: conversation_id, **options).fetch
@@ -36,6 +38,21 @@ module Ribose
     #
     def self.create(space_id, attributes)
       new(attributes.merge(space_id: space_id)).create
+    end
+
+    # Update a conversation
+    #
+    # @param space_id [String] The Space UUID
+    # @param conversation_id [String] Conversation UUID
+    # @param attributes [Hash] Query parameters as a Hash
+    # @return [Sawyer::Resource] The updated conversation
+    #
+    def self.update(space_id, conversation_id, attributes = {})
+      new(
+        space_id: space_id,
+        conversation_id: conversation_id,
+        **attributes,
+      ).update
     end
 
     def self.remove(space_id:, conversation_id:, **option)
