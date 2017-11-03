@@ -216,7 +216,7 @@ Ribose::Conversation.update(space_id, conversation_id, new_attributes_hash)
 #### Remove A Conversation
 
 ```ruby
-Ribose::Conversation.remove(space_id: "space_id", conversation_id: "12345")
+Ribose::Conversation.destroy(space_id: "space_id", conversation_id: "12345")
 ```
 
 ### Message

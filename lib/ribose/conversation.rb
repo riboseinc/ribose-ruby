@@ -5,7 +5,7 @@ module Ribose
     include Ribose::Actions::Create
     include Ribose::Actions::Update
 
-    def remove
+    def destroy
       Ribose::Request.delete(resource_path, custom_option)
     end
 
@@ -55,8 +55,18 @@ module Ribose
       ).update
     end
 
-    def self.remove(space_id:, conversation_id:, **option)
-      new(space_id: space_id, conversation_id: conversation_id, **option).remove
+    # Remove a conversation
+    #
+    # @param space_id [String] The Space UUID
+    # @param conversation_id [String] Conversation UUID
+    # @param options [Hash] Query parameters as a Hash
+    #
+    def self.destroy(space_id:, conversation_id:, **options)
+      new(
+        space_id: space_id,
+        conversation_id: conversation_id,
+        **options,
+      ).destroy
     end
 
     private
