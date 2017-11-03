@@ -193,6 +193,12 @@ Ribose::SpaceFile.create(space_id, file: "The complete file path", **attributes)
 Ribose::Conversation.all(space_id, options = {})
 ```
 
+#### Retrieve a conversation details
+
+```ruby
+Ribose::Conversation.fetch(space_id, conversation_id)
+```
+
 #### Create A New Conversation
 
 ```ruby

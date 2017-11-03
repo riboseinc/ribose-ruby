@@ -123,6 +123,14 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_conversation_fetch_api(space_id, conv_id)
+      stub_api_response(
+        :get,
+        [conversations_path(space_id), conv_id].join("/"),
+        filename: "conversation",
+      )
+    end
+
     def stub_ribose_space_conversation_create(space_id, attributes)
       stub_api_response(
         :post,

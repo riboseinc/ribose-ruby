@@ -1,6 +1,7 @@
 module Ribose
   class Conversation < Ribose::Base
     include Ribose::Actions::All
+    include Ribose::Actions::Fetch
     include Ribose::Actions::Create
 
     def remove
@@ -15,6 +16,16 @@ module Ribose
     #
     def self.all(space_id, options = {})
       new(space_id: space_id, **options).all
+    end
+
+    # Fetch a conversation
+    #
+    # @param space_id [String] The Space UUID
+    # @param conversation_id [String] Conversation UUID
+    # @param options [Hash] Query parameters as a Hash
+    #
+    def self.fetch(space_id, conversation_id, options = {})
+      new(space_id: space_id, conversation_id: conversation_id, **options).fetch
     end
 
     # Create A New Conversation

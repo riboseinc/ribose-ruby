@@ -14,6 +14,20 @@ RSpec.describe Ribose::Conversation do
     end
   end
 
+  describe ".fetch" do
+    it "retrieves a specific converstion details" do
+      space_id = 123_456_789
+      conversation_id = 456_789
+
+      stub_ribose_space_conversation_fetch_api(space_id, conversation_id)
+      conversation = Ribose::Conversation.fetch(space_id, conversation_id)
+
+      expect(conversation.id).not_to be_nil
+      expect(conversation.name).to eq("Trips to the Mars!")
+      expect(conversation.contents).to eq("Did you already book the tickets?")
+    end
+  end
+
   describe ".create" do
     it "creates a new conversation into a space" do
       space_id = 123_456_789
