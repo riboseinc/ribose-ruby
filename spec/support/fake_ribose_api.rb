@@ -324,6 +324,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_set_login_name_api(user_id, name)
+      stub_api_response(
+        :put,
+        "people/users/#{user_id}",
+        data: { user: { login: name } },
+        filename: "profile",
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)

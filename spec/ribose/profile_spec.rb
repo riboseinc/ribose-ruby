@@ -23,4 +23,18 @@ RSpec.describe Ribose::Profile do
       expect(profile.name).to eq("John Doe")
     end
   end
+
+  describe ".set_login" do
+    it "sets the login for the current user" do
+      user_id = "63116bd1"
+      login = "new_login_name"
+
+      stub_ribose_fetch_profile_api
+      stub_ribose_set_login_name_api(user_id, login)
+      profile = Ribose::Profile.set_login(login)
+
+      expect(profile.id).not_to be_nil
+      expect(profile.name).to eq("John Doe")
+    end
+  end
 end

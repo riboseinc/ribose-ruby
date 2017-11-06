@@ -98,6 +98,12 @@ Ribose::Profile.fetch
 Ribose::Profile.update(first_name: "John", last_name: "Doe")
 ```
 
+#### Set user login
+
+```ruby
+Ribose::Profile.set_login(login_name)
+```
+
 ### Settings
 
 #### List user's settings
