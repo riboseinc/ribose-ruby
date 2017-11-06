@@ -11,4 +11,16 @@ RSpec.describe Ribose::Profile do
       expect(profile.name).to eq("John Doe")
     end
   end
+
+  describe ".updates" do
+    it "updates teh current user profile" do
+      attributes = { frest_name: "John", last_name: "Doe" }
+
+      stub_ribose_update_profile_api(attributes)
+      profile = Ribose::Profile.update(attributes)
+
+      expect(profile.id).not_to be_nil
+      expect(profile.name).to eq("John Doe")
+    end
+  end
 end

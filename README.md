@@ -92,6 +92,12 @@ Ribose::AppRelation.fetch(app_relation_id)
 Ribose::Profile.fetch
 ```
 
+#### Update user profile
+
+```ruby
+Ribose::Profile.update(first_name: "John", last_name: "Doe")
+```
+
 ### Settings
 
 #### List user's settings

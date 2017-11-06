@@ -318,6 +318,12 @@ module Ribose
       stub_api_response(:get, "people/profile/", filename: "profile")
     end
 
+    def stub_ribose_update_profile_api(attributes)
+      stub_api_response(
+        :put, "people/profile/", data: { user: attributes }, filename: "profile"
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)
