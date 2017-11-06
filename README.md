@@ -84,6 +84,14 @@ interface
 Ribose::AppRelation.fetch(app_relation_id)
 ```
 
+### Profile
+
+#### Fetch user profile
+
+```ruby
+Ribose::Profile.fetch
+```
+
 ### Settings
 
 #### List user's settings

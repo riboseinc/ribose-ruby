@@ -314,6 +314,10 @@ module Ribose
       )
     end
 
+    def stub_ribose_fetch_profile_api
+      stub_api_response(:get, "people/profile/", filename: "profile")
+    end
+
     private
 
     def ribose_endpoint(endpoint)
