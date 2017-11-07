@@ -3,6 +3,7 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
     include Ribose::Actions::Update
+    include Ribose::Actions::Delete
 
     def create
       create_invitations[:invitations]
@@ -18,12 +19,6 @@ module Ribose
 
     def self.reject(invitation_id, attributes = {})
       new(attributes.merge(resource_id: invitation_id, state: 2)).update
-    end
-
-    def self.cancel(invitation_id, attributes = {})
-      Ribose::Request.delete(
-        "invitations/to_connection/#{invitation_id}", attributes
-      )
     end
 
     private

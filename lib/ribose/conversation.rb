@@ -4,10 +4,7 @@ module Ribose
     include Ribose::Actions::Fetch
     include Ribose::Actions::Create
     include Ribose::Actions::Update
-
-    def destroy
-      Ribose::Request.delete(resource_path, custom_option)
-    end
+    include Ribose::Actions::Delete
 
     # Listing Space Conversations
     #
@@ -61,12 +58,8 @@ module Ribose
     # @param conversation_id [String] Conversation UUID
     # @param options [Hash] Query parameters as a Hash
     #
-    def self.destroy(space_id:, conversation_id:, **options)
-      new(
-        space_id: space_id,
-        conversation_id: conversation_id,
-        **options,
-      ).destroy
+    def self.destroy(space_id:, conversation_id:, **opts)
+      new(space_id: space_id, conversation_id: conversation_id, **opts).delete
     end
 
     private

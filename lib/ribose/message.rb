@@ -5,6 +5,7 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Create
     include Ribose::Actions::Update
+    include Ribose::Actions::Delete
 
     # Message initilaiztion
     #
@@ -18,10 +19,6 @@ module Ribose
       @attributes = attributes
       @conversation_id = conversation_id
       @message_id = attributes.delete(:message_id)
-    end
-
-    def remove
-      Ribose::Request.delete(resource_path, custom_option)
     end
 
     # Listing Conversation Messages
@@ -66,7 +63,7 @@ module Ribose
     # @return [Sawyer::Resource]
     #
     def self.remove(space_id:, message_id:, conversation_id:, **options)
-      new(space_id, conversation_id, message_id: message_id, **options).remove
+      new(space_id, conversation_id, message_id: message_id, **options).delete
     end
 
     private

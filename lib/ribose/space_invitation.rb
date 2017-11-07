@@ -3,6 +3,7 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Create
     include Ribose::Actions::Update
+    include Ribose::Actions::Delete
 
     def mass_create
       create_invitations[:invitations]
@@ -31,9 +32,7 @@ module Ribose
     end
 
     def self.cancel(invitation_id, attributes = {})
-      Ribose::Request.delete(
-        ["invitations/to_space", invitation_id].join("/"), attributes
-      )
+      new(resource_id: invitation_id, **attributes).delete
     end
 
     private
