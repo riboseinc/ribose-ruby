@@ -9,11 +9,10 @@ module Ribose
       # Retrieve the list of resources via :get and then extract the
       # the root element from the response object.
       #
-      # @param options [Hash] Query parameters as a Hash
       # @return [Array <Sawyer::Resource>]
       #
-      def all(options = {})
-        response = Ribose::Request.get(resources_path, options)
+      def all
+        response = Ribose::Request.get(resources_path, custom_option)
         extract_root(response) || response
       end
 
@@ -35,8 +34,8 @@ module Ribose
         # @param options [Hash] Query parameters as Hash
         # @return [Array <Sawyer::Resource>]
         #
-        def all(client: nil, **options)
-          new.all(client: client, query: options)
+        def all(options = {})
+          new(options).all
         end
       end
     end

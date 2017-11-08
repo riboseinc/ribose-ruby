@@ -27,4 +27,17 @@ RSpec.describe Ribose::Wiki do
       expect(wiki.updater.name).to eq("John Doe")
     end
   end
+
+  describe ".create" do
+    it "creates a new wiki page in space" do
+      space_id = 123_456
+      attributes = { name: "Wiki Page One" }
+
+      stub_ribose_wiki_create_api(space_id, attributes)
+      wiki = Ribose::Wiki.create(space_id, attributes)
+
+      expect(wiki.id).not_to be_nil
+      expect(wiki.name).to eq(attributes[:name])
+    end
+  end
 end

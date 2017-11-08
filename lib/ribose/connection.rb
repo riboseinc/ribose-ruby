@@ -13,7 +13,7 @@ module Ribose
     # @return [Sawyer::Resource]
     #
     def self.all(options = {})
-      new.all(options.merge(query: { s: "" }))
+      new(options.merge(query: { s: "" })).all
     end
 
     # List connection suggestions

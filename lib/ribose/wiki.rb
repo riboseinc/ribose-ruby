@@ -2,6 +2,7 @@ module Ribose
   class Wiki < Ribose::Base
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
+    include Ribose::Actions::Create
 
     # List wiki pages
     #
@@ -23,6 +24,16 @@ module Ribose
       new(space_id: space_id, resource_id: wiki_id, **options).fetch
     end
 
+    # Create a wiki page
+    #
+    # @param space_id [String] The space UUID
+    # @param attributes [Hash] Wiki page attributes
+    # @return [Sawyer::Resoruce] Newly created wiki
+    #
+    def self.create(space_id, attributes)
+      new(space_id: space_id, **attributes).create
+    end
+
     private
 
     attr_reader :space_id
@@ -33,6 +44,10 @@ module Ribose
 
     def extract_local_attributes
       @space_id = attributes.delete(:space_id)
+    end
+
+    def validate(name:, **attributes)
+      attributes.merge(name: name)
     end
 
     def resources_path

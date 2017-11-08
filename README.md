@@ -541,6 +541,14 @@ Ribose::Wiki.all(space_id, options = {})
 Ribose::Wiki.fetch(space_id, wiki_id, options = {})
 ```
 
+#### Create a wiki page
+
+```ruby
+Ribose::Wiki.create(
+  space_id, name: "Wiki Name", tag_list: "sample", **other_attributes_hash
+)
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the

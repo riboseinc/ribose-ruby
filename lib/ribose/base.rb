@@ -12,7 +12,7 @@ module Ribose
 
     private
 
-    attr_reader :resource_id, :attributes, :client
+    attr_reader :resource_id, :attributes, :client, :query
 
     # User provided options
     #
@@ -22,7 +22,7 @@ module Ribose
     # come in handy.
     #
     def custom_option
-      { client: client }
+      { client: client, query: query }
     end
 
     # Extract Local Attributes
@@ -40,6 +40,7 @@ module Ribose
     def extract_local_attributes; end
 
     def extract_base_attributes
+      @query = attributes.delete(:query)
       @client = attributes.delete(:client)
       @resource_id = attributes.delete(:resource_id)
     end

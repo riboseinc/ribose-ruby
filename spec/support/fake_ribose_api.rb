@@ -345,6 +345,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_wiki_create_api(space_id, attributes)
+      stub_api_response(
+        :post,
+        "spaces/#{space_id}/wiki/wiki_pages",
+        data: { wiki_page: attributes },
+        filename: "wiki",
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)
