@@ -5,6 +5,7 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
     include Ribose::Actions::Update
+    include Ribose::Actions::Create
 
     private
 
