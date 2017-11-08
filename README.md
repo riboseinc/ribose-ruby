@@ -527,6 +527,14 @@ Ribose::User.activate(
 )
 ```
 
+### Wikis
+
+#### List wiki pages
+
+```ruby
+Ribose::Wiki.all(space_id, options = {})
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the
