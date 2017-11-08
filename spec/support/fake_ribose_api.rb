@@ -339,6 +339,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_wiki_fetch_api(sid, wiki_id)
+      stub_api_response(
+        :get, "spaces/#{sid}/wiki/wiki_pages/#{wiki_id}", filename: "wiki"
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)

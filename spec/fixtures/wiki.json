@@ -1,0 +1,79 @@
+{
+  "wiki_page": {
+    "id": 7678,
+    "name": "Wiki Page One",
+    "address": "wiki-page-one",
+    "created_at": "2017-11-08T07:33:25.000+00:00",
+    "updated_at": "2017-11-08T07:33:25.000+00:00",
+    "version": 1,
+    "allow_attachments": true,
+    "allow_comments": true,
+    "revision": 23,
+    "tag_list": [
+      "wiki",
+      "init"
+    ],
+    "space_id": "52e47e18-9a9d-4663-94c5",
+    "attachments_listed": [],
+    "author_ids": [
+      "2970d105-5ccc"
+    ],
+    "is_new_record": false,
+    "rendered_created_by": "2970d105-5ccc",
+    "rendered_updated_by": "2970d105-5ccc",
+    "allow_create": true,
+    "allow_edit": true,
+    "allow_update": true,
+    "allow_delete": true,
+    "allow_comment": true,
+    "allow_manage_permissions": true,
+    "history": {
+      "current_ver": 1,
+      "versions": [
+        {
+          "id": 1,
+          "updater_id": "2970d105-5ccc",
+          "updated_at": "2017-11-08T07:33:25.000+00:00"
+        }
+      ]
+    },
+    "current_user": "2970d105-5ccc",
+    "related_users": {
+      "2970d105-5ccc": {
+        "id": "2970d105-5ccc",
+        "name": "John Doe",
+        "connected": true,
+        "mutual_spaces": [
+          "a7f7b94e-a007-4457-868f",
+          "a45387e2-a573-48ba",
+          "268b0407-c3a3-4aad-8693",
+          "52e47e18-9a9d-4663-94c5"
+        ]
+      }
+    },
+    "encoded_rendered_content": "This%26nbsp%3Bis%26nbsp%3Bthe%26nbsp%3Bfirst%26nbsp%3Bwiki%26nbsp%3Bpage%26nbsp%3Bfor%26nbsp%3BRibose!Hello%2C%26nbsp%3B",
+    "comments": [],
+    "user": {
+      "id": "2970d105-5ccc",
+      "name": "John Doe",
+      "connected": true,
+      "mutual_spaces": [
+        "a7f7b94e-a007-4457-868f",
+        "a45387e2-a573-48ba",
+        "268b0407-c3a3-4aad-8693",
+        "52e47e18-9a9d-4663-94c5"
+      ]
+    },
+    "updater": {
+      "id": "2970d105-5ccc",
+      "name": "John Doe",
+      "connected": true,
+      "mutual_spaces": [
+        "a7f7b94e-a007-4457-868f",
+        "a45387e2-a573-48ba",
+        "268b0407-c3a3-4aad-8693",
+        "52e47e18-9a9d-4663-94c5"
+      ]
+    }
+  }
+}

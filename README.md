@@ -535,6 +535,12 @@ Ribose::User.activate(
 Ribose::Wiki.all(space_id, options = {})
 ```
 
+#### Fetch a wiki page
+
+```ruby
+Ribose::Wiki.fetch(space_id, wiki_id, options = {})
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the
