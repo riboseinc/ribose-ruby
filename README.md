@@ -549,6 +549,14 @@ Ribose::Wiki.create(
 )
 ```
 
+### Update a wiki page
+
+```ruby
+Ribose::Wiki.update(
+  space_id, wiki_id, **updated_attributes_hash
+)
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the

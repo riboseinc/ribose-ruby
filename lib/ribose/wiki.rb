@@ -3,6 +3,7 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
     include Ribose::Actions::Create
+    include Ribose::Actions::Update
 
     # List wiki pages
     #
@@ -17,7 +18,7 @@ module Ribose
     # Fetch a wiki page
     #
     # @param space_id [String] The space UUID
-    # @param wiki_id [String] The WiKI UUID
+    # @param wiki_id [String] The Wiki UUID
     # @return [Sawyer::Resoruce]
     #
     def self.fetch(space_id, wiki_id, options = {})
@@ -32,6 +33,18 @@ module Ribose
     #
     def self.create(space_id, attributes)
       new(space_id: space_id, **attributes).create
+    end
+
+    # Update a wiki page
+    #
+    # @param space_id [String] The space UUID
+    # @param wiki_id [String] The wiki-page UUID
+    # @param attributes [Hash] Wiki page attributes
+    #
+    # @return [Sawyer::Resoruce] Updated wiki page
+    #
+    def self.update(space_id, wiki_id, attributes)
+      new(space_id: space_id, resource_id: wiki_id, **attributes).update
     end
 
     private

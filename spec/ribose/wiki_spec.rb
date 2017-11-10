@@ -40,4 +40,18 @@ RSpec.describe Ribose::Wiki do
       expect(wiki.name).to eq(attributes[:name])
     end
   end
+
+  describe ".update" do
+    it "updates a wiki with provided details" do
+      wiki_id = 456_789
+      space_id = 123_456
+      attributes = { name: "Wiki Page One" }
+
+      stub_ribose_wiki_update_api(space_id, wiki_id, attributes)
+      wiki = Ribose::Wiki.update(space_id, wiki_id, attributes)
+
+      expect(wiki.id).not_to be_nil
+      expect(wiki.name).to eq("Wiki Page One")
+    end
+  end
 end
