@@ -4,6 +4,7 @@ module Ribose
     include Ribose::Actions::Fetch
     include Ribose::Actions::Create
     include Ribose::Actions::Update
+    include Ribose::Actions::Delete
 
     # List wiki pages
     #
@@ -45,6 +46,15 @@ module Ribose
     #
     def self.update(space_id, wiki_id, attributes)
       new(space_id: space_id, resource_id: wiki_id, **attributes).update
+    end
+
+    # Delete a wiki page
+    #
+    # @param space_id [String] The space UUID
+    # @param wiki_id [String] The wiki-page UUID
+    #
+    def self.delete(space_id, wiki_id, options = {})
+      new(space_id: space_id, resource_id: wiki_id, **options).delete
     end
 
     private

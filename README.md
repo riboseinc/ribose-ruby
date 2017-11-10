@@ -557,6 +557,12 @@ Ribose::Wiki.update(
 )
 ```
 
+### Remove a wiki page
+
+```ruby
+Ribose::Wiki.delete(space_id, wiki_id)
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the

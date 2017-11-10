@@ -54,4 +54,14 @@ RSpec.describe Ribose::Wiki do
       expect(wiki.name).to eq("Wiki Page One")
     end
   end
+
+  describe ".delete" do
+    it "deletes an existing space wiki page" do
+      wiki_id = 456_789
+      space_id = 123_456
+
+      stub_ribose_wiki_delete_api(space_id, wiki_id)
+      expect { Ribose::Wiki.delete(space_id, wiki_id) }.not_to raise_error
+    end
+  end
 end

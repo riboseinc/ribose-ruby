@@ -363,6 +363,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_wiki_delete_api(sid, wiki_id)
+      stub_api_response(
+        :delete, "spaces/#{sid}/wiki/wiki_pages/#{wiki_id}", filename: "empty"
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)
