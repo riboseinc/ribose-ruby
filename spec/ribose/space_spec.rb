@@ -6,7 +6,7 @@ RSpec.describe Ribose::Space do
       stub_ribose_space_list_api
       spaces = Ribose::Space.all
 
-      expect(spaces.first.id).to eq("123456789")
+      expect(spaces.first.id).to eq("0e8d5c16-1a31-4df9-83d9-eeaa374d5adc")
       expect(spaces.first.name).to eq("Work")
       expect(spaces.first.visibility).to eq("invisible")
     end
