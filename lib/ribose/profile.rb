@@ -48,7 +48,7 @@ module Ribose
       Ribose::Request.put(
         "people/users/#{fetch.user_id}",
         resource_key.to_sym => { login: attributes[:login] },
-        client: @client
+        client: @client,
       )
     end
   end
