@@ -47,8 +47,9 @@ module Ribose
     def update_login_name
       Ribose::Request.put(
         "people/users/#{fetch.user_id}",
-        resource_key.to_sym => { login: attributes[:login] },
-        client: @client,
+        custom_option.merge(
+          resource_key.to_sym => { login: attributes[:login] }
+        ),
       )
     end
   end
