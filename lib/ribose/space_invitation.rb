@@ -18,7 +18,7 @@ module Ribose
     end
 
     def self.accept(invitation_id, attributes = {})
-      new(resource_id: invitation_id, state: 1).update
+      new(attributes.merge(resource_id: invitation_id, state: 1)).update
     end
 
     def self.resend(invitation_id, attributes = {})
