@@ -59,6 +59,17 @@ RSpec.describe Ribose::Space do
     end
   end
 
+  describe ".delete" do
+    it "deletes an existing space" do
+      space_id = 123_456_789
+      stub_ribose_space_remove_api(space_id, password_confirmation: 1234)
+
+      expect do
+        Ribose::Space.delete(space_id, confirmation: 1234)
+      end.not_to raise_error
+    end
+  end
+
   def space_attributes
     {
       access: "private",

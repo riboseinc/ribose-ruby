@@ -15,6 +15,10 @@ module Ribose
       Ribose::Request.post("spaces/#{space_uuid}/freeze", options)
     end
 
+    def self.delete(space_uuid, confirmation:, **options)
+      remove(space_uuid, options.merge(password_confirmation: confirmation))
+    end
+
     private
 
     attr_reader :space

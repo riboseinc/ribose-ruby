@@ -30,6 +30,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_delete_api(space_id, options = {})
+      stub_api_response(
+        :delete, "spaces/#{space_id}", data: options, filename: "empty"
+      )
+    end
+
     def stub_ribose_feed_api
       stub_api_response(:get, "feeds", filename: "feeds")
     end
