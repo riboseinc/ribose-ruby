@@ -13,6 +13,10 @@ module Ribose
       )
     end
 
+    def delete
+      delete_resource
+    end
+
     # Activate a user
     #
     # @param email [String] The registering user email
@@ -23,6 +27,15 @@ module Ribose
     #
     def self.activate(email:, password:, otp:, **attributes)
       new(attributes.merge(email: email, password: password, otp: otp)).activate
+    end
+
+    # Delete a user
+    #
+    # @param user_id [String] Existing user's UUID
+    # @param options [Hash] The query parameter options
+    #
+    def self.delete(user_id, options = {})
+      new(resource_id: user_id, **options).delete
     end
 
     private
@@ -37,6 +50,17 @@ module Ribose
 
     def validate(email:, **attributes)
       attributes.merge(email: email)
+    end
+
+    def delete_resource
+      Ribose::Request.delete(
+        "cancel_registration",
+        custom_option.merge(
+          user_id: resource_id,
+          password: attributes[:password],
+          # auth_header: false
+        ),
+      )
     end
   end
 end

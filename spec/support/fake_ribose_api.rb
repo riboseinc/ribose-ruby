@@ -185,6 +185,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_app_user_delete_api(user_id)
+      stub_api_response(
+        :delete, "cancel_registration/#{user_id}", filename: "empty"
+      )
+    end
+
     def stub_ribose_app_data_api
       stub_api_response(:get, "app_data", filename: "app_data")
     end

@@ -26,6 +26,16 @@ RSpec.describe Ribose::User do
     end
   end
 
+  describe ".delete" do
+    it "cancels an existing user registration" do
+      user_id = "123456789"
+      Ribose::User.delete(user_id, password: "SuperSecret")
+      # stub_ribose_app_user_delete_api(user_id)
+      #
+      # expect { Ribose::User.delete(user_id) }.not_to raise_error
+    end
+  end
+
   def user_attributes
     @user_attributes ||= {
       email: "john.doe@example.com",
