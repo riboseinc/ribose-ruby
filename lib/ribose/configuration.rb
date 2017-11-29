@@ -2,11 +2,13 @@ require "ribose/response/raise_error"
 
 module Ribose
   class Configuration
-    attr_accessor :api_host, :api_token, :user_email, :debug_mode
+    attr_accessor :api_host, :api_token, :user_email, :debug_mode,
+      :faraday_options
 
     def initialize
       @debug_mode = false
       @api_host ||= "www.ribose.com"
+      @faraday_options = {}
     end
 
     def debug_mode?
