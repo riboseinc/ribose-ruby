@@ -83,11 +83,15 @@ module Ribose
     end
 
     def aws_connection(upload_url)
-      Faraday.new(upload_url) do |builder|
+      Faraday.new(upload_url, faraday_options) do |builder|
         builder.request :multipart
         builder.request :url_encoded
         Ribose.configuration.add_default_middleware(builder)
       end
+    end
+
+    def faraday_options
+      Ribose.configuration.faraday_options
     end
   end
 end

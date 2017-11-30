@@ -97,8 +97,12 @@ module Ribose
     def sawyer_options
       {
         links_parser: Sawyer::LinkParsers::Simple.new,
-        faraday: Faraday.new(builder: custom_rack_builder),
+        faraday: Faraday.new(faraday_options),
       }
+    end
+
+    def faraday_options
+      Ribose.configuration.faraday_options.merge(builder: custom_rack_builder)
     end
 
     def custom_rack_builder

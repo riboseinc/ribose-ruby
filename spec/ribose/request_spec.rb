@@ -60,6 +60,21 @@ RSpec.describe Ribose::Request do
     end
   end
 
+  example "custom Faraday options from configuration are used" do
+    custom_headers = {"X-Set-In-Config" => "Yes"}
+
+    config = Ribose::Configuration.new
+    config.faraday_options = {headers: custom_headers}
+    allow(Ribose).to receive(:configuration).and_return(config)
+
+    stub_ribose_ping_api_request(:get)
+    Ribose::Request.get("ping")
+
+    expect(
+      a_request(:any, //).with(headers: custom_headers)
+    ).to have_been_made.at_least_once
+  end
+
   def stub_ribose_ping_api_request(method = :get, client = nil)
     stub_api_response(method, "ping", filename: "ping", client: client)
   end
