@@ -20,9 +20,9 @@ RSpec.describe Ribose::FileUploader do
     space_id = 123_456_789
     custom_headers = {"X-Set-In-Config" => "Yes"}
 
-    config = Ribose::Configuration.new
-    config.faraday_options = {headers: custom_headers}
-    allow(Ribose).to receive(:configuration).and_return(config)
+    stub_configuration do |config|
+      config.faraday_options = {headers: custom_headers}
+    end
 
     stub_ribose_space_file_upload_api(space_id, file_attributes)
     file_upload = Ribose::FileUploader.upload(space_id, file_attributes)
