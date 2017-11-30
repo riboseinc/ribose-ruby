@@ -31,24 +31,26 @@ $ gem install ribose
 ## Configure
 
 We need to setup Ribose API configuration before we can perform any request
-throughout this client, and to request an API Key please contact Ribose Inc.
-Once you have your API key then you can configure it by adding an initializer
-with the following code
+throughout this client
+
+First, obtain an API token [as per this Github wiki](https://github.com/riboseinc/ribose-api/wiki/Obtaining-the-API-Token).
+Using the token, configure the client by adding an initializer with the
+following code:
 
 ```ruby
 Ribose.configure do |config|
   config.api_token = "SECRET_API_TOKEN"
   config.user_email = "your-email@example.com"
 
-  # There are also some default configurations, normally you do not need to
-  # change those unless you have some very specific use case scenario.
+  # There are also some default configurations. Normally you do not need to
+  # change those unless you have some very specific use cases.
   #
   # config.debug_mode = false
   # config.api_host = "www.ribose.com"
 end
 ```
 
-Or
+Or:
 
 ```ruby
 Ribose.configuration.api_token = "SECRET_API_TOKEN"
@@ -59,8 +61,7 @@ Ribose.configuration.user_email = "your-email@example.com"
 
 ### App Data
 
-Ribose API provides an easier way to retrieve the list of App data, and to
-retrieve the list of app data we can use the `AppData.all` interface.
+App data can be retrieved using the `AppData.all` interface.
 
 ```ruby
 Ribose::AppData.all
@@ -70,7 +71,8 @@ Ribose::AppData.all
 
 #### List app relations
 
-To retrieve the list of app relations we can use the `AppRelation.all` interface
+To retrieve the list of app relations, we can use the `AppRelation.all`
+interface.
 
 ```ruby
 Ribose::AppRelation.all
@@ -79,7 +81,7 @@ Ribose::AppRelation.all
 #### Fetch an app relation
 
 To retrieve the details for a specific app relation, we can use the following
-interface
+interface.
 
 ```ruby
 Ribose::AppRelation.fetch(app_relation_id)
@@ -119,7 +121,8 @@ Ribose::Setting.all
 #### Fetch a setting
 
 To fetch the details for any specific settings we can use the `Setting.fetch`
-interface and it will return the details for that setting.
+interface with the specific Setting ID, and it will return the details for that
+setting.
 
 ```ruby
 Ribose::Setting.fetch(setting_id)
@@ -133,45 +136,45 @@ Ribose::Setting.update(setting_id, **new_updated_attributes_hash)
 
 ### Spaces
 
-#### List user's spaces
+#### List user's Spaces
 
-To list user's spaces we can use the `Space.all` interface, and it will retrieve
-all of the spaces for the currently configured user.
+To list a user's Spaces we can use the `Space.all` interface, and it will
+retrieve all of the Spaces for the currently configured user.
 
 ```ruby
 Ribose::Space.all
 ```
 
-#### Fetch a user space
+#### Fetch a user Space
 
-To retrieve the details for a space we can use the `Space.fetch(space_id)`.
+To retrieve the details for a Space we can use the `Space.fetch(space_id)`.
 
 ```ruby
 Ribose::Space.fetch(space_id)
 ```
 
-#### Create a user space
+#### Create a user Space
 
-To create a new user space we can use
+To create a new user Space,
 
 ```ruby
 Ribose::Space.create(
-  access: "private",
+  access:            "private",
   space_category_id: 12,
-  name: "The amazing Ribose Space",
-  description: "Description about your space"
+  name:              "The amazing Ribose Space",
+  description:       "Description about your Space"
 )
 ```
 
-#### Update a user space
+#### Update a user Space
 
 ```ruby
 Ribose::Space.update("space_uuid", name: "New updated name", **other_attributes)
 ```
 
-#### Remove a user space
+#### Remove a user Space
 
-To remove an existing space and we can use the following interface
+To remove an existing Space,
 
 ```ruby
 Ribose::Space.remove(space_uuid, confirmation: true)
@@ -179,12 +182,14 @@ Ribose::Space.remove(space_uuid, confirmation: true)
 
 ### Members
 
-The members endpoint are space specific, to retrieve the member details under
-any specific space we can use this interface.
+The members endpoint are Space-specific.
+
+To retrieve the member details under any specific Space, we can use this
+interface.
 
 ### List of Members
 
-To retrieve the list of members, we can use the following interface.
+To retrieve the list of members,
 
 ```ruby
 Ribose::Member.all(space_id, options)
@@ -194,7 +199,7 @@ Ribose::Member.all(space_id, options)
 
 #### List of Files
 
-To retrieves the files for any specific space we can use the following interface
+To retrieve the list of files for any specific Space,
 
 ```ruby
 Ribose::SpaceFile.all(space_id, options)
@@ -252,9 +257,9 @@ Ribose::Message.all(space_id: space_uuid, conversation_id: conversation_uuid)
 
 ```ruby
 Ribose::Message.create(
-  space_id: space_uuid,
+  space_id:        space_uuid,
   conversation_id: conversation_uuid,
-  contents: "Provide your message body here",
+  contents:        "Provide your message body here",
 )
 ```
 
@@ -262,10 +267,10 @@ Ribose::Message.create(
 
 ```ruby
 Ribose::Message.update(
-  space_id: space_uuid,
-  message_id: message_uuid,
+  space_id:        space_uuid,
+  message_id:      message_uuid,
   conversation_id: conversation_uuid,
-  contents: "The new content for message",
+  contents:        "The new content for message",
 )
 ```
 
@@ -273,8 +278,8 @@ Ribose::Message.update(
 
 ```ruby
 Ribose::Message.remove(
-  space_id: space_uuid,
-  message_id: message_uuid,
+  space_id:        space_uuid,
+  message_id:      message_uuid,
   conversation_id: conversation_uuid,
 )
 ```
@@ -283,7 +288,7 @@ Ribose::Message.remove(
 
 #### List user feeds
 
-To retrieve the list of user feeds, we can use the `Feed.all` interface
+To retrieve the list of user feeds,
 
 ```ruby
 Ribose::Feed.all
@@ -293,7 +298,7 @@ Ribose::Feed.all
 
 #### List widgets
 
-To retrieve the list of widgets we can use the `Widget.all` interface
+To retrieve the list of widgets,
 
 ```ruby
 Ribose::Widget.all
@@ -303,7 +308,7 @@ Ribose::Widget.all
 
 #### List of stream notifications
 
-To retrieve the list of notifications we can use the `Stream.all` interface
+To retrieve the list of notifications,
 
 ```ruby
 Ribose::Stream.all
@@ -313,8 +318,7 @@ Ribose::Stream.all
 
 #### Retrieve the current leadership board
 
-To retrieve the current leadership board, we can use the `Leaderboard.all`
-interface and it will return the details.
+To retrieve the current leadership board,
 
 ```ruby
 Ribose::Leaderboard.all
@@ -333,8 +337,7 @@ Ribose::Connection.all
 
 #### Connection suggestions
 
-To retrieve the list of connection suggestions we can use the following
-interface and it will retrieve the suggested users.
+To retrieve the list of user connection suggestions,
 
 ```ruby
 Ribose::Connection.suggestions
@@ -348,7 +351,7 @@ Ribose::Connection.suggestions
 Ribose::ConnectionInvitation.all
 ```
 
-#### List space invitations
+#### List Space invitations
 
 ```ruby
 Ribose::SpaceInvitation.all
@@ -387,54 +390,54 @@ Ribose::ConnectionInvitation.reject(invitation_id)
 Ribose::ConnectionInvitation.cancel(invitation_id)
 ```
 
-#### Invite user to a space
+#### Invite user to a Space
 
 ```ruby
 Ribose::SpaceInvitation.create(
-  state: "0",
-  space_id: "123_456_789",
+  state:      "0",
+  space_id:   "123_456_789",
   invitee_id: "456_789_012",
-  type: "Invitation::ToSpace",
-  body: "Please join to this amazing space",
+  type:       "Invitation::ToSpace",
+  body:       "Please join to this amazing Space",
 )
 ```
 
-#### Create space invitation - Mass
+#### Create Space invitation - Mass
 
 ```ruby
 Ribose::SpaceInvitation.mass_create(
   space_id,
-  emails: ["email-one@example.com"],
+  emails:   ["email-one@example.com"],
   role_ids: ["role-for-email-address-in-sequance"],
-  body: "The complete message body for the invitation",
+  body:     "The complete message body for the invitation",
 )
 ```
 
-#### Update a space invitation
+#### Update a Space invitation
 
 ```ruby
 Ribose::SpaceInvitation.update(invitation_id, new_attributes_hash)
 ```
 
-#### Accept a space invitation
+#### Accept a Space invitation
 
 ```ruby
 Ribose::SpaceInvitation.accept(invitation_id)
 ```
 
-#### Resend a space invitation
+#### Resend a Space invitation
 
 ```ruby
 Ribose::SpaceInvitation.resend(invitation_id)
 ```
 
-#### Reject a space invitation
+#### Reject a Space invitation
 
 ```ruby
 Ribose::SpaceInvitation.reject(invitation_id)
 ```
 
-#### Cancel a space invitation
+#### Cancel a Space invitation
 
 ```ruby
 Ribose::SpaceInvitation.cancel(invitation_id)
@@ -442,36 +445,36 @@ Ribose::SpaceInvitation.cancel(invitation_id)
 
 ### Join Space Request
 
-#### List join space requests
+#### List Join Space Requests
 
 ```ruby
 Ribose::JoinSpaceRequest.all
 ```
 
-#### Create a join space request
+#### Create a Join Space Request
 
 ```ruby
 Ribose::JoinSpaceRequest.create(
-  state: 0,
-  space_id: 123_456_789,
-  type: "Invitation::JoinSpaceRequest",
-  body: "Hi, I would like to join to your space",
+  state:    0,
+  Space_id: 123_456_789,
+  type:     "Invitation::JoinSpaceRequest",
+  body:     "Hi, I would like to join to your Space",
 )
 ```
 
-#### Accept a join space request
+#### Accept a Join Space Request
 
 ```ruby
 Ribose::JoinSpaceRequest.accept(invitation_id)
 ```
 
-#### Reject a join space requests
+#### Reject a Join Space Requests
 
 ```ruby
 Ribose::JoinSpaceRequest.reject(invitation_id)
 ```
 
-#### Update an join space requests
+#### Update an Join Space Requests
 
 ```ruby
 Ribose::JoinSpaceRequest.update(invitation_id, new_attributes_hash)
@@ -481,8 +484,7 @@ Ribose::JoinSpaceRequest.update(invitation_id, new_attributes_hash)
 
 #### List user calendars
 
-To retrieve the list of user calendar, we can use the `Calendar.all` and it will
-fetch the calendar details for the currently configured user.
+To retrieve the list of calendars accessible to the current user,
 
 ```ruby
 Ribose::Calendar.all
@@ -499,8 +501,8 @@ Ribose::Calendar.fetch(calendar_id)
 ```ruby
 Ribose::Calendar.create(
   owner_type: "User",
-  owner_id: "The Owner UUID",
-  name: "The name for the calendar",
+  owner_id:   "The Owner UUID",
+  name:       "The name for the calendar",
 )
 ```
 
@@ -522,9 +524,9 @@ Ribose::User.create(email: "user@example.com", **other_attributes)
 
 ```ruby
 Ribose::User.activate(
-  email: "user@example.com",
+  email:    "user@example.com",
   password: "ASecureUserPassword",
-  otp: "OTP Recived via the Email",
+  otp:      "OTP Recived via the Email",
 )
 ```
 
