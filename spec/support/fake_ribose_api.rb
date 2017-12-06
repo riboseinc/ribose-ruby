@@ -38,6 +38,12 @@ module Ribose
       stub_api_response(:get, "spaces/#{space_id}/members", filename: "members")
     end
 
+    def stub_ribose_space_member_delete_api(space_id, member_id)
+      stub_api_response(
+        :delete, "spaces/#{space_id}/members/#{member_id}", filename: "empty"
+      )
+    end
+
     def stub_ribose_setting_list_api
       stub_api_response(:get, "settings", filename: "settings")
     end

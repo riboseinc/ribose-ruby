@@ -13,4 +13,14 @@ RSpec.describe Ribose::Member do
       expect(members.first.role_name_in_space).to eq("Administrator")
     end
   end
+
+  describe ".delete" do
+    it "deletes a member from a space" do
+      space_id = 123_456_789
+      member_id = 456_789_012
+
+      stub_ribose_space_member_delete_api(space_id, member_id)
+      expect { Ribose::Member.delete(space_id, member_id) }.not_to raise_error
+    end
+  end
 end

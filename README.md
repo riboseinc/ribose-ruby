@@ -187,12 +187,18 @@ The members endpoint are Space-specific.
 To retrieve the member details under any specific Space, we can use this
 interface.
 
-### List of Members
+#### List space members
 
 To retrieve the list of members,
 
 ```ruby
 Ribose::Member.all(space_id, options)
+```
+
+#### Delete a space member
+
+```ruby
+Ribose::Member.delete(space_id, member_id, options)
 ```
 
 ### Files

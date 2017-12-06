@@ -1,6 +1,7 @@
 module Ribose
   class Member < Ribose::Base
     include Ribose::Actions::All
+    include Ribose::Actions::Delete
 
     # List A Space Members
     #
@@ -13,6 +14,16 @@ module Ribose
     #
     def self.all(space_id, options = {})
       new(space_id: space_id, **options).all
+    end
+
+    # Delete a space member
+    #
+    # @param space_id [String] The Space UUID
+    # @param member_id [String] The Member UUID
+    # @param options [Hash] Query parameters as Hash
+    #
+    def self.delete(space_id, member_id, options = {})
+      new(space_id: space_id, resource_id: member_id, **options).delete
     end
 
     private
