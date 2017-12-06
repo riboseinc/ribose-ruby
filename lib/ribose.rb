@@ -27,6 +27,7 @@ require "ribose/user"
 require "ribose/session"
 require "ribose/profile"
 require "ribose/wiki"
+require "ribose/member_role"
 
 module Ribose
   def self.root

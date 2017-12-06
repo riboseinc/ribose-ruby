@@ -201,6 +201,12 @@ Ribose::Member.all(space_id, options)
 Ribose::Member.delete(space_id, member_id, options)
 ```
 
+#### Fetch Member Role
+
+```ruby
+Ribose::MemberRole.fetch(space_id, member_id, options)
+```
+
 ### Files
 
 #### List of Files

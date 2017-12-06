@@ -44,6 +44,14 @@ module Ribose
       )
     end
 
+    def stub_ribose_member_role_fetch_api(space_id, user_id)
+      stub_api_response(
+        :get,
+        "people/users/#{user_id}/roles/get_roles?in_space=#{space_id}",
+        filename: "member_role",
+      )
+    end
+
     def stub_ribose_setting_list_api
       stub_api_response(:get, "settings", filename: "settings")
     end

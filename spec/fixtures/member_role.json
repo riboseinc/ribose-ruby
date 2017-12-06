@@ -1,0 +1,19 @@
+{
+  "roles":[
+    {
+      "id":91877,
+      "name":"Member",
+      "space_id":"77b9d5102fb0-457e8438-1c6f"
+    },
+    {
+      "id":91878,
+      "name":"Administrator",
+      "space_id":"77b9d5102fb0-457e8438-1c6f"
+    }
+  ],
+  "user_role":{
+    "id":91878,
+    "name":"Administrator",
+    "space_id":"77b9d5102fb0-457e8438-1c6f"
+  }
+}
