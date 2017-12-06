@@ -207,6 +207,12 @@ Ribose::Member.delete(space_id, member_id, options)
 Ribose::MemberRole.fetch(space_id, member_id, options)
 ```
 
+#### Assign a role to member
+
+```ruby
+Ribose::MemberRole.assign(space_id, member_id, role_id)
+```
+
 ### Files
 
 #### List of Files

@@ -52,6 +52,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_member_role_assign(space_id, user_id, role_id)
+      stub_api_response(
+        :put,
+        "people/users/#{user_id}/roles/change_assignment?in_space=#{space_id}",
+        data: { checked_role: role_id },
+        filename: "empty",
+      )
+    end
+
     def stub_ribose_setting_list_api
       stub_api_response(:get, "settings", filename: "settings")
     end
