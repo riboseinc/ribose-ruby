@@ -229,10 +229,16 @@ Ribose::SpaceFile.all(space_id, options)
 Ribose::SpaceFile.fetch(space_id, file_id, options = {})
 ```
 
-### Create a file upload
+#### Create a file upload
 
 ```ruby
 Ribose::SpaceFile.create(space_id, file: "The complete file path", **attributes)
+```
+
+#### Update a space file
+
+```ruby
+Ribose::SpaceFile.update(space_id, file_id, new_file_attributes = {})
 ```
 
 ### Conversations

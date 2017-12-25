@@ -41,6 +41,22 @@ RSpec.describe Ribose::SpaceFile do
     end
   end
 
+  describe ".update" do
+    it "updates the details for a space file" do
+      file_id = 456_789_012
+      space_id = 123_456_789
+
+      attributes = { name: "sample-file.png", description: "description" }
+      stub_ribose_space_file_update_api(space_id, file_id, attributes)
+
+      file = Ribose::SpaceFile.update(space_id, file_id, attributes)
+
+      expect(file.id).not_to be_nil
+      expect(file.name).to eq("sample-file.png")
+      expect(file.content_type).to eq("image/png")
+    end
+  end
+
   def file_attributes
     {
       file: sample_fixture_file,

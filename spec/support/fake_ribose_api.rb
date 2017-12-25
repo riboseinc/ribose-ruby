@@ -145,6 +145,15 @@ module Ribose
       stub_api_response(:get, file_endppoint, filename: "space_file")
     end
 
+    def stub_ribose_space_file_update_api(space_id, file_id, attributes)
+      stub_api_response(
+        :put,
+        ["spaces", space_id, "file", "files", file_id].join("/"),
+        data: { file_info: attributes },
+        filename: "space_file",
+      )
+    end
+
     def stub_ribose_space_conversation_list(space_id)
       stub_api_response(
         :get, conversations_path(space_id), filename: "conversations"

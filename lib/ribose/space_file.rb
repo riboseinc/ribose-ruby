@@ -4,6 +4,7 @@ module Ribose
   class SpaceFile < Ribose::Base
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
+    include Ribose::Actions::Update
 
     # List Files for Space
     #
@@ -44,12 +45,27 @@ module Ribose
       upload[:attachment]
     end
 
+    # Update a space file
+    #
+    # @param space_id [String] The Space UUID
+    # @param file_id [String] The space file ID
+    # @param attributes [Hash] The file attributes
+    # @return [Sawyer::Resource]
+    #
+    def self.update(space_id, file_id, attributes)
+      new(space_id: space_id, resource_id: file_id, **attributes).update
+    end
+
     private
 
     attr_reader :space_id
 
     def resource
       "file"
+    end
+
+    def resource_key
+      "file_info"
     end
 
     def resources_path
