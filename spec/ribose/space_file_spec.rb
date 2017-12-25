@@ -57,6 +57,16 @@ RSpec.describe Ribose::SpaceFile do
     end
   end
 
+  describe ".delete" do
+    it "removes a specified space file" do
+      file_id = 456_789_012
+      space_id = 123_456_789
+
+      stub_ribose_space_file_delete_api(space_id, file_id)
+      expect { Ribose::SpaceFile.delete(space_id, file_id) }.not_to raise_error
+    end
+  end
+
   def file_attributes
     {
       file: sample_fixture_file,

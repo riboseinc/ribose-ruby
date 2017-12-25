@@ -154,6 +154,11 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_file_delete_api(space_id, file_id)
+      file_endppoint = ["spaces", space_id, "file", "files", file_id].join("/")
+      stub_api_response(:delete, file_endppoint, filename: "empty")
+    end
+
     def stub_ribose_space_conversation_list(space_id)
       stub_api_response(
         :get, conversations_path(space_id), filename: "conversations"

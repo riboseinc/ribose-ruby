@@ -241,6 +241,12 @@ Ribose::SpaceFile.create(space_id, file: "The complete file path", **attributes)
 Ribose::SpaceFile.update(space_id, file_id, new_file_attributes = {})
 ```
 
+#### Remove a space file
+
+```ruby
+Ribose::SpaceFile.delete(space_id, file_id)
+```
+
 ### Conversations
 
 #### Listing Space Conversations

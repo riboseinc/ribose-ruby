@@ -5,6 +5,7 @@ module Ribose
     include Ribose::Actions::All
     include Ribose::Actions::Fetch
     include Ribose::Actions::Update
+    include Ribose::Actions::Delete
 
     # List Files for Space
     #
@@ -54,6 +55,15 @@ module Ribose
     #
     def self.update(space_id, file_id, attributes)
       new(space_id: space_id, resource_id: file_id, **attributes).update
+    end
+
+    # Delete a space file
+    #
+    # @param space_id [String] The Space UUID
+    # @param file_id [String] The space file ID
+    #
+    def self.delete(space_id, file_id, options = {})
+      new(space_id: space_id, resource_id: file_id, **options).delete
     end
 
     private
