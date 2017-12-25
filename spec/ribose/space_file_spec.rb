@@ -14,6 +14,20 @@ RSpec.describe Ribose::SpaceFile do
     end
   end
 
+  describe ".fetch" do
+    it "retrieves the details for a file" do
+      file_id = 456_789_012
+      space_id = 123_456_789
+
+      stub_ribose_space_file_fetch_api(space_id, file_id)
+      file = Ribose::SpaceFile.fetch(space_id, file_id)
+
+      expect(file.id).not_to be_nil
+      expect(file.name).to eq("sample-file.png")
+      expect(file.content_type).to eq("image/png")
+    end
+  end
+
   describe ".create" do
     it "creates a new file with provided details" do
       space_id = 123_456_789

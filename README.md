@@ -223,6 +223,12 @@ To retrieve the list of files for any specific Space,
 Ribose::SpaceFile.all(space_id, options)
 ```
 
+#### Fetch a file details
+
+```ruby
+Ribose::SpaceFile.fetch(space_id, file_id, options = {})
+```
+
 ### Create a file upload
 
 ```ruby

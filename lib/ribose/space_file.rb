@@ -3,6 +3,7 @@ require "ribose/file_uploader"
 module Ribose
   class SpaceFile < Ribose::Base
     include Ribose::Actions::All
+    include Ribose::Actions::Fetch
 
     # List Files for Space
     #
@@ -16,6 +17,19 @@ module Ribose
     #
     def self.all(space_id, options = {})
       new(space_id: space_id, **options).all
+    end
+
+    # Fetch a space file
+    #
+    # This interface retrieve the details for a single file in any
+    # given user space. The response is a `Sawyer::Resource`.
+    #
+    # @param space_id [String] The space UUID
+    # @param file_id [String] The space file ID
+    # @return [Sawyer::Resource]
+    #
+    def self.fetch(space_id, file_id, options = {})
+      new(space_id: space_id, resource_id: file_id, **options).fetch
     end
 
     # Create a new file upload

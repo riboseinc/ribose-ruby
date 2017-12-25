@@ -137,6 +137,11 @@ module Ribose
 
     def stub_ribose_space_file_list(space_id)
       file_endppoint = ["spaces", space_id, "file", "files"].join("/")
+      stub_api_response(:get, file_endppoint, filename: "space_files")
+    end
+
+    def stub_ribose_space_file_fetch_api(space_id, file_id)
+      file_endppoint = ["spaces", space_id, "file", "files", file_id].join("/")
       stub_api_response(:get, file_endppoint, filename: "space_file")
     end
 
