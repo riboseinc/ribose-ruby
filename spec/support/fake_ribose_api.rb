@@ -319,6 +319,14 @@ module Ribose
       )
     end
 
+    def stub_ribose_join_space_request_fetch_api(invitation_id)
+      stub_api_response(
+        :get,
+        ["invitations", "join_space_request", invitation_id].join("/"),
+        filename: "join_space_request",
+      )
+    end
+
     def stub_ribose_join_space_request_create_api(attributes)
       stub_api_response(
         :post,

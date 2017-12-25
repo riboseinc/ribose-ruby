@@ -1,0 +1,32 @@
+{
+  "join_space_request": {
+    "id": 123456789,
+    "email": "",
+    "body": null,
+    "created_at": "",
+    "state": 0,
+    "type": "Invitation::ToSpace",
+    "updated_at": "",
+    "invitee": {
+      "id": "109EF27E",
+      "connected": true,
+      "name": "Joe Public",
+      "mutual_spaces": [
+        ""
+      ]
+    },
+    "inviter": {
+      "id": "109EF27E",
+      "connected": true,
+      "name": "John Doe",
+      "mutual_spaces": [
+        ""
+      ]
+    },
+    "space": {
+      "id": "948AD10F",
+      "name": "My first space",
+      "members_count": 10
+    }
+  }
+}

@@ -469,6 +469,12 @@ Ribose::SpaceInvitation.cancel(invitation_id)
 Ribose::JoinSpaceRequest.all
 ```
 
+#### Fetch a join space request
+
+```ruby
+Ribose::JoinSpaceRequest.fetch(request_id)
+```
+
 #### Create a Join Space Request
 
 ```ruby

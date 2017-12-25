@@ -11,6 +11,19 @@ RSpec.describe Ribose::JoinSpaceRequest do
     end
   end
 
+  describe ".fetch" do
+    it "retrieves the details for a join space request" do
+      invitation_id = 123_456_789
+
+      stub_ribose_join_space_request_fetch_api(invitation_id)
+      invitation = Ribose::JoinSpaceRequest.fetch(invitation_id)
+
+      expect(invitation.id).not_to be_nil
+      expect(invitation.inviter.name).to eq("John Doe")
+      expect(invitation.type).to eq("Invitation::ToSpace")
+    end
+  end
+
   describe ".create" do
     it "creates a new join space request" do
       attributes = {

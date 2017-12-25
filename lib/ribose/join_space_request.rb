@@ -1,6 +1,7 @@
 module Ribose
   class JoinSpaceRequest < Ribose::Base
     include Ribose::Actions::All
+    include Ribose::Actions::Fetch
     include Ribose::Actions::Create
     include Ribose::Actions::Update
 
