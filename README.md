@@ -61,6 +61,8 @@ Ribose.configuration.user_email = "your-email@example.com"
 
 ### App Data
 
+#### List app data
+
 App data can be retrieved using the `AppData.all` interface.
 
 ```ruby
@@ -362,7 +364,7 @@ Ribose::Leaderboard.all
 
 ### Connections
 
-### List of connections
+#### List of connections
 
 To retrieve the list of connections, we can use the `Connection.all` interface
 and it will return the connection as `Sawyer::Resource`.
@@ -594,7 +596,7 @@ Ribose::Wiki.create(
 )
 ```
 
-### Update a wiki page
+#### Update a wiki page
 
 ```ruby
 Ribose::Wiki.update(
@@ -602,7 +604,7 @@ Ribose::Wiki.update(
 )
 ```
 
-### Remove a wiki page
+#### Remove a wiki page
 
 ```ruby
 Ribose::Wiki.delete(space_id, wiki_id)
