@@ -33,4 +33,9 @@ module Ribose
   def self.root
     File.dirname(__dir__)
   end
+
+  def self.encode_ids(resource_ids)
+    require "id_pack"
+    IdPack::IdPacker.new.encode([resource_ids].flatten)
+  end
 end

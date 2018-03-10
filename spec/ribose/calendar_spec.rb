@@ -13,15 +13,15 @@ RSpec.describe Ribose::Calendar do
   end
 
   describe ".fetch" do
-    it "retrieves the details for a calendar" do
-      calendar_id = 123_456_789
+    it "retrieves the events for calendars" do
+      calendar_ids = [123, 456]
 
-      stub_ribose_calendar_fetch_api(calendar_id)
-      calendar = Ribose::Calendar.fetch(calendar_id)
+      stub_ribose_calendar_events_api(calendar_ids)
+      events = Ribose::Calendar.fetch(calendar_ids).events
 
-      expect(calendar.id).not_to be_nil
-      expect(calendar.owner_type).to eq("User")
-      expect(calendar.name).to eq("Sample 101")
+      expect(events.first.id).not_to be_nil
+      expect(events.first.calendar_id).to eq(123)
+      expect(events.first.name).to eq("Sample event")
     end
   end
 

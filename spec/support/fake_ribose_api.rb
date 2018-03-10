@@ -98,6 +98,20 @@ module Ribose
       )
     end
 
+    def stub_ribose_calendar_events_api(calendar_ids, length: 7)
+      data = OpenStruct.new(
+        length: length,
+        cals: Ribose.encode_ids(calendar_ids),
+        start: Date.today.to_time.to_i / (60 * 60 * 24),
+      )
+
+      params = "cal_ids=#{data.cals}&length=#{data.length}&start=#{data.start}"
+
+      stub_api_response(
+        :get, "calendar/calendar/?#{params}", filename: "calendar_events"
+      )
+    end
+
     def stub_ribose_calendar_create_api(attributes)
       stub_api_response(
         :post,

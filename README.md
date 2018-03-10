@@ -532,10 +532,10 @@ To retrieve the list of calendars accessible to the current user,
 Ribose::Calendar.all
 ```
 
-#### Fetch a calendar
+#### Fetch a calendar events
 
 ```ruby
-Ribose::Calendar.fetch(calendar_id)
+Ribose::Calendar.fetch(calendar_ids, start: Data.today, length: 7)
 ```
 
 #### Create a calendar
