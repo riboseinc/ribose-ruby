@@ -564,6 +564,12 @@ Ribose::Calendar.delete(calendar_id)
 Ribose::Event.all(calendar_id)
 ```
 
+#### Fetch a calendar event
+
+```ruby
+Ribose::Event.fetch(calendar_id, event_id)
+```
+
 ### User
 
 #### Create a signup request

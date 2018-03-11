@@ -13,4 +13,18 @@ RSpec.describe Ribose::Event do
       expect(calendar_events.first.name).to eq("Sample event")
     end
   end
+
+  describe ".fetch" do
+    it "retrives the details for an event" do
+      event_id = 456_789
+      calendar_id = 123_456_789
+
+      stub_ribose_event_fetch_api(calendar_id, event_id)
+      event = Ribose::Event.fetch(calendar_id, event_id)
+
+      expect(event.id).to eq(event_id)
+      expect(event.name).to eq("Sample event")
+      expect(event.calendar_id).to eq(calendar_id)
+    end
+  end
 end

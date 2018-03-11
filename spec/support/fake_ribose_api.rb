@@ -127,6 +127,14 @@ module Ribose
       )
     end
 
+    def stub_ribose_event_fetch_api(calender_id, event_id)
+      stub_api_response(
+        :get,
+        "calendar/calendar/#{calender_id}/event/#{event_id}",
+        filename: "calendar_event",
+      )
+    end
+
     def stub_ribose_app_user_create_api(attributes)
       stub_api_response(
         :post,

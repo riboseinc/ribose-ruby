@@ -1,0 +1,48 @@
+{
+  "filter": {
+    "enabled": [
+      123456789
+    ],
+    "userSetting": [0]
+  },
+  "cal_info": [
+    {
+      "id": 123456789,
+      "owner_type": "User",
+      "name": "johndoe",
+      "owner_id": "2970d105-5ccc-4a8c",
+      "owner_name": "Personal",
+      "display_name": "johndoe (Personal)",
+      "can_manage": true,
+      "can_create_event": true
+    }
+  ],
+  "spaces_permission": {
+    "268b0407-c3a3-4aad-8693-fdba789f7f0d": false,
+    "457e8438-1c6f-423f-8bf2-77b9d5102fb0": true,
+    "52e47e18-9a9d-4663-94c5-abcb18fa783a": true,
+    "a45387e2-a573-48ba-8df0-f1424d8a8ec9": false,
+    "a7f7b94e-a007-4457-868f-5af319706ad5": false
+  },
+  "event": {
+    "id": 456789,
+    "name": "Sample event",
+    "description": "",
+    "where": "",
+    "all_day": true,
+    "recurring_type": "not_repeat",
+    "my_note": null,
+    "old_head_id": null,
+    "calendar_id": 123456789,
+    "created_by": "2970d105-5ccc-4a8c-b0c4-ec32d539a00a",
+    "utc_start": "2018-03-13T12:00:00.000Z",
+    "utc_finish": "2018-03-13T13:00:00.000Z",
+    "utc_old_start": null,
+    "utc_old_finish": null,
+    "can_save": true,
+    "can_delete": true,
+    "timestamp": 1520690119
+  },
+  "head_event": null,
+  "recurring": []
+}
