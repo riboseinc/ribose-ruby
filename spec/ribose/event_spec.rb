@@ -27,4 +27,16 @@ RSpec.describe Ribose::Event do
       expect(event.calendar_id).to eq(calendar_id)
     end
   end
+
+  describe ".delete" do
+    it "removes a calendar event" do
+      event_id = 456_789
+      calendar_id = 123_456_789
+      stub_ribose_event_delete_api(calendar_id, event_id)
+
+      expect do
+        Ribose::Event.delete(calendar_id, event_id)
+      end.not_to raise_error
+    end
+  end
 end

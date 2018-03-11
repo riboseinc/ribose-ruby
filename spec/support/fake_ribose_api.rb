@@ -135,6 +135,14 @@ module Ribose
       )
     end
 
+    def stub_ribose_event_delete_api(calender_id, event_id)
+      stub_api_response(
+        :delete,
+        "calendar/calendar/#{calender_id}/event/#{event_id}",
+        filename: "empty",
+      )
+    end
+
     def stub_ribose_app_user_create_api(attributes)
       stub_api_response(
         :post,

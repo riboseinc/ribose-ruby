@@ -1,6 +1,7 @@
 module Ribose
   class Event < Ribose::Base
     include Ribose::Actions::Fetch
+    include Ribose::Actions::Delete
 
     # List calendar events
     #
@@ -20,6 +21,16 @@ module Ribose
     #
     def self.fetch(calendar_id, event_id, options = {})
       new(options.merge(calendar_id: calendar_id, resource_id: event_id)).fetch
+    end
+
+    # Delete a calendar event
+    #
+    # @params calendar_id The calendar Id
+    # @params event_id  The calendar event Id
+    # @params options [Hash] The query params
+    #
+    def self.delete(calendar_id, event_id, options = {})
+      new(options.merge(calendar_id: calendar_id, resource_id: event_id)).delete
     end
 
     private
