@@ -14,14 +14,14 @@ module Ribose
     # @params length [Integer] How many days to fetch
     # @return [Sawyer::Resource] The calendar events
     #
-    def self.fetch(calendar_ids, start: Date.today, length: 7)
+    def self.fetch(calendar_ids, start: Date.today, length: 7, **others)
       query = {
         length: length,
         cal_ids: Ribose.encode_ids(calendar_ids),
         start: start.to_time.to_i / (60 * 60 * 24),
       }
 
-      super(nil, query: query)
+      super(nil, query: others.merge(query))
     end
 
     private
