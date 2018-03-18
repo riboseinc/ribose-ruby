@@ -1,0 +1,23 @@
+{
+  "events": [
+    {
+      "id": 345678901,
+      "name": "Sample event",
+      "description": "",
+      "where": "",
+      "all_day": true,
+      "recurring_type": "not_repeat",
+      "my_note": "",
+      "old_head_id": null,
+      "calendar_id": 123456789,
+      "created_by": "bdc6aced-f7d0-465d-9d8b",
+      "utc_start": "2017-11-07T12:00:00.000Z",
+      "utc_finish": "2017-11-07T13:00:00.000Z",
+      "utc_old_start": null,
+      "utc_old_finish": null,
+      "can_save": true,
+      "can_delete": true,
+      "timestamp": 1508401619
+    }
+  ]
+}

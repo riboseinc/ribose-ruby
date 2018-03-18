@@ -9,7 +9,8 @@ module Ribose
       #
       # @return [Sawyer::Resource] Update resource response
       def update
-        update_resource[resource]
+        response = update_resource
+        response[resource] || response
       end
 
       private

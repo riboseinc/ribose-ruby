@@ -6,7 +6,8 @@ module Ribose
       extend Ribose::Actions::Base
 
       def create
-        create_resource[resource]
+        response = create_resource
+        response[resource] || response
       end
 
       private

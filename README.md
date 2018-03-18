@@ -589,6 +589,14 @@ Ribose::Event.create(
 )
 ```
 
+#### Update a calendar event
+
+```ruby
+Ribose::Event.update(
+  calendar_id, event_id, new_attributes_hash, options_params
+)
+```
+
 #### Delete a calendar event
 
 ```ruby

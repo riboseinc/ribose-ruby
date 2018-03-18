@@ -144,6 +144,15 @@ module Ribose
       )
     end
 
+    def stub_ribose_event_update_api(calender_id, event_id, attributes)
+      stub_api_response(
+        :put,
+        "calendar/calendar/#{calender_id}/event/#{event_id}",
+        data: { event: attributes },
+        filename: "event_updated",
+      )
+    end
+
     def stub_ribose_event_delete_api(calender_id, event_id)
       stub_api_response(
         :delete,

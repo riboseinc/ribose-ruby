@@ -41,6 +41,19 @@ RSpec.describe Ribose::Event do
     end
   end
 
+  describe ".update" do
+    it "updates an existing event" do
+      event_id = 345_678_901
+      calendar_id = 123_456_789
+
+      stub_ribose_event_update_api(calendar_id, event_id, event_attributes)
+      event = Ribose::Event.update(calendar_id, event_id, event_attributes)
+
+      expect(event.first.id).not_to be_nil
+      expect(event.first.name).to eq("Sample event")
+    end
+  end
+
   describe ".delete" do
     it "removes a calendar event" do
       event_id = 456_789
