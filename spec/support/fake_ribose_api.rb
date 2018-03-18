@@ -241,6 +241,14 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_conversation_mafav_api(sid, cid)
+      stub_api_response(
+        :put,
+        [conversations_path(sid), cid, "mark_as_favorite"].join("/"),
+        filename: "conversation",
+      )
+    end
+
     def stub_ribose_space_conversation_remove(space_id, conversation_id)
       path = [conversations_path(space_id), conversation_id].join("/")
       stub_api_response(:delete, path, filename: "empty", status: 200)

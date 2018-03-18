@@ -283,6 +283,12 @@ Ribose::Conversation.update(space_id, conversation_id, new_attributes_hash)
 Ribose::Conversation.destroy(space_id: "space_id", conversation_id: "12345")
 ```
 
+#### Mark a conversation as favorite
+
+```ruby
+Ribose::Conversation.mark_as_favorite(space_id, conversation_id)
+```
+
 ### Message
 
 #### List Conversation Messages

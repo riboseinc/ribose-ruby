@@ -7,7 +7,7 @@
     "name": "Trips to the Mars!",
     "tag_list": [],
     "published": false,
-    "is_favorite": false,
+    "is_favorite": true,
     "is_read": true,
     "allow_publish": false,
     "number_of_messages": 1,

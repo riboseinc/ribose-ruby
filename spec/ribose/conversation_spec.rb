@@ -59,6 +59,20 @@ RSpec.describe Ribose::Conversation do
     end
   end
 
+  describe ".mark_as_favorite" do
+    it "marks a conversation as favorite" do
+      space_id = 123_456_789
+      conversation_id = 456_789
+      stub_ribose_space_conversation_mafav_api(space_id, conversation_id)
+
+      conversation = Ribose::Conversation.mark_as_favorite(
+        space_id, conversation_id
+      )
+
+      expect(conversation.is_favorite).to eq(true)
+    end
+  end
+
   describe ".destroy" do
     it "remvoes a conversation from a space" do
       space_id = 123456789

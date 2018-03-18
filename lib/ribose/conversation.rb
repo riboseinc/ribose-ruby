@@ -62,6 +62,24 @@ module Ribose
       new(space_id: space_id, conversation_id: conversation_id, **opts).delete
     end
 
+    def mark_as_favorite
+      response = Ribose::Request.put(
+        "#{resource_path}/mark_as_favorite",
+        resource_key.to_sym => { is_favorite: true },
+      )
+
+      response[resource]
+    end
+
+    # Mark a conversation a favorite
+    #
+    # @param space_id [String] The Space UUID
+    # @param conversation_id [String] Conversation UUID
+    #
+    def self.mark_as_favorite(space_id, conversation_id)
+      new(space_id: space_id, conversation_id: conversation_id).mark_as_favorite
+    end
+
     private
 
     attr_reader :space_id, :conversation_id
