@@ -475,6 +475,12 @@ module Ribose
       )
     end
 
+    def stub_ribose_space_categories_api
+      stub_api_response(
+        :get, "space_categories", filename: "space_categories"
+      )
+    end
+
     private
 
     def ribose_endpoint(endpoint)

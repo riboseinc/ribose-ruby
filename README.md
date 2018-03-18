@@ -663,6 +663,14 @@ Ribose::Wiki.update(
 Ribose::Wiki.delete(space_id, wiki_id)
 ```
 
+### Space categories
+
+#### List space categories
+
+```ruby
+Ribose::SpaceCategory.all
+```
+
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the

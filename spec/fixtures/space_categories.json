@@ -1,0 +1,150 @@
+[
+  {
+    "id": 1,
+    "name": "animals"
+  },
+  {
+    "id": 2,
+    "name": "architecture"
+  },
+  {
+    "id": 3,
+    "name": "art"
+  },
+  {
+    "id": 4,
+    "name": "business"
+  },
+  {
+    "id": 5,
+    "name": "cars_and_motorcycles"
+  },
+  {
+    "id": 6,
+    "name": "common_interest"
+  },
+  {
+    "id": 7,
+    "name": "diy_and_crafts"
+  },
+  {
+    "id": 8,
+    "name": "design"
+  },
+  {
+    "id": 9,
+    "name": "education"
+  },
+  {
+    "id": 10,
+    "name": "entertainment"
+  },
+  {
+    "id": 11,
+    "name": "fashion"
+  },
+  {
+    "id": 12,
+    "name": "film_music_books"
+  },
+  {
+    "id": 13,
+    "name": "food_and_drink"
+  },
+  {
+    "id": 14,
+    "name": "gardening"
+  },
+  {
+    "id": 15,
+    "name": "geek"
+  },
+  {
+    "id": 16,
+    "name": "geography"
+  },
+  {
+    "id": 17,
+    "name": "groups_and_organizations"
+  },
+  {
+    "id": 18,
+    "name": "hair_and_beauty"
+  },
+  {
+    "id": 19,
+    "name": "health_and_fitness"
+  },
+  {
+    "id": 20,
+    "name": "history"
+  },
+  {
+    "id": 21,
+    "name": "holidays_and_events"
+  },
+  {
+    "id": 22,
+    "name": "home_decor"
+  },
+  {
+    "id": 23,
+    "name": "humor"
+  },
+  {
+    "id": 24,
+    "name": "illustrations_and_posters"
+  },
+  {
+    "id": 25,
+    "name": "kids"
+  },
+  {
+    "id": 26,
+    "name": "mens_fashion"
+  },
+  {
+    "id": 27,
+    "name": "outdoors"
+  },
+  {
+    "id": 28,
+    "name": "philosophy"
+  },
+  {
+    "id": 29,
+    "name": "photography"
+  },
+  {
+    "id": 30,
+    "name": "products"
+  },
+  {
+    "id": 31,
+    "name": "religion_and_spirituality"
+  },
+  {
+    "id": 32,
+    "name": "science_and_nature"
+  },
+  {
+    "id": 33,
+    "name": "sports"
+  },
+  {
+    "id": 34,
+    "name": "technology"
+  },
+  {
+    "id": 35,
+    "name": "travel"
+  },
+  {
+    "id": 36,
+    "name": "weddings"
+  },
+  {
+    "id": 37,
+    "name": "others"
+  }
+]
