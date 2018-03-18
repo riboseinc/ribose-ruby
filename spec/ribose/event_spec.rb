@@ -28,6 +28,19 @@ RSpec.describe Ribose::Event do
     end
   end
 
+  describe ".create" do
+    it "creates a new event" do
+      calendar_id = 123_456_789
+
+      stub_ribose_event_create_api(calendar_id, event_attributes)
+      event = Ribose::Event.create(calendar_id, event_attributes)
+
+      expect(event.id).not_to be_nil
+      expect(event.name).to eq(event_attributes[:name])
+      expect(event.description).to eq(event_attributes[:description])
+    end
+  end
+
   describe ".delete" do
     it "removes a calendar event" do
       event_id = 456_789
@@ -38,5 +51,22 @@ RSpec.describe Ribose::Event do
         Ribose::Event.delete(calendar_id, event_id)
       end.not_to raise_error
     end
+  end
+
+  def event_attributes
+    @event_attributes ||= {
+      name: "Sample Event",
+      recurring_type: "not_repeat",
+      until: "never",
+      repeat_every: "1",
+      where: "Skype",
+      description: "Sample event",
+      all_day: false,
+
+      date_start: "04/04/2018",
+      time_start: "4:30pm",
+      date_finish: "04/04/2018",
+      time_finish: "5:30pm",
+    }
   end
 end

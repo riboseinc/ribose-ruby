@@ -1,6 +1,7 @@
 module Ribose
   class Event < Ribose::Base
     include Ribose::Actions::Fetch
+    include Ribose::Actions::Create
     include Ribose::Actions::Delete
 
     # List calendar events
@@ -23,6 +24,23 @@ module Ribose
       new(options.merge(calendar_id: calendar_id, resource_id: event_id)).fetch
     end
 
+    # The resource key comes as plural, so this
+    # will override our existing create interface
+    #
+    def create
+      create_resource["events"]
+    end
+
+    # Create a calendar event
+    #
+    # @params calendar_id - The calendar Id
+    # @attributes [Hash] - New Event attributes
+    # @return [Sawyer::Resource] The new event
+    #
+    def self.create(calendar_id, attributes, options = {})
+      new(options.merge(calendar_id: calendar_id, **attributes)).create
+    end
+
     # Delete a calendar event
     #
     # @params calendar_id The calendar Id
@@ -39,6 +57,15 @@ module Ribose
 
     def resource
       "event"
+    end
+
+    def validate(date_start:, date_finish:, time_start:, time_finish:, **others)
+      others.merge(
+        date_start: date_start,
+        time_start: time_start,
+        date_finish: date_finish,
+        time_finish: time_finish,
+      )
     end
 
     def extract_local_attributes

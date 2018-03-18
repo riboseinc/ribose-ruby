@@ -570,6 +570,25 @@ Ribose::Event.all(calendar_id)
 Ribose::Event.fetch(calendar_id, event_id)
 ```
 
+#### Create a calendar event
+
+```ruby
+Ribose::Event.create(
+  calendar_id,
+  name: "Sample Event",
+  date_start: "04/04/2018",
+  time_start: "4:30pm",
+  date_finish: "04/04/2018",
+  time_finish: "5:30pm",
+  recurring_type: "not_repeat",
+  until: "never",
+  repeat_every: "1",
+  where: "Skype",
+  description: "Sample event",
+  all_day: false,
+)
+```
+
 #### Delete a calendar event
 
 ```ruby

@@ -1,0 +1,21 @@
+{
+  "events": {
+    "id": 789012345,
+    "name": "Sample Event",
+    "description": "Sample event",
+    "where": "Skype",
+    "all_day": false,
+    "recurring_type": "not_repeat",
+    "my_note": null,
+    "old_head_id": null,
+    "calendar_id": 18987,
+    "created_by": "2970d105-5ccc",
+    "utc_start": "2018-04-04T18:00:00.000Z",
+    "utc_finish": "2018-04-04T18:30:00.000Z",
+    "utc_old_start": null,
+    "utc_old_finish": null,
+    "can_save": true,
+    "can_delete": true,
+    "timestamp": 1521387260
+  }
+}
