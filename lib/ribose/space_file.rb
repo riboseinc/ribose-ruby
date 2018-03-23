@@ -66,6 +66,20 @@ module Ribose
       new(space_id: space_id, resource_id: file_id, **options).delete
     end
 
+    def fetch_icon
+      Ribose::Request.get([resource_path, "icon"].join("/"))
+    end
+
+    # Fetch a space file icon
+    #
+    # @param space_id [String] The Space UUID
+    # @param file_id [String] The space file ID
+    # @return [Sawyer::Resource]
+    #
+    def self.fetch_icon(space_id, file_id, options = {})
+      new(space_id: space_id, resource_id: file_id, **options).fetch_icon
+    end
+
     private
 
     attr_reader :space_id

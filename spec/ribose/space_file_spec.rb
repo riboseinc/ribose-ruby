@@ -67,6 +67,19 @@ RSpec.describe Ribose::SpaceFile do
     end
   end
 
+  describe ".fetch_icon" do
+    it "retrives the details for a file icon" do
+      file_id = 456_789_012
+      space_id = 123_456_789
+
+      stub_ribose_space_file_fetch_icon_api(space_id, file_id)
+      icon = Ribose::SpaceFile.fetch_icon(space_id, file_id)
+
+      expect(icon.icon_processed).to be_truthy
+      expect(icon.icon_path).to eq("/spaces/files/icon_path?type=usual")
+    end
+  end
+
   def file_attributes
     {
       file: sample_fixture_file,

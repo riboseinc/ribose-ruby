@@ -231,6 +231,12 @@ Ribose::SpaceFile.all(space_id, options)
 Ribose::SpaceFile.fetch(space_id, file_id, options = {})
 ```
 
+#### Fetch a file icon
+
+```ruby
+Ribose::SpaceFile.fetch_icon(space_id, file_id, options = {})
+```
+
 #### Create a file upload
 
 ```ruby

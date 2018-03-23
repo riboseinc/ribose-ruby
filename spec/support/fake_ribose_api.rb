@@ -193,6 +193,11 @@ module Ribose
       stub_api_response(:get, file_endppoint, filename: "space_file")
     end
 
+    def stub_ribose_space_file_fetch_icon_api(space_id, file_id)
+      path = ["spaces", space_id, "file", "files", file_id, "icon"].join("/")
+      stub_api_response(:get, path, filename: "space_file_icon")
+    end
+
     def stub_ribose_space_file_update_api(space_id, file_id, attributes)
       stub_api_response(
         :put,
