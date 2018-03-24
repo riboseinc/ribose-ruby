@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "name": "sample.png",
+  "description": "",
+  "created_at": "2017-11-30T09:12:03.000+00:00",
+  "updated_at": "2017-11-30T09:12:05.000+00:00",
+  "position": 1,
+  "current_version_id": 789012,
+  "icon_path": "/spaces/456789/file/files/11570/versions/13235?type=usual",
+  "content_size": 81421,
+  "author": "John Doe",
+  "content_type": "image/png",
+  "file_info_id": 11570
+}

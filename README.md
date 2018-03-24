@@ -255,6 +255,16 @@ Ribose::SpaceFile.update(space_id, file_id, new_file_attributes = {})
 Ribose::SpaceFile.delete(space_id, file_id)
 ```
 
+### File Version
+
+#### Fetch file version
+
+```ruby
+Ribose::FileVersion.fetch(
+  space_id: space_id, file_id: file_id, version_id: version_id
+)
+```
+
 ### Conversations
 
 #### Listing Space Conversations

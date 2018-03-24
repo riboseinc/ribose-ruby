@@ -212,6 +212,14 @@ module Ribose
       stub_api_response(:delete, file_endppoint, filename: "empty")
     end
 
+    def stub_ribose_file_version_fetch_api(sid, fid, vid)
+      stub_api_response(
+        :get,
+        ["spaces", sid, "file/files", fid, "versions", vid].join("/"),
+        filename: "file_version",
+      )
+    end
+
     def stub_ribose_space_conversation_list(space_id)
       stub_api_response(
         :get, conversations_path(space_id), filename: "conversations"

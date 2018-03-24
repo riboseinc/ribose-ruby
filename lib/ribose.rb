@@ -30,6 +30,7 @@ require "ribose/wiki"
 require "ribose/member_role"
 require "ribose/event"
 require "ribose/space_category"
+require "ribose/file_version"
 
 module Ribose
   def self.root
