@@ -265,6 +265,18 @@ Ribose::FileVersion.fetch(
 )
 ```
 
+#### Create a new file version
+
+```ruby
+Ribose::FileVersion.create(
+  space_id: your_space_id,
+  file_id: existing_file_id_in_space,
+  file: file_path_for_the_new_version,
+
+  **any_other_additional_attributes
+)
+```
+
 ### Conversations
 
 #### Listing Space Conversations

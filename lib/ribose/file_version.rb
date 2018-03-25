@@ -1,3 +1,5 @@
+require "ribose/version_uploader"
+
 module Ribose
   class FileVersion < Ribose::Base
     include Ribose::Actions::Fetch
@@ -16,6 +18,22 @@ module Ribose
         resource_id: version_id,
         **options,
       ).fetch
+    end
+
+    # Create a new file version
+    #
+    # @params space_id [UUID] The space UUID
+    # @params file_id [Integer] The space file ID
+    # @params file [File] The new version for file
+    # @params attributes [Hash] Other file attributes
+    # @return [Sawyer::Resource] Newly updated version
+    #
+    def self.create(space_id, file_id, file:, **attributes)
+      upload = VersionUploader.upload(
+        space_id, file_id, attributes.merge(file: file)
+      )
+
+      upload[:attachment]
     end
 
     private

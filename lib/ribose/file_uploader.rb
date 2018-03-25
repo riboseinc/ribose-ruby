@@ -51,7 +51,9 @@ module Ribose
 
     def notify_ribose_file_upload_endpoint(response, key)
       if response.status.to_i == 200
-        content = Request.post(space_file_path, file_attributes.merge(key: key))
+        attributes = notifiable_attributes(file_attributes, key)
+
+        content = Request.post(space_file_path, attributes)
         content.is_a?(Sawyer::Resource) ? content : parse_to_ribose_os(content)
       end
     end
@@ -75,6 +77,10 @@ module Ribose
 
     def parse_to_ribose_os(content)
       JSON.parse(content, object_class: Ribose::OpenStruct)
+    end
+
+    def notifiable_attributes(attributes, key)
+      attributes.merge(key: key)
     end
 
     def file_attributes
