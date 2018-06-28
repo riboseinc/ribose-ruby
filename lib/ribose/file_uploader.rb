@@ -1,4 +1,6 @@
+require "json"
 require "faraday"
+require "ostruct"
 
 module Ribose
   class FileUploader
@@ -49,7 +51,8 @@ module Ribose
 
     def notify_ribose_file_upload_endpoint(response, key)
       if response.status.to_i == 200
-        Ribose::Request.post(space_file_path, file_attributes.merge(key: key))
+        content = Request.post(space_file_path, file_attributes.merge(key: key))
+        content.is_a?(Sawyer::Resource) ? content : parse_to_ribose_os(content)
       end
     end
 
@@ -68,6 +71,10 @@ module Ribose
     def content_type_form_file
       require "mime/types"
       MIME::Types.type_for(file.path).first.content_type
+    end
+
+    def parse_to_ribose_os(content)
+      JSON.parse(content, object_class: Ribose::OpenStruct)
     end
 
     def file_attributes
@@ -89,5 +96,9 @@ module Ribose
         Ribose.configuration.add_default_middleware(builder)
       end
     end
+  end
+
+  class OpenStruct < ::OpenStruct
+    alias :read_attribute_for_serialization :send
   end
 end

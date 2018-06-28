@@ -531,11 +531,11 @@ module Ribose
       end
     end
 
-    def response_with(filename:, status:)
+    def response_with(filename:, status:, content_type: "application/json")
       {
         status: status,
         body: ribose_fixture(filename),
-        headers: { content_type: "application/json" },
+        headers: { content_type: content_type },
       }
     end
 
@@ -546,11 +546,15 @@ module Ribose
       File.read(File.expand_path(file_path, __FILE__))
     end
 
-    def stub_api_response(method, endpoint, filename:,
-                          status: 200, data: nil, client: nil)
+    def stub_api_response(method, endpoint, filename:, status: 200, data: nil,
+                          client: nil, content_type: "application/json")
       stub_request(method, ribose_endpoint(endpoint)).
         with(ribose_headers(data: data, client: client)).
-        to_return(response_with(filename: filename, status: status))
+        to_return(
+          response_with(
+            filename: filename, status: status, content_type: content_type,
+          ),
+        )
     end
   end
 end

@@ -28,6 +28,7 @@ module Ribose
         ribose_file_endpoint(space_id),
         data: build_notify_request_body(attributes),
         filename: "file_uploaded",
+        content_type: "text/html",
       )
     end
 
