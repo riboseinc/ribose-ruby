@@ -14,11 +14,24 @@ RSpec.describe Ribose::FileUploader do
         expect(file_upload.attachment.content_type).to eq("image/png")
       end
     end
+
+    context "with unknown file type" do
+      it "creates a new upload as octet-stream" do
+        space_id = 123_456_789
+        attributes = file_attributes(File.join(Ribose.root, "Rakefile"))
+
+        stub_ribose_space_file_upload_api(space_id, attributes)
+        file_upload = Ribose::FileUploader.upload(space_id, attributes)
+
+        expect(file_upload.attachment.id).not_to be_nil
+        expect(file_upload.attachment.author).to eq("John Doe")
+      end
+    end
   end
 
-  def file_attributes
+  def file_attributes(file = nil)
     {
-      file: sample_fixture_file,
+      file: file || sample_fixture_file,
       tag_list: "sample, file, samplefile",
       description: "This is a sample file",
     }

@@ -63,7 +63,8 @@ module Ribose
 
     def content_type_form_file(file)
       require "mime/types"
-      MIME::Types.type_for(file).first.content_type
+      mime = MIME::Types.type_for(file).first
+      mime ? mime.content_type : "application/octet-stream"
     end
 
     def extract_file_details(attributes)

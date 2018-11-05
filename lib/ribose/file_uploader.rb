@@ -72,7 +72,8 @@ module Ribose
 
     def content_type_form_file
       require "mime/types"
-      MIME::Types.type_for(file.path).first.content_type
+      mime = MIME::Types.type_for(file.path).first
+      mime ? mime.content_type : "application/octet-stream"
     end
 
     def parse_to_ribose_os(content)
