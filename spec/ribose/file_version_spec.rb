@@ -18,6 +18,29 @@ RSpec.describe Ribose::FileVersion do
     end
   end
 
+  describe ".download" do
+    context "with version id specified" do
+      it "downloads the specific file version" do
+        file_id = 123_456
+        space_id = 456_789
+        version_id = 789_012
+
+        output_file = "./tmp/download"
+        content = "This is the content in the file"
+
+        stub_aws_file_version_download_api(content)
+        buffer = stub_file_write_to_io(output_file)
+        stub_ribose_file_version_download_api(space_id, file_id, version_id)
+
+        Ribose::FileVersion.download(
+          space_id, file_id, version_id: version_id, output: output_file
+        )
+
+        expect(buffer).to eq(content)
+      end
+    end
+  end
+
   describe ".create" do
     it "create a new file version" do
       file_id = 123_456
@@ -42,5 +65,12 @@ RSpec.describe Ribose::FileVersion do
 
   def sample_fixture_file
     @sample_fixture_file ||= File.join(Ribose.root, "spec/fixtures/sample.png")
+  end
+
+  def stub_file_write_to_io(output_file)
+    buffer = StringIO.new
+    allow(File).to receive(:open).with(output_file, "w").and_yield(buffer)
+
+    buffer.string
   end
 end

@@ -20,8 +20,11 @@ module Ribose
     # @return [Sawyer::Resource]
     #
     def request(options = {})
+      parsable = extract_config_option(:parse) != false
       options[:query] = extract_config_option(:query) || {}
-      agent.call(http_method, api_endpoint, data, options).data
+
+      response = agent.call(http_method, api_endpoint, data, options)
+      parsable == true ? response.data : response
     end
 
     # Make a HTTP GET Request
@@ -79,12 +82,15 @@ module Ribose
 
     def find_suitable_client
       client = extract_config_option(:client) || Ribose::Client.new
-      client.is_a?(Ribose::Client) ? client: raise(Ribose::Unauthorized)
+      client.is_a?(Ribose::Client) ? client : raise(Ribose::Unauthorized)
     end
 
     def require_auth_headers?
-      auth_header = extract_config_option(:auth_header)
-      auth_header == false ? false : true
+      extract_config_option(:auth_header) != false
+    end
+
+    def custom_content_headers
+      extract_config_option(:headers) || {}
     end
 
     def api_endpoint
@@ -107,10 +113,17 @@ module Ribose
       end
     end
 
+    def set_content_type(headers)
+      header = custom_content_headers
+      default_type = "application/json"
+
+      headers[:content_type] = default_type
+      headers[:accept] = header.fetch(:accept, default_type)
+    end
+
     def agent
       @agent ||= Sawyer::Agent.new(ribose_host, sawyer_options) do |http|
-        http.headers[:accept] = "application/json"
-        http.headers[:content_type] = "application/json"
+        set_content_type(http.headers)
 
         if require_auth_headers?
           http.headers["X-Indigo-Token"] = client.api_token

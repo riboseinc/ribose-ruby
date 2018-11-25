@@ -4,6 +4,10 @@ module Ribose
   class FileVersion < Ribose::Base
     include Ribose::Actions::Fetch
 
+    def download
+      download_file || raise(Ribose::BadRequest)
+    end
+
     # Fetch file version
     #
     # @params :space_id [UUID] The space Id
@@ -18,6 +22,22 @@ module Ribose
         resource_id: version_id,
         **options,
       ).fetch
+    end
+
+    # Download file version
+    #
+    # @param space_id [UUID] The space Id
+    # @param file_id [Integer] The file Id
+    # @param version_id [Hash] The file version Id
+    # @param options [Hash] Options as key and value pair
+    #
+    def self.download(space_id, file_id, version_id:, **options)
+      new(
+        file_id: file_id,
+        space_id: space_id,
+        resource_id: version_id,
+        **options,
+      ).download
     end
 
     # Create a new file version
@@ -38,13 +58,14 @@ module Ribose
 
     private
 
-    attr_reader :file_id, :space_id
+    attr_reader :output, :file_id, :space_id
 
     def resource
       nil
     end
 
     def extract_local_attributes
+      @output = attributes.delete(:output)
       @file_id = attributes.delete(:file_id)
       @space_id = attributes.delete(:space_id)
     end
@@ -55,6 +76,22 @@ module Ribose
 
     def files_path
       ["spaces", space_id, "file", "files"].join("/")
+    end
+
+    def download_file
+      data = Ribose::Request.get(
+        resource_path, parse: false, headers: { accept: "text/html" }
+      )
+
+      if data.headers["status"].match?(/^30[12]/)
+        fetch_and_write_to_file(data)
+      end
+    end
+
+    def fetch_and_write_to_file(data)
+      File.open(output || "download", "w") do |file|
+        file << data.agent.call(:get, data.headers["location"]).data
+      end
     end
   end
 end

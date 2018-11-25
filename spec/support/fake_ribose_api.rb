@@ -226,6 +226,17 @@ module Ribose
       )
     end
 
+    def stub_ribose_file_version_download_api(sid, fid, vid)
+      version = ["spaces", sid, "file/files", fid, "versions", vid].join("/")
+      stub_request(:get, ribose_endpoint(version)).to_return(
+        headers: { location: "https://ribose-data.aws.com", status: 302 },
+      )
+    end
+
+    def stub_aws_file_version_download_api(content)
+      stub_request(:get, "https://ribose-data.aws.com").to_return(body: content)
+    end
+
     def stub_ribose_space_conversation_list(space_id)
       stub_api_response(
         :get, conversations_path(space_id), filename: "conversations"

@@ -34,6 +34,21 @@ module Ribose
       new(space_id: space_id, resource_id: file_id, **options).fetch
     end
 
+    # Download a space file
+    #
+    # @param space_id [UUID] The Space UUID
+    # @param file_id [Integer] The File Id
+    # @param options [Hash] Options as key and value pair.
+    #
+    #   Two important keys are :version_id, and :output and
+    #   if these are provided then it will use those otherwise
+    #   it will do additional request to retirve those details
+    #
+    def self.download(space_id, file_id, options = {})
+      options[:version_id] ||= fetch(space_id, file_id).current_version_id
+      Ribose::FileVersion.download(space_id, file_id, **options)
+    end
+
     # Create a new file upload
     #
     # @param space_id [String] The Space UUID

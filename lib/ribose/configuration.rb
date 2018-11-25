@@ -16,6 +16,7 @@ module Ribose
     def web_url
       ["https", api_host].join("://")
     end
+
     def add_default_middleware(builder)
       builder.use(Ribose::Response::RaiseError)
       builder.response(:logger, nil, bodies: true) if debug_mode?

@@ -28,6 +28,37 @@ RSpec.describe Ribose::SpaceFile do
     end
   end
 
+  describe ".download" do
+    context "without specific version id" do
+      it "fetch version id and then downloads the file" do
+        file_id = 123_456_789
+        space_id = 456_789_012
+
+        allow(Ribose::FileVersion).to receive(:download)
+        stub_ribose_space_file_fetch_api(space_id, file_id)
+
+        Ribose::SpaceFile.download(space_id, file_id)
+
+        expect(Ribose::FileVersion).to have_received(:download).
+          with(space_id, file_id, version_id: 11559)
+      end
+    end
+
+    context "with specific version id" do
+      it "sends downlod message to the downloader" do
+        file_id = 123_456_789
+        space_id = 456_789_012
+        version_id = 123_456_789
+
+        allow(Ribose::FileVersion).to receive(:download)
+        Ribose::SpaceFile.download(space_id, file_id, version_id: version_id)
+
+        expect(Ribose::FileVersion).to have_received(:download).
+          with(space_id, file_id, version_id: version_id)
+      end
+    end
+  end
+
   describe ".create" do
     it "creates a new file with provided details" do
       space_id = 123_456_789
