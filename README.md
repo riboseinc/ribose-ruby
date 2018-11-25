@@ -407,6 +407,16 @@ and it will return the connection as `Sawyer::Resource`.
 Ribose::Connection.all
 ```
 
+#### Disconnect a connection
+
+To disconnect with an existing connection, we can use `Connection.disconnect`
+interface as following. This expect us to provide the connection id, and it also
+support an additional options hash to provide custom options.
+
+```ruby
+Ribose::Connection.disconnect(connection_id, options)
+```
+
 #### Connection suggestions
 
 To retrieve the list of user connection suggestions,

@@ -316,6 +316,12 @@ module Ribose
       stub_api_response(:get, "people/connections?s=", filename: "connections")
     end
 
+    def stub_ribose_connection_delete_api(id)
+      stub_api_response(
+        :delete, ["people", "connections", id].join("/"), filename: "empty"
+      )
+    end
+
     def stub_ribose_suggestion_list_api
       stub_api_response(
         :get, "people_finding", filename: "connection_suggestion"

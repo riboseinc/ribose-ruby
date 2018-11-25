@@ -1,6 +1,7 @@
 module Ribose
   class Connection < Ribose::Base
     include Ribose::Actions::All
+    include Ribose::Actions::Delete
 
     # List Connections
     #
@@ -24,6 +25,20 @@ module Ribose
     def self.suggestions(client: nil, **options)
       Request.get("people_finding", client: client, query: options).
         suggested_connection
+    end
+
+    # Disconnect
+    #
+    # Disconnect connection / contact with the provided
+    # connection id. This will return nothing for successful
+    # request, but if disconnect fails then it will raise an
+    # Error for the client.
+    #
+    # @params resource_id [Integer] Connection Id
+    # @return nil
+    #
+    def self.disconnect(resource_id, options = {})
+      delete(resource_id, options)
     end
 
     private

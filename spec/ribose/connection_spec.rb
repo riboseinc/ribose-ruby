@@ -23,4 +23,15 @@ RSpec.describe Ribose::Connection do
       expect(suggestions.first.name).to eq("Jennie Doe")
     end
   end
+
+  describe ".disconnect" do
+    it "disconnect with provided connection" do
+      connection_id = 123_456
+      stub_ribose_connection_delete_api(connection_id)
+
+      expect do
+        Ribose::Connection.disconnect(connection_id)
+      end.not_to raise_error
+    end
+  end
 end
