@@ -1,40 +1,53 @@
 require "json"
-require "mechanize"
+require 'net/http'
+require 'uri'
 require "ribose/config"
 
 module Ribose
   class Session
-    def initialize(username, password)
-      @username = username
-      @password = password
+    def initialize(username, password, api_token)
+      @username  = username
+      @password  = password
+      @api_token = api_token
     end
 
     def create
-      JSON.parse(authenticate_user)
-    rescue NoMethodError, JSON::ParserError
-      raise Ribose::Unauthorized
+      authenticate_user
     end
 
-    def self.create(username:, password:)
-      new(username, password).create
+    def self.create(username:, password:, api_token:)
+      new(username, password, api_token).create
     end
 
     private
 
-    attr_reader :username, :password
+    attr_reader :username, :password, :api_token
 
     def authenticate_user
-      page = agent.get(ribose_url_for("login"))
-      find_and_submit_the_user_login_form(page)
-      agent.get(ribose_url_for(["settings", "general", "info"])).body
-    end
+      uri = URI.parse(ribose_url_for("api/v2/auth/sign_in"))
+      response = Net::HTTP.start(
+        uri.host,
+        uri.port,
+        use_ssl: true,
+        verify_mode: Ribose.configuration.ssl_verification_mode
+      ) do |http|
+        request = Net::HTTP::Post.new(uri)
+        # set request headers
+        request['X-Indigo-Username'] = username
+        request['X-Indigo-Token'] = api_token
+        request['Content-Type'] = 'application/json'
 
-    def find_and_submit_the_user_login_form(page)
-      login_form = page.form_with(id: "new_user")
-      login_form.field_with(id: "loginEmail").value = username
-      login_form.field_with(id: "loginPassword").value = password
+        # set form data
+        request.set_form_data(
+          'username' => username,
+          'password' => password
+        )
+        http.request(request)
+      end
 
-      login_form.submit
+      # return response headers in hash if success
+      return response.each_header.to_h if response.is_a? Net::HTTPSuccess
+      nil
     end
 
     def agent
@@ -42,7 +55,7 @@ module Ribose
     end
 
     def ribose_url_for(*endpoint)
-      [Ribose.configuration.web_url, *endpoint].join("/")
+      [Ribose.configuration.api_host, *endpoint].join("/")
     end
   end
 end

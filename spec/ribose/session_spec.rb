@@ -15,11 +15,11 @@ RSpec.describe Ribose::Session do
   end
 
   def login_url
-    ribose_url_for("login")
+    ribose_url_for("api/v2/auth/sign_in")
   end
 
   def ribose_url_for(*endpoints)
-    [Ribose.configuration.web_url, *endpoints].join("/")
+    [Ribose.configuration.api_host, *endpoints].join("/")
   end
 
   def stub_session_creation_request_via_web
