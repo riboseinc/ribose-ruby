@@ -2,19 +2,27 @@ require "ribose/response/raise_error"
 
 module Ribose
   class Configuration
-    attr_accessor :api_host, :api_token, :user_email, :debug_mode
+    attr_accessor :api_host, :api_token,
+                  :user_email, :user_password,
+                  :verify_ssl,
+                  :debug_mode
 
     def initialize
       @debug_mode = false
-      @api_host ||= "www.ribose.com"
+      @verify_ssl = true
+      @api_host ||= "https://www.ribose.com"
     end
 
     def debug_mode?
       debug_mode == true
     end
 
-    def web_url
-      ["https", api_host].join("://")
+    def verify_ssl?
+      !!verify_ssl
+    end
+
+    def ssl_verification_mode
+      verify_ssl? ? OpenSSL::SSL::VERIFY_PEER : OpenSSL::SSL::VERIFY_NONE
     end
 
     def add_default_middleware(builder)

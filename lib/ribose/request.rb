@@ -71,7 +71,7 @@ module Ribose
     attr_reader :client, :data, :http_method
 
     def ribose_host
-      Ribose.configuration.api_host
+      Ribose.configuration.api_host.host
     end
 
     def extract_config_option(key)
@@ -81,7 +81,12 @@ module Ribose
     end
 
     def find_suitable_client
-      client = extract_config_option(:client) || Ribose::Client.new
+      client = extract_config_option(:client) ||
+               Ribose::Client.from_login(
+                 email:     Ribose.configuration.user_email,
+                 password:  Ribose.configuration.user_password,
+                 api_token: Ribose.configuration.api_token
+               )
       client.is_a?(Ribose::Client) ? client : raise(Ribose::Unauthorized)
     end
 
@@ -101,9 +106,17 @@ module Ribose
     end
 
     def sawyer_options
+      faraday_options = { builder: custom_rack_builder }
+      unless Ribose.configuration.verify_ssl?
+        faraday_options.merge!(ssl: Faraday::SSLOptions.new(
+          false, nil, nil, OpenSSL::SSL::VERIFY_NONE
+          )
+        )
+      end
+
       {
         links_parser: Sawyer::LinkParsers::Simple.new,
-        faraday: Faraday.new(builder: custom_rack_builder),
+        faraday: Faraday.new(faraday_options),
       }
     end
 
@@ -124,6 +137,11 @@ module Ribose
     def agent
       @agent ||= Sawyer::Agent.new(ribose_host, sawyer_options) do |http|
         set_content_type(http.headers)
+
+        # set headers for devise-token-auth
+        http.headers["access-token"] = client.access_token
+        http.headers["client"] = client.client_id
+        http.headers["uid"] = client.uid
 
         if require_auth_headers?
           http.headers["X-Indigo-Token"] = client.api_token
