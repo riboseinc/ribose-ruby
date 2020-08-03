@@ -8,8 +8,12 @@ module Ribose
 
     def activate
       Ribose::Request.post(
-        "signup.user",
-        custom_option.merge(user: attributes, auth_header: false),
+        "api/v2/auth",
+        custom_option.merge(
+          user: attributes,
+          auth_header: false,
+          client: Ribose::Client.new
+        ),
       )
     end
 
@@ -17,12 +21,12 @@ module Ribose
     #
     # @param email [String] The registering user email
     # @param password [String] A strong password for login
-    # @param otp [String] The OTP received via the email
+    # @param edata [String] The OTP received via the email
     # @param attributes [Hash] The other attributes as Hash.
     # @return [Sawyer::Resoruce] The newly activated user
     #
-    def self.activate(email:, password:, otp:, **attributes)
-      new(attributes.merge(email: email, password: password, otp: otp)).activate
+    def self.activate(email:, password:, edata:, **attributes)
+      new(attributes.merge(email: email, password: password, edata: edata)).activate
     end
 
     private
