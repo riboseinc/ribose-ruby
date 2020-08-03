@@ -2,7 +2,7 @@ require "ribose/response/raise_error"
 
 module Ribose
   class Configuration
-    attr_accessor :api_host, :api_token,
+    attr_accessor :api_host, :api_email, :api_token,
                   :user_email, :user_password,
                   :verify_ssl,
                   :debug_mode

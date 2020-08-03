@@ -1,5 +1,7 @@
 module Ribose
   class Request
+
+    DEFAULT_CONTENT_TYPE = "application/json"
     # Initialize a Request
     #
     # @param http_method [Symbol] HTTP verb as sysmbol
@@ -24,6 +26,12 @@ module Ribose
       options[:query] = extract_config_option(:query) || {}
 
       response = agent.call(http_method, api_endpoint, data, options)
+
+      # update client headers from response
+      client.client_id    = response.headers['client']
+      client.uid          = response.headers['uid']
+      client.access_token = response.headers['access-token']
+
       parsable == true ? response.data : response
     end
 
@@ -81,6 +89,7 @@ module Ribose
     end
 
     def find_suitable_client
+      # client = extract_config_option(:client) || Ribose::Client.new
       client = extract_config_option(:client) ||
                Ribose::Client.from_login(
                  email:     Ribose.configuration.user_email,
@@ -128,10 +137,9 @@ module Ribose
 
     def set_content_type(headers)
       header = custom_content_headers
-      default_type = "application/json"
 
-      headers[:content_type] = default_type
-      headers[:accept] = header.fetch(:accept, default_type)
+      headers[:content_type] = DEFAULT_CONTENT_TYPE
+      headers[:accept] = header.fetch(:accept, DEFAULT_CONTENT_TYPE)
     end
 
     def agent
@@ -140,12 +148,12 @@ module Ribose
 
         # set headers for devise-token-auth
         http.headers["access-token"] = client.access_token
-        http.headers["client"] = client.client_id
-        http.headers["uid"] = client.uid
+        http.headers["client"]       = client.client_id
+        http.headers["uid"]          = client.uid
 
         if require_auth_headers?
           http.headers["X-Indigo-Token"] = client.api_token
-          http.headers["X-Indigo-Email"] = client.user_email
+          http.headers["X-Indigo-Email"] = client.api_email
         end
       end
     end

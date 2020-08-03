@@ -5,9 +5,10 @@ require "ribose/config"
 
 module Ribose
   class Session
-    def initialize(username, password, api_token)
+    def initialize(username, password, api_email, api_token)
       @username  = username
       @password  = password
+      @api_email = api_email
       @api_token = api_token
     end
 
@@ -15,13 +16,13 @@ module Ribose
       authenticate_user
     end
 
-    def self.create(username:, password:, api_token:)
-      new(username, password, api_token).create
+    def self.create(username:, password:, api_email:, api_token:)
+      new(username, password, api_email, api_token).create
     end
 
     private
 
-    attr_reader :username, :password, :api_token
+    attr_reader :username, :password, :api_email, :api_token
 
     def authenticate_user
       uri = URI.parse(ribose_url_for("api/v2/auth/sign_in"))
@@ -33,9 +34,9 @@ module Ribose
       ) do |http|
         request = Net::HTTP::Post.new(uri)
         # set request headers
-        request['X-Indigo-Username'] = username
-        request['X-Indigo-Token'] = api_token
-        request['Content-Type'] = 'application/json'
+        request['X-Indigo-Username'] = api_email
+        request['X-Indigo-Token']    = api_token
+        request['Content-Type']      = 'application/json'
 
         # set form data
         request.set_form_data(
