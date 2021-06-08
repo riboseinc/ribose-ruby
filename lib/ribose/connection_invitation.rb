@@ -43,8 +43,8 @@ module Ribose
       Ribose::Request.post(
         [resources_path, "mass_create"].join("/"),
         custom_option.merge(
-          invitation: { body: attributes[:body], emails: attributes[:emails] }
-        )
+          invitation: { body: attributes[:body], emails: attributes[:emails] },
+        ),
       )
     end
   end

@@ -12,7 +12,7 @@ module Ribose
         custom_option.merge(
           user: attributes,
           auth_header: false,
-          client: Ribose::Client.new
+          client: Ribose::Client.new,
         ),
       )
     end
@@ -26,7 +26,8 @@ module Ribose
     # @return [Sawyer::Resoruce] The newly activated user
     #
     def self.activate(email:, password:, edata: nil, **attributes)
-      new(attributes.merge(email: email, password: password, edata: edata)).activate
+      new(attributes.merge(email: email, password: password,
+                           edata: edata)).activate
     end
 
     private

@@ -28,14 +28,14 @@ module Ribose
         username: email,
         password: password,
         api_email: api_email,
-        api_token: api_token
+        api_token: api_token,
       )
 
       new(
-        api_email:    api_email,
-        api_token:    api_token,
-        client_id:    session.nil? ? nil : session['client'],
-        uid:          session.nil? ? nil : session['uid'],
+        api_email: api_email,
+        api_token: api_token,
+        client_id: session.nil? ? nil : session['client'],
+        uid: session.nil? ? nil : session['uid'],
         access_token: session.nil? ? nil : session['access-token'],
       )
     end

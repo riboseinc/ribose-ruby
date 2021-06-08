@@ -1,7 +1,7 @@
 module Ribose
   class Request
 
-    DEFAULT_CONTENT_TYPE = "application/json"
+    DEFAULT_CONTENT_TYPE = "application/json".freeze
     # Initialize a Request
     #
     # @param http_method [Symbol] HTTP verb as sysmbol
@@ -91,11 +91,11 @@ module Ribose
     def find_suitable_client
       # client = extract_config_option(:client) || Ribose::Client.new
       client = extract_config_option(:client) ||
-               Ribose::Client.from_login(
-                 email:     Ribose.configuration.user_email,
-                 password:  Ribose.configuration.user_password,
-                 api_token: Ribose.configuration.api_token
-               )
+        Ribose::Client.from_login(
+          email: Ribose.configuration.user_email,
+          password: Ribose.configuration.user_password,
+          api_token: Ribose.configuration.api_token,
+        )
       client.is_a?(Ribose::Client) ? client : raise(Ribose::Unauthorized)
     end
 
@@ -117,9 +117,8 @@ module Ribose
     def sawyer_options
       faraday_options = { builder: custom_rack_builder }
       unless Ribose.configuration.verify_ssl?
-        faraday_options.merge!(ssl: Faraday::SSLOptions.new(
+        faraday_options[:ssl] = Faraday::SSLOptions.new(
           false, nil, nil, OpenSSL::SSL::VERIFY_NONE
-          )
         )
       end
 

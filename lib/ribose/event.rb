@@ -44,8 +44,8 @@ module Ribose
     #
     def self.update(calendar_id, event_id, attributes, options = {})
       new(options.merge(
-        calendar_id: calendar_id, resource_id: event_id, **attributes,
-      )).update["events"]
+            calendar_id: calendar_id, resource_id: event_id, **attributes,
+          )).update["events"]
     end
 
     # Delete a calendar event

@@ -48,7 +48,7 @@ module Ribose
       Ribose::Request.put(
         "people/users/#{fetch.user_id}",
         custom_option.merge(
-          resource_key.to_sym => { login: attributes[:login] }
+          resource_key.to_sym => { login: attributes[:login] },
         ),
       )
     end

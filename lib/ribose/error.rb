@@ -22,9 +22,14 @@ module Ribose
   end
 
   class BadRequest < Error; end
+
   class Unauthorized < Error; end
+
   class Forbidden < Error; end
+
   class NotFound < Error; end
+
   class UnprocessableEntity < Error; end
+
   class ServerError < Error; end
 end

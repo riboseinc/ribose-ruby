@@ -30,7 +30,7 @@ module Ribose
         uri.host,
         uri.port,
         use_ssl: true,
-        verify_mode: Ribose.configuration.ssl_verification_mode
+        verify_mode: Ribose.configuration.ssl_verification_mode,
       ) do |http|
         request = Net::HTTP::Post.new(uri)
         # set request headers
@@ -41,13 +41,14 @@ module Ribose
         # set form data
         request.set_form_data(
           'username' => username,
-          'password' => password
+          'password' => password,
         )
         http.request(request)
       end
 
       # return response headers in hash if success
       return response.each_header.to_h if response.is_a? Net::HTTPSuccess
+
       nil
     end
 

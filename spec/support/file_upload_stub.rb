@@ -18,7 +18,7 @@ module Ribose
 
     def stub_ribose_aws_s3_file_upload_api
       stub_request(:post, ribose_endpoint("uploads")).
-        with(headers: { "Content-Type"=> /multipart\/form-data/ }).
+        with(headers: { "Content-Type" => /multipart\/form-data/ }).
         to_return(response_with(filename: "empty", status: 200))
     end
 

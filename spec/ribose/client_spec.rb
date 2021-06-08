@@ -41,7 +41,7 @@ RSpec.describe Ribose::Client do
         "id" => 122072207,
         "session_id" => "SessionId",
         "browser" => "Ribose Ruby Client",
-        "user_id" => "user-uuid-123-4567"
+        "user_id" => "user-uuid-123-4567",
       },
     }
   end
