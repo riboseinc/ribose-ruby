@@ -1,6 +1,8 @@
 = Ribose
 
-image:https://travis-ci.org/riboseinc/ribose-ruby.svg?branch=master[Build Status,link=https://travis-ci.org/riboseinc/ribose-ruby] image:https://codeclimate.com/github/riboseinc/ribose-ruby/badges/gpa.svg[Code Climate,link=https://codeclimate.com/github/riboseinc/ribose-ruby] image:https://badge.fury.io/rb/ribose.svg[Gem Version,link=https://badge.fury.io/rb/ribose]
+image:https://github.com/riboseinc/ribose-ruby/actions/workflows/tests.yml/badge.svg[Build Status, link="https://github.com/riboseinc/ribose-ruby/actions/workflows/tests.yml"]
+image:https://codeclimate.com/github/riboseinc/ribose-ruby/badges/gpa.svg[Code Climate,link=https://codeclimate.com/github/riboseinc/ribose-ruby]
+image:https://badge.fury.io/rb/ribose.svg[Gem Version,link=https://badge.fury.io/rb/ribose]
 
 The Ruby Interface to the Ribose API.
 
