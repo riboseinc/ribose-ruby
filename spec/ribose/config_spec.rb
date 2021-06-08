@@ -6,7 +6,7 @@ RSpec.describe Ribose::Config do
 
   describe ".configure" do
     it "allows us to set our configuration" do
-      api_host = "www.example.com"
+      api_host = "https://www.example.com"
       api_token = "SUPER_SECRET_API_TOKEN"
       user_email = "john.doe@example.com"
 
@@ -20,7 +20,6 @@ RSpec.describe Ribose::Config do
       expect(Ribose.configuration.debug_mode?).to be_falsey
       expect(Ribose.configuration.api_token).to eq(api_token)
       expect(Ribose.configuration.user_email).to eq(user_email)
-      expect(Ribose.configuration.web_url).to eq ["https", api_host].join("://")
     end
   end
 
@@ -29,13 +28,13 @@ RSpec.describe Ribose::Config do
       configuration = Ribose.configuration
 
       expect(configuration.api_token).to be_nil
-      expect(configuration.api_host).to eq("www.ribose.com")
+      expect(configuration.api_host).to eq("https://www.ribose.com")
     end
   end
 
   def restore_to_default_config
     Ribose.configuration.api_token = nil
     Ribose.configuration.user_email = nil
-    Ribose.configuration.api_host = "www.ribose.com"
+    Ribose.configuration.api_host = "https://www.ribose.com"
   end
 end
