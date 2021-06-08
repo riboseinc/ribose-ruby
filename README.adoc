@@ -1,0 +1,831 @@
+= Ribose
+
+image:https://travis-ci.org/riboseinc/ribose-ruby.svg?branch=master[Build Status,link=https://travis-ci.org/riboseinc/ribose-ruby] image:https://codeclimate.com/github/riboseinc/ribose-ruby/badges/gpa.svg[Code Climate,link=https://codeclimate.com/github/riboseinc/ribose-ruby] image:https://badge.fury.io/rb/ribose.svg[Gem Version,link=https://badge.fury.io/rb/ribose]
+
+The Ruby Interface to the Ribose API.
+
+== Installation
+
+Add this line to your application's Gemfile:
+
+[source,ruby]
+----
+gem "ribose"
+----
+
+And then execute:
+
+[source,sh]
+----
+$ bundle install
+----
+
+Or install it yourself as:
+
+[source,sh]
+----
+$ gem install ribose
+----
+
+== Configure
+
+We need to setup Ribose API configuration before we can perform any request throughout this client
+
+First, obtain an API token https://github.com/riboseinc/ribose-api/wiki/Obtaining-the-API-Token[as per this Github wiki].
+Using the token, configure the client by adding an initializer with the following code:
+
+[source,ruby]
+----
+Ribose.configure do |config|
+  config.api_token = "SECRET_API_TOKEN"
+  config.user_email = "your-email@example.com"
+
+  # There are also some default configurations. Normally you do not need to
+  # change those unless you have some very specific use cases.
+  #
+  # config.debug_mode = false
+  # config.api_host = "www.ribose.com"
+end
+----
+
+Or:
+
+[source,ruby]
+----
+Ribose.configuration.api_token = "SECRET_API_TOKEN"
+Ribose.configuration.user_email = "your-email@example.com"
+----
+
+== Usage
+
+=== App Data
+
+==== List app data
+
+App data can be retrieved using the `AppData.all` interface.
+
+[source,ruby]
+----
+Ribose::AppData.all
+----
+
+=== App Relation
+
+==== List app relations
+
+To retrieve the list of app relations, we can use the `AppRelation.all` interface.
+
+[source,ruby]
+----
+Ribose::AppRelation.all
+----
+
+==== Fetch an app relation
+
+To retrieve the details for a specific app relation, we can use the following interface.
+
+[source,ruby]
+----
+Ribose::AppRelation.fetch(app_relation_id)
+----
+
+=== Profile
+
+==== Fetch user profile
+
+[source,ruby]
+----
+Ribose::Profile.fetch
+----
+
+==== Update user profile
+
+[source,ruby]
+----
+Ribose::Profile.update(first_name: "John", last_name: "Doe")
+----
+
+==== Set user login
+
+[source,ruby]
+----
+Ribose::Profile.set_login(login_name)
+----
+
+=== Settings
+
+==== List user's settings
+
+To list user's settings we can use the `Setting.all` interface, and it will return all of the user's settings.
+
+[source,ruby]
+----
+Ribose::Setting.all
+----
+
+==== Fetch a setting
+
+To fetch the details for any specific settings we can use the `Setting.fetch` interface with the specific Setting ID, and it will return the details for that setting.
+
+[source,ruby]
+----
+Ribose::Setting.fetch(setting_id)
+----
+
+==== Update a setting
+
+[source,ruby]
+----
+Ribose::Setting.update(setting_id, **new_updated_attributes_hash)
+----
+
+=== Spaces
+
+==== List user's Spaces
+
+To list a user's Spaces we can use the `Space.all` interface, and it will retrieve all of the Spaces for the currently configured user.
+
+[source,ruby]
+----
+Ribose::Space.all
+----
+
+==== Fetch a user Space
+
+To retrieve the details for a Space we can use the `Space.fetch(space_id)`.
+
+[source,ruby]
+----
+Ribose::Space.fetch(space_id)
+----
+
+==== Create a user Space
+
+To create a new user Space,
+
+[source,ruby]
+----
+Ribose::Space.create(
+  access:            "private",
+  space_category_id: 12,
+  name:              "The amazing Ribose Space",
+  description:       "Description about your Space"
+)
+----
+
+==== Update a user Space
+
+[source,ruby]
+----
+Ribose::Space.update("space_uuid", name: "New updated name", **other_attributes)
+----
+
+==== Remove a user Space
+
+To remove an existing Space,
+
+[source,ruby]
+----
+Ribose::Space.remove(space_uuid, confirmation: true)
+----
+
+=== Members
+
+The members endpoint are Space-specific.
+
+To retrieve the member details under any specific Space, we can use this interface.
+
+==== List space members
+
+To retrieve the list of members,
+
+[source,ruby]
+----
+Ribose::Member.all(space_id, options)
+----
+
+==== Delete a space member
+
+[source,ruby]
+----
+Ribose::Member.delete(space_id, member_id, options)
+----
+
+==== Fetch Member Role
+
+[source,ruby]
+----
+Ribose::MemberRole.fetch(space_id, member_id, options)
+----
+
+==== Assign a role to member
+
+[source,ruby]
+----
+Ribose::MemberRole.assign(space_id, member_id, role_id)
+----
+
+=== Files
+
+==== List of Files
+
+To retrieve the list of files for any specific Space,
+
+[source,ruby]
+----
+Ribose::SpaceFile.all(space_id, options)
+----
+
+==== Fetch a file details
+
+[source,ruby]
+----
+Ribose::SpaceFile.fetch(space_id, file_id, options = {})
+----
+
+==== Fetch a file icon
+
+[source,ruby]
+----
+Ribose::SpaceFile.fetch_icon(space_id, file_id, options = {})
+----
+
+==== Create a file upload
+
+[source,ruby]
+----
+Ribose::SpaceFile.create(space_id, file: "The complete file path", **attributes)
+----
+
+==== Update a space file
+
+[source,ruby]
+----
+Ribose::SpaceFile.update(space_id, file_id, new_file_attributes = {})
+----
+
+==== Remove a space file
+
+[source,ruby]
+----
+Ribose::SpaceFile.delete(space_id, file_id)
+----
+
+=== File Version
+
+==== Fetch file version
+
+[source,ruby]
+----
+Ribose::FileVersion.fetch(
+  space_id: space_id, file_id: file_id, version_id: version_id
+)
+----
+
+==== Create a new file version
+
+[source,ruby]
+----
+Ribose::FileVersion.create(
+  space_id: your_space_id,
+  file_id: existing_file_id_in_space,
+  file: file_path_for_the_new_version,
+
+  **any_other_additional_attributes
+)
+----
+
+=== Conversations
+
+==== Listing Space Conversations
+
+[source,ruby]
+----
+Ribose::Conversation.all(space_id, options = {})
+----
+
+==== Retrieve a conversation details
+
+[source,ruby]
+----
+Ribose::Conversation.fetch(space_id, conversation_id)
+----
+
+==== Create A New Conversation
+
+[source,ruby]
+----
+Ribose::Conversation.create(
+  space_id, name: "Sample conversation", tag_list: "sample, conversation"
+)
+----
+
+==== Update a conversation
+
+[source,ruby]
+----
+Ribose::Conversation.update(space_id, conversation_id, new_attributes_hash)
+----
+
+==== Remove A Conversation
+
+[source,ruby]
+----
+Ribose::Conversation.destroy(space_id: "space_id", conversation_id: "12345")
+----
+
+==== Mark a conversation as favorite
+
+[source,ruby]
+----
+Ribose::Conversation.mark_as_favorite(space_id, conversation_id)
+----
+
+=== Message
+
+==== List Conversation Messages
+
+[source,ruby]
+----
+Ribose::Message.all(space_id: space_uuid, conversation_id: conversation_uuid)
+----
+
+==== Create a new message
+
+[source,ruby]
+----
+Ribose::Message.create(
+  space_id:        space_uuid,
+  conversation_id: conversation_uuid,
+  contents:        "Provide your message body here",
+)
+----
+
+==== Update an existing message
+
+[source,ruby]
+----
+Ribose::Message.update(
+  space_id:        space_uuid,
+  message_id:      message_uuid,
+  conversation_id: conversation_uuid,
+  contents:        "The new content for message",
+)
+----
+
+==== Remove a message
+
+[source,ruby]
+----
+Ribose::Message.remove(
+  space_id:        space_uuid,
+  message_id:      message_uuid,
+  conversation_id: conversation_uuid,
+)
+----
+
+=== Feeds
+
+==== List user feeds
+
+To retrieve the list of user feeds,
+
+[source,ruby]
+----
+Ribose::Feed.all
+----
+
+=== Widgets
+
+==== List widgets
+
+To retrieve the list of widgets,
+
+[source,ruby]
+----
+Ribose::Widget.all
+----
+
+=== Stream
+
+==== List of stream notifications
+
+To retrieve the list of notifications,
+
+[source,ruby]
+----
+Ribose::Stream.all
+----
+
+=== Leaderboard
+
+==== Retrieve the current leadership board
+
+To retrieve the current leadership board,
+
+[source,ruby]
+----
+Ribose::Leaderboard.all
+----
+
+=== Connections
+
+==== List of connections
+
+To retrieve the list of connections, we can use the `Connection.all` interface and it will return the connection as `Sawyer::Resource`.
+
+[source,ruby]
+----
+Ribose::Connection.all
+----
+
+==== Disconnect a connection
+
+To disconnect with an existing connection, we can use `Connection.disconnect` interface as following.
+This expect us to provide the connection id, and it also support an additional options hash to provide custom options.
+
+[source,ruby]
+----
+Ribose::Connection.disconnect(connection_id, options)
+----
+
+==== Connection suggestions
+
+To retrieve the list of user connection suggestions,
+
+[source,ruby]
+----
+Ribose::Connection.suggestions
+----
+
+=== Invitations
+
+==== List connection invitations
+
+[source,ruby]
+----
+Ribose::ConnectionInvitation.all
+----
+
+==== List Space invitations
+
+[source,ruby]
+----
+Ribose::SpaceInvitation.all
+----
+
+==== Fetch a connection invitation
+
+[source,ruby]
+----
+Ribose::ConnectionInvitation.fetch(invitation_id)
+----
+
+==== Create mass connection invitations
+
+[source,ruby]
+----
+Ribose::ConnectionInvitation.create(
+  emails: ["email-one@example.com", "email-two@example.com"],
+  body: "This contains the details message about the invitation",
+)
+----
+
+==== Accept a connection invitation
+
+[source,ruby]
+----
+Ribose::ConnectionInvitation.accept(invitation_id)
+----
+
+==== Reject a connection invitation
+
+[source,ruby]
+----
+Ribose::ConnectionInvitation.reject(invitation_id)
+----
+
+==== Cancel a connection invitation
+
+[source,ruby]
+----
+Ribose::ConnectionInvitation.cancel(invitation_id)
+----
+
+==== Invite user to a Space
+
+[source,ruby]
+----
+Ribose::SpaceInvitation.create(
+  state:      "0",
+  space_id:   "123_456_789",
+  invitee_id: "456_789_012",
+  type:       "Invitation::ToSpace",
+  body:       "Please join to this amazing Space",
+)
+----
+
+==== Create Space invitation - Mass
+
+[source,ruby]
+----
+Ribose::SpaceInvitation.mass_create(
+  space_id,
+  emails:   ["email-one@example.com"],
+  role_ids: ["role-for-email-address-in-sequance"],
+  body:     "The complete message body for the invitation",
+)
+----
+
+==== Update a Space invitation
+
+[source,ruby]
+----
+Ribose::SpaceInvitation.update(invitation_id, new_attributes_hash)
+----
+
+==== Accept a Space invitation
+
+[source,ruby]
+----
+Ribose::SpaceInvitation.accept(invitation_id)
+----
+
+==== Resend a Space invitation
+
+[source,ruby]
+----
+Ribose::SpaceInvitation.resend(invitation_id)
+----
+
+==== Reject a Space invitation
+
+[source,ruby]
+----
+Ribose::SpaceInvitation.reject(invitation_id)
+----
+
+==== Cancel a Space invitation
+
+[source,ruby]
+----
+Ribose::SpaceInvitation.cancel(invitation_id)
+----
+
+=== Join Space Request
+
+==== List Join Space Requests
+
+[source,ruby]
+----
+Ribose::JoinSpaceRequest.all
+----
+
+==== Fetch a join space request
+
+[source,ruby]
+----
+Ribose::JoinSpaceRequest.fetch(request_id)
+----
+
+==== Create a Join Space Request
+
+[source,ruby]
+----
+Ribose::JoinSpaceRequest.create(
+  state:    0,
+  Space_id: 123_456_789,
+  type:     "Invitation::JoinSpaceRequest",
+  body:     "Hi, I would like to join to your Space",
+)
+----
+
+==== Accept a Join Space Request
+
+[source,ruby]
+----
+Ribose::JoinSpaceRequest.accept(invitation_id)
+----
+
+==== Reject a Join Space Requests
+
+[source,ruby]
+----
+Ribose::JoinSpaceRequest.reject(invitation_id)
+----
+
+==== Update an Join Space Requests
+
+[source,ruby]
+----
+Ribose::JoinSpaceRequest.update(invitation_id, new_attributes_hash)
+----
+
+=== Calendar
+
+==== List user calendars
+
+To retrieve the list of calendars accessible to the current user,
+
+[source,ruby]
+----
+Ribose::Calendar.all
+----
+
+==== Fetch a calendar events
+
+[source,ruby]
+----
+Ribose::Calendar.fetch(calendar_ids, start: Data.today, length: 7)
+----
+
+==== Create a calendar
+
+[source,ruby]
+----
+Ribose::Calendar.create(
+  owner_type: "User",
+  owner_id:   "The Owner UUID",
+  name:       "The name for the calendar",
+)
+----
+
+==== Delete a calendar
+
+[source,ruby]
+----
+Ribose::Calendar.delete(calendar_id)
+----
+
+=== Event
+
+==== List calendar events
+
+[source,ruby]
+----
+Ribose::Event.all(calendar_id)
+----
+
+==== Fetch a calendar event
+
+[source,ruby]
+----
+Ribose::Event.fetch(calendar_id, event_id)
+----
+
+==== Create a calendar event
+
+[source,ruby]
+----
+Ribose::Event.create(
+  calendar_id,
+  name: "Sample Event",
+  date_start: "04/04/2018",
+  time_start: "4:30pm",
+  date_finish: "04/04/2018",
+  time_finish: "5:30pm",
+  recurring_type: "not_repeat",
+  until: "never",
+  repeat_every: "1",
+  where: "Skype",
+  description: "Sample event",
+  all_day: false,
+)
+----
+
+==== Update a calendar event
+
+[source,ruby]
+----
+Ribose::Event.update(
+  calendar_id, event_id, new_attributes_hash, options_params
+)
+----
+
+==== Delete a calendar event
+
+[source,ruby]
+----
+Ribose::Event.delete(calendar_id, event_id)
+----
+
+=== User
+
+==== Create a signup request
+
+[source,ruby]
+----
+Ribose::User.create(email: "user@example.com", **other_attributes)
+----
+
+==== Activate a signup request
+
+[source,ruby]
+----
+Ribose::User.activate(
+  email:    "user@example.com",
+  password: "ASecureUserPassword",
+  otp:      "OTP Recived via the Email",
+)
+----
+
+=== Wikis
+
+==== List wiki pages
+
+[source,ruby]
+----
+Ribose::Wiki.all(space_id, options = {})
+----
+
+==== Fetch a wiki page
+
+[source,ruby]
+----
+Ribose::Wiki.fetch(space_id, wiki_id, options = {})
+----
+
+==== Create a wiki page
+
+[source,ruby]
+----
+Ribose::Wiki.create(
+  space_id, name: "Wiki Name", tag_list: "sample", **other_attributes_hash
+)
+----
+
+==== Update a wiki page
+
+[source,ruby]
+----
+Ribose::Wiki.update(
+  space_id, wiki_id, **updated_attributes_hash
+)
+----
+
+==== Remove a wiki page
+
+[source,ruby]
+----
+Ribose::Wiki.delete(space_id, wiki_id)
+----
+
+=== Space categories
+
+==== List space categories
+
+[source,ruby]
+----
+Ribose::SpaceCategory.all
+----
+
+== Development
+
+We are following Sandi Metz's Rules for this gem, you can read the http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers[description of the rules here] All new code should follow these rules.
+If you make changes in a pre-existing file that violates these rules you should fix the violations as part of your contribution.
+
+=== Setup
+
+Clone the repository.
+
+[source,sh]
+----
+git clone https://github.com/riboseinc/ribose-ruby
+----
+
+Setup your environment.
+
+[source,sh]
+----
+bin/setup
+----
+
+Run the test suite
+
+[source,sh]
+----
+bin/rspec
+----
+
+== Contributing
+
+First, thank you for contributing!
+We love pull requests from everyone.
+By participating in this project, you hereby grant https://www.ribose.com[Ribose Inc.] the right to grant or transfer an unlimited number of non exclusive licenses or sub-licenses to third parties, under the copyright covering the contribution to use the contribution by all means.
+
+Here are a few technical guidelines to follow:
+
+. Open an https://github.com/riboseinc/ribose-ruby/issues[issue] to discuss a new feature.
+. Write tests to support your new feature.
+. Make sure the entire test suite passes locally and on CI.
+. Open a Pull Request.
+. https://github.com/thoughtbot/guides/tree/master/protocol/git#write-a-feature[Squash your commits] after receiving feedback.
+. Party!
+
+== Credits
+
+This gem is developed, maintained and funded by https://www.ribose.com[Ribose Inc.]
+
+== License
+
+The gem is available as open source under the terms of the http://opensource.org/licenses/MIT[MIT License].
