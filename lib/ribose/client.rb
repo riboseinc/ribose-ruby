@@ -23,7 +23,7 @@ module Ribose
     # @param :api_token [String] The authentication token for your API account
     # @return [Ribose::Client] A new client with your details
     #
-    def self.from_login(email:, password:, api_email:, api_token:)
+    def self.from_login(email:, password:, api_email: nil, api_token: nil)
       session = Session.create(
         username: email,
         password: password,
