@@ -25,7 +25,7 @@ module Ribose
     # @param attributes [Hash] The other attributes as Hash.
     # @return [Sawyer::Resoruce] The newly activated user
     #
-    def self.activate(email:, password:, edata:, **attributes)
+    def self.activate(email:, password:, edata: nil, **attributes)
       new(attributes.merge(email: email, password: password, edata: edata)).activate
     end
 

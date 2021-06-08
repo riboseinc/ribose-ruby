@@ -179,7 +179,7 @@ module Ribose
     def stub_ribose_app_user_activate_api(attributes)
       stub_api_response(
         :post,
-        "signup.user",
+        "api/v2/auth",
         data: { user: attributes },
         filename: "user_activated",
       )

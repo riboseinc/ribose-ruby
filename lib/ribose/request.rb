@@ -79,7 +79,7 @@ module Ribose
     attr_reader :client, :data, :http_method
 
     def ribose_host
-      Ribose.configuration.api_host.host
+      URI(Ribose.configuration.api_host).host
     end
 
     def extract_config_option(key)

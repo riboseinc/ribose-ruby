@@ -31,6 +31,7 @@ RSpec.describe Ribose::User do
       email: "john.doe@example.com",
       password: "SecurePassword",
       otp: "OTP_RECEIVED_VIA_EMAIL",
+      edata: nil,
     }
   end
 
