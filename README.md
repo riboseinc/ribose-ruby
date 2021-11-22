@@ -39,8 +39,14 @@ following code:
 
 ```ruby
 Ribose.configure do |config|
-  config.api_token = "SECRET_API_TOKEN"
-  config.user_email = "your-email@example.com"
+  config.api_token     = "SECRET_API_TOKEN"
+  config.user_email    = "your-email@example.com"
+  config.user_email    = "your-email@example.com"
+  config.user_password = "your-password"
+
+  # INFRA_ID is a 7-digit id, which can be found from the network requests
+  # e.g. ed6af7b for current production environment
+  config.api_host      = URI.parse('https://app-INFRA_ID.ribose.com')
 
   # There are also some default configurations. Normally you do not need to
   # change those unless you have some very specific use cases.

@@ -94,6 +94,7 @@ module Ribose
                Ribose::Client.from_login(
                  email:     Ribose.configuration.user_email,
                  password:  Ribose.configuration.user_password,
+                 api_email: Ribose.configuration.api_email,
                  api_token: Ribose.configuration.api_token
                )
       client.is_a?(Ribose::Client) ? client : raise(Ribose::Unauthorized)
