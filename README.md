@@ -40,7 +40,7 @@ following code:
 ```ruby
 Ribose.configure do |config|
   config.api_token     = "SECRET_API_TOKEN"
-  config.user_email    = "your-email@example.com"
+  config.api_email     = "your-email@example.com"
   config.user_email    = "your-email@example.com"
   config.user_password = "your-password"
 
@@ -60,7 +60,9 @@ Or:
 
 ```ruby
 Ribose.configuration.api_token = "SECRET_API_TOKEN"
+Ribose.configuration.api_email = "your-email@example.com"
 Ribose.configuration.user_email = "your-email@example.com"
+Ribose.configuration.user_password = "your-password"
 ```
 
 ## Usage
