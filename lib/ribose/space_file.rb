@@ -57,7 +57,7 @@ module Ribose
     # @return [Sawyer::Resource] The file upload response.
     #
     def self.create(space_id, file:, **attributes)
-      upload = FileUploader.upload(space_id, attributes.merge(file: file))
+      upload = FileUploader.upload(space_id, **attributes.merge(file: file))
       upload[:attachment]
     end
 

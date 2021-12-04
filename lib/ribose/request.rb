@@ -9,7 +9,7 @@ module Ribose
     # @param data [Hash] Attributes / Options as a Hash
     # @return [Ribose::Request]
     #
-    def initialize(http_method, endpoint, **data)
+    def initialize(http_method, endpoint, data = {})
       @data = data
       @endpoint = endpoint
       @http_method = http_method
@@ -26,11 +26,7 @@ module Ribose
       options[:query] = extract_config_option(:query) || {}
 
       response = agent.call(http_method, api_endpoint, data, options)
-
-      # update client headers from response
-      client.client_id    = response.headers['client']
-      client.uid          = response.headers['uid']
-      client.access_token = response.headers['access-token']
+      update_client_headers(response.headers)
 
       parsable == true ? response.data : response
     end
@@ -79,7 +75,7 @@ module Ribose
     attr_reader :client, :data, :http_method
 
     def ribose_host
-      Ribose.configuration.api_host.host
+      Ribose.configuration.api_host
     end
 
     def extract_config_option(key)
@@ -89,14 +85,7 @@ module Ribose
     end
 
     def find_suitable_client
-      # client = extract_config_option(:client) || Ribose::Client.new
-      client = extract_config_option(:client) ||
-               Ribose::Client.from_login(
-                 email:     Ribose.configuration.user_email,
-                 password:  Ribose.configuration.user_password,
-                 api_email: Ribose.configuration.api_email,
-                 api_token: Ribose.configuration.api_token
-               )
+      client = extract_config_option(:client) || Ribose.configuration.client
       client.is_a?(Ribose::Client) ? client : raise(Ribose::Unauthorized)
     end
 
@@ -157,6 +146,12 @@ module Ribose
           http.headers["X-Indigo-Email"] = client.api_email
         end
       end
+    end
+
+    def update_client_headers(headers)
+      client.uid = headers["uid"]
+      client.client_id = headers["client"]
+      client.access_token = headers["access-token"]
     end
   end
 end

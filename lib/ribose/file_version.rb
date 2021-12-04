@@ -16,12 +16,11 @@ module Ribose
     # @returns [Sawyer::Resource] The file version
     #
     def self.fetch(space_id:, file_id:, version_id:, **options)
-      new(
-        file_id: file_id,
-        space_id: space_id,
-        resource_id: version_id,
-        **options,
-      ).fetch
+      options = options.merge(
+        file_id: file_id, space_id: space_id, resource_id: version_id,
+      )
+
+      new(options).fetch
     end
 
     # Download file version
@@ -32,12 +31,11 @@ module Ribose
     # @param options [Hash] Options as key and value pair
     #
     def self.download(space_id, file_id, version_id:, **options)
-      new(
-        file_id: file_id,
-        space_id: space_id,
-        resource_id: version_id,
-        **options,
-      ).download
+      options = options.merge(
+        file_id: file_id,space_id: space_id,resource_id: version_id,
+      )
+
+      new(options).download
     end
 
     # Create a new file version
@@ -49,10 +47,8 @@ module Ribose
     # @return [Sawyer::Resource] Newly updated version
     #
     def self.create(space_id, file_id, file:, **attributes)
-      upload = VersionUploader.upload(
-        space_id, file_id, attributes.merge(file: file)
-      )
-
+      attributes = attributes.merge(file: file)
+      upload = VersionUploader.upload(space_id, file_id, **attributes)
       upload[:attachment]
     end
 

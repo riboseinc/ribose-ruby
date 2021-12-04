@@ -31,7 +31,7 @@ module Ribose
     # @param attributes [Hash] Attributes as a Hash
     # @return [Sawyer::Resource] File upload response.
     def self.upload(space_id, file:, **attributes)
-      new(space_id, attributes.merge(file: file)).create
+      new(space_id, **attributes.merge(file: file)).create
     end
 
     private

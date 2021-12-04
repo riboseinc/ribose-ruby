@@ -20,9 +20,10 @@ RSpec.describe Ribose::Message do
   describe ".create" do
     it "creates a new message into a conversation" do
       space_id = 123_456
+      message_attributes = message_attrs.merge(space_id: space_id)
 
       stub_ribose_message_create(space_id, message: message_attrs)
-      message = Ribose::Message.create(message_attrs.merge(space_id: space_id))
+      message = Ribose::Message.create(**message_attributes)
 
       expect(message.id).not_to be_nil
       expect(message.user.name).to eq("John Doe")
@@ -37,7 +38,7 @@ RSpec.describe Ribose::Message do
 
       stub_ribose_message_update(space_id, message_id, message: message_attrs)
       message = Ribose::Message.update(
-        message_attrs.merge(space_id: space_id, message_id: message_id),
+        **message_attrs.merge(space_id: space_id, message_id: message_id),
       )
 
       expect(message.user.name).to eq("John Doe")

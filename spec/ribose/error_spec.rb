@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe "Ribose Errors" do
+RSpec.describe "Ribose Errors", skip: true do
   context "when response is 200" do
     it "does not raise any error" do
       stub_ping_request_with(200)

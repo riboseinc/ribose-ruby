@@ -47,7 +47,7 @@ RSpec.describe Ribose::FileVersion do
       space_id = 456_789
 
       stub_ribose_space_file_upload_api(space_id, file_attributes, file_id)
-      file = Ribose::FileVersion.create(space_id, file_id, file_attributes)
+      file = Ribose::FileVersion.create(space_id, file_id, **file_attributes)
 
       expect(file.id).not_to be_nil
       expect(file.author).to eq("John Doe")

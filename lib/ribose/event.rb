@@ -12,7 +12,7 @@ module Ribose
     # @return [Sawyer::Resource] Calendar Events
     #
     def self.all(calendar_id, options = {})
-      Ribose::Calendar.fetch(calendar_id, options)
+      Ribose::Calendar.fetch(calendar_id, **options)
     end
 
     # Fetch a calendar event
