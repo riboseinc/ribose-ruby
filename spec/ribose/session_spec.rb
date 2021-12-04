@@ -6,41 +6,35 @@ RSpec.describe Ribose::Session do
       username = "super.user"
       password = "supper.secreet.password"
 
-      stub_session_creation_request_via_web
+      stub_post_signin_request
       session = Ribose::Session.create(username: username, password: password)
 
-      expect(session["created_at"]).not_to be_nil
-      expect(session["authentication_token"]).to eq("user-super-secret-token")
+      expect(session.uid).to eq(session_headers["uid"])
+      expect(session.client).to eq(session_headers["client"])
+      expect(session["access-token"]).to eq(session_headers["access-token"])
     end
   end
 
-  def login_url
-    ribose_url_for("api/v2/auth/sign_in")
+  def session_headers
+    @session_headers ||= {
+      "uid" => "user@example.com",
+      "expiry" => Time.now,
+      "client" => "sample-user-client",
+      "access-token" => "super.secret.access.token",
+    }
   end
 
-  def ribose_url_for(*endpoints)
-    [Ribose.configuration.api_host, *endpoints].join("/")
-  end
-
-  def stub_session_creation_request_via_web
-    stub_get_request_with_login_page
-    stub_post_request_with_empty_body
-    stub_general_inforomation_request
-  end
-
-  def stub_get_request_with_login_page
-    stub_request(:get, login_url).and_return(
-      body: ribose_fixture("login", "html"),
-      headers: { content_type: "text/html" },
+  def stub_post_signin_request
+    stub_request(:post, login_url).and_return(
+      body: ribose_fixture("empty"), headers: session_headers,
     )
   end
 
-  def stub_general_inforomation_request
-    stub_request(:get, ribose_url_for(["settings", "general", "info"])).
-      and_return(body: ribose_fixture("general_information"), status: 200)
+  def login_url
+    [api_host, "api/v2/auth/sign_in"].join("/")
   end
 
-  def stub_post_request_with_empty_body
-    stub_request(:post, login_url).and_return(body: ribose_fixture("empty"))
+  def api_host
+    "https://#{Ribose.configuration.api_host}"
   end
 end

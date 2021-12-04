@@ -8,7 +8,7 @@ module Ribose
     end
 
     def self.upload(space_id, file_id, file:, **attributes)
-      new(space_id, file_id, attributes.merge(file: file)).create
+      new(space_id, file_id, **attributes.merge(file: file)).create
     end
 
     private

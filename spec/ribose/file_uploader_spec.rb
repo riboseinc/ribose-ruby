@@ -7,7 +7,7 @@ RSpec.describe Ribose::FileUploader do
         space_id = 123_456_789
 
         stub_ribose_space_file_upload_api(space_id, file_attributes)
-        file_upload = Ribose::FileUploader.upload(space_id, file_attributes)
+        file_upload = Ribose::FileUploader.upload(space_id, **file_attributes)
 
         expect(file_upload.attachment.id).not_to be_nil
         expect(file_upload.attachment.author).to eq("John Doe")
@@ -21,7 +21,7 @@ RSpec.describe Ribose::FileUploader do
         attributes = file_attributes(File.join(Ribose.root, "Rakefile"))
 
         stub_ribose_space_file_upload_api(space_id, attributes)
-        file_upload = Ribose::FileUploader.upload(space_id, attributes)
+        file_upload = Ribose::FileUploader.upload(space_id, **attributes)
 
         expect(file_upload.attachment.id).not_to be_nil
         expect(file_upload.attachment.author).to eq("John Doe")

@@ -20,7 +20,6 @@ RSpec.describe Ribose::Config do
       expect(Ribose.configuration.debug_mode?).to be_falsey
       expect(Ribose.configuration.api_token).to eq(api_token)
       expect(Ribose.configuration.user_email).to eq(user_email)
-      expect(Ribose.configuration.web_url).to eq ["https", api_host].join("://")
     end
   end
 

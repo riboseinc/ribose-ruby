@@ -18,7 +18,7 @@ RSpec.describe Ribose::User do
   describe ".activate" do
     it "complete the user signup process" do
       stub_ribose_app_user_activate_api(user_attributes)
-      user = Ribose::User.activate(user_attributes)
+      user = Ribose::User.activate(**user_attributes)
 
       expect(user.id).not_to be_nil
       expect(user.name).to eq("John Doe")
@@ -30,7 +30,7 @@ RSpec.describe Ribose::User do
     @user_attributes ||= {
       email: "john.doe@example.com",
       password: "SecurePassword",
-      otp: "OTP_RECEIVED_VIA_EMAIL",
+      edata: "OTP_RECEIVED_VIA_EMAIL",
     }
   end
 
