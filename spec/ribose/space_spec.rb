@@ -28,7 +28,7 @@ RSpec.describe Ribose::Space do
   describe ".create" do
     it "creates a new space with provided details" do
       stub_ribose_space_create_api(space_attributes)
-      space = Ribose::Space.create(space_attributes)
+      space = Ribose::Space.create(**space_attributes)
 
       expect(space.id).not_to be_nil
       expect(space.visibility).to eq("invisible")

@@ -1,14 +1,9 @@
 module Ribose
   class Client
-    attr_accessor :api_token, :api_email, :user_email,
-                  :client_id, :uid, :access_token
+    attr_accessor :api_email, :api_token, :access_token, :uid, :client_id
 
     def initialize(options = {})
-      @api_token    = options.fetch(:api_token, configuration.api_token).to_s
-      @api_email    = options.fetch(:api_email, configuration.api_email).to_s
-      @client_id    = options[:client_id]
-      @uid          = options[:uid]
-      @access_token = options[:access_token]
+      initialize_client_details(options)
     end
 
     # Initiate a ribose client
@@ -23,20 +18,17 @@ module Ribose
     # @param :api_token [String] The authentication token for your API account
     # @return [Ribose::Client] A new client with your details
     #
-    def self.from_login(email:, password:, api_email:, api_token:)
-      session = Session.create(
-        username: email,
-        password: password,
-        api_email: api_email,
-        api_token: api_token
+    def self.from_login(email:, password:)
+      session = Ribose::Session.create(
+        username: email, password: password,
       )
 
       new(
-        api_email:    api_email,
-        api_token:    api_token,
-        client_id:    session.nil? ? nil : session['client'],
-        uid:          session.nil? ? nil : session['uid'],
-        access_token: session.nil? ? nil : session['access-token'],
+        api_email: email,
+        uid: session.uid,
+        client_id: session.client,
+        api_token: session["access-token"],
+        access_token: session["access-token"],
       )
     end
 
@@ -44,6 +36,14 @@ module Ribose
 
     def configuration
       Ribose.configuration
+    end
+
+    def initialize_client_details(options)
+      @uid = options.fetch(:uid, nil)
+      @client_id = options.fetch(:client_id, nil)
+      @access_token = options.fetch(:access_token, nil)
+      @api_email = options.fetch(:api_email, configuration.api_email)
+      @api_token = options.fetch(:api_token, configuration.api_token)
     end
   end
 end

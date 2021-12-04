@@ -23,7 +23,7 @@ module Ribose
       end
 
       def request_body(attributes)
-        custom_option.merge(resource_key.to_sym => validate(attributes))
+        custom_option.merge(resource_key.to_sym => validate(**attributes))
       end
 
       def create_resource

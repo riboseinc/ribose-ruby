@@ -179,7 +179,7 @@ module Ribose
     def stub_ribose_app_user_activate_api(attributes)
       stub_api_response(
         :post,
-        "signup.user",
+        "api/v2/auth",
         data: { user: attributes },
         filename: "user_activated",
       )
@@ -549,7 +549,7 @@ module Ribose
 
         if Ribose.configuration.api_token
           headers["X-Indigo-Token"] = client.api_token
-          headers["X-Indigo-Email"] = client.user_email
+          headers["X-Indigo-Email"] = client.api_email
         end
       end
     end

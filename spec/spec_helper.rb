@@ -15,8 +15,9 @@ RSpec.configure do |config|
 
   config.before :all do
     Ribose.configure do |ribose_config|
-      ribose_config.api_token = ENV["RIBOSE_API_TOKEN"] || "RIBOSE_API_TOKEN"
       ribose_config.user_email = ENV["RIBOSE_USER_EMAIL"] || "RIBOSE_USER_EMAIL"
+      ribose_config.user_password = ENV["RIBOSE_USER_PASSWORD"] || "SECRET_PASS"
+      ribose_config.client = Ribose::Client.new
     end
   end
 end

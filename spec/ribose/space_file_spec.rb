@@ -64,7 +64,7 @@ RSpec.describe Ribose::SpaceFile do
       space_id = 123_456_789
 
       stub_ribose_space_file_upload_api(space_id, file_attributes)
-      file = Ribose::SpaceFile.create(space_id, file_attributes)
+      file = Ribose::SpaceFile.create(space_id, **file_attributes)
 
       expect(file.id).not_to be_nil
       expect(file.author).to eq("John Doe")
