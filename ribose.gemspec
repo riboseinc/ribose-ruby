@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.files         = `git ls-files`.split("\n")
   spec.test_files    = `git ls-files -- {spec}/*`.split("\n")
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.1.9")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.5.0")
 
   spec.add_dependency "id_pack", "~> 1.0.1"
   spec.add_dependency "mime-types", "~> 3.1"

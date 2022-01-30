@@ -41,8 +41,9 @@ Ribose.configure do |config|
   config.user_password = "your-password"
 
   # INFRA_ID is a 7-digit id, which can be found from the network requests
-  # e.g. ed6af7b for current production environment
-  config.api_host      = URI.parse('https://app-INFRA_ID.ribose.com')
+  # e.g. ed6af7b for current production environment.
+  # Note: add the host without the protocols eq: http, https
+  config.api_host      = "app-INFRA_ID.ribose.com"
 
   # There are also some default configurations. Normally you do not need to
   # change those unless you have some very specific use cases.
@@ -60,7 +61,7 @@ Or:
 
 [source,ruby]
 ----
-Ribose.configuration.api_host = "https://app-INFRA_ID.ribose.com"
+Ribose.configuration.api_host = "app-INFRA_ID.ribose.com"
 Ribose.configuration.user_email = "your-email@example.com"
 Ribose.configuration.user_password = "your-password"
 ```
