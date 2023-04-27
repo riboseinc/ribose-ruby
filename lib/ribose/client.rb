@@ -24,10 +24,10 @@ module Ribose
       )
 
       new(
-        api_email: email,
+        api_email: Ribose.configuration.api_email,
+        api_token: Ribose.configuration.api_token,
         uid: session.uid,
         client_id: session.client,
-        api_token: session["access-token"],
         access_token: session["access-token"],
       )
     end
